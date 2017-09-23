@@ -6,7 +6,7 @@ const path = require('path');
 require('dotenv').config();
 
 // File imports
-
+const route = require('./routes');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -19,6 +19,7 @@ app.use(cors());
 
 // Routes
 // app.use(express.static(path.resolve(__dirname, 'client/public')));
+app.use('/api', routes);
 
 // Server Initialization
 app.listen(port, () => {
