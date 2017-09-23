@@ -1,7 +1,26 @@
 const express = require('express');
+const parser = require('body-parser');
+const morgan = require('morgan');
+const cors = require('cors');
+const path = require('path');
+require('dotenv').config();
 
+// File imports
+
+
+const port = process.env.PORT || 3000;
 const app = express();
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+// Middlewares
+app.use(parser.json());
+app.use(parser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
+app.use(cors());
+
+// Routes
+// app.use(express.static(path.resolve(__dirname, 'client/public')));
+
+// Server Initialization
+app.listen(port, () => {
+  console.log('Listening on port: ', port);
 });
