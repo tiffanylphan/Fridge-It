@@ -7,6 +7,7 @@ require('dotenv').config();
 
 // File imports
 const routes = require('./routes');
+const db = require('../db');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -22,6 +23,20 @@ app.use(cors());
 app.use('/api', routes);
 
 // Server Initialization
-app.listen(port, () => {
-  console.log('Listening on port: ', port);
-});
+db.fridge.sync({force: true});
+db.users.sync({force: true})
+  .then(() => {
+    db.messageInfo.sync();
+    db.fridgeItems.sync()
+      .then(() => {
+        app.listen(() => {
+          console.log('Listening on Port: ', port);
+        });
+      })
+      .catch(err => {
+        console.log('Error syncing FridgeItems table: ', err);
+      });
+  })
+  .catch(err => {
+    console.log('Error syncing Users table: ', err);
+  });
