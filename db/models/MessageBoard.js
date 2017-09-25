@@ -42,6 +42,11 @@ FridgeItems.belongsTo(Fridge);
 Fridge.hasMany(MessageInfo);
 MessageInfo.belongsTo(Fridge);
 
+sequelize.sync({force:false});
 
+module.exports.users = Users;
+module.exports.fridge = Fridge;
+module.exports.fridgeItems = FridgeItems;
+module.exports.messageInfo = MessageInfo;
 
 
