@@ -1,4 +1,4 @@
-const Item = require('../../db/models/MessageBoard').FridgeItems; 
+const Item = require('../../db/index').fridgeItems
 
 module.exports = {
   getAllItems: (req, res) => {
@@ -44,7 +44,7 @@ module.exports = {
       where: {id: req.params.id}
     })
     .then((data) => {
-      res.send(data);
+      res.send('successfully deleted item');
     })
     .catch(err => {
       res.status(500).send(err);

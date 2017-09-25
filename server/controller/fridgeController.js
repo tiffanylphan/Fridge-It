@@ -1,4 +1,4 @@
-const Fridge = require('../../db/models/MessageBoard').Fridge; 
+const Fridge = require('../../db/index').fridge
 
 module.exports = {
   addFridge: (req, res) => {
@@ -15,7 +15,7 @@ module.exports = {
   },
   getFridge: (req, res) => {
     Fridge.findAll({
-      where: {fridgeId: req.params.fridgeId}
+      where: {id: req.params.fridgeId}
     })
     .then((data) => {
       res.send(data);
@@ -26,10 +26,10 @@ module.exports = {
   },
   deleteFridge: (req, res) => {
     Fridge.destroy({
-      where: {fridgeId: req.params.fridgeId}
+      where: {id: req.params.fridgeId}
     })
-    .then((data) => {
-      res.send(data);
+    .then(() => {
+      res.send('fridge successfully deleted');
     })
     .catch(err => {
       res.status(500).send(err);
