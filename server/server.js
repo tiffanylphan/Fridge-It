@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 app.use(cors());
 
 // Routes
-// app.use(express.static(path.resolve(__dirname, 'client/public')));
+app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.use('/api', routes);
 
 // Server Initialization
@@ -29,7 +29,7 @@ db.users.sync({force: true})
     db.messageInfo.sync();
     db.fridgeItems.sync()
       .then(() => {
-        app.listen(() => {
+        app.listen(port, () => {
           console.log('Listening on Port: ', port);
         });
       })

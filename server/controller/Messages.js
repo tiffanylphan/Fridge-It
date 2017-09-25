@@ -15,7 +15,7 @@ module.exports = {
 
   postMessages: (req, res) => {
     db.messageInfo.create({
-      messageText = req.body.messageText
+      messageText: req.body.messageText
     })
       .then(() => {
         res.status(201).send('success');
