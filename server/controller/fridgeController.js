@@ -1,14 +1,21 @@
-//const Fridge = require 
+const Fridge = require('../../db/models/MessageBoard').Fridge; 
 
 module.exports = {
   addFridge: (req, res) => {
     Fridge.create({
-      userId: req.params.userId
+      users: req.body.users,
+      name: req.body.name
+    })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send(err);
     })
   },
   getFridge: (req, res) => {
     Fridge.findAll({
-      where: {id: req.params.id}
+      where: {fridgeId: req.params.fridgeId}
     })
     .then((data) => {
       res.send(data);
@@ -19,7 +26,7 @@ module.exports = {
   },
   deleteFridge: (req, res) => {
     Fridge.destroy({
-      where: {id: req.params.id}
+      where: {fridgeId: req.params.fridgeId}
     })
     .then((data) => {
       res.send(data);

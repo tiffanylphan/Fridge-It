@@ -1,4 +1,4 @@
-//const Item = require()
+const Item = require('../../db/models/MessageBoard').FridgeItems; 
 
 module.exports = {
   getAllItems: (req, res) => {
