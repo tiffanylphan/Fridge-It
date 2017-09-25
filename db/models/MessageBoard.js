@@ -1,9 +1,12 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres://uskepgdp:KpVLivhPtrF6REmckMrZt3nC99K8hTgV@elmer.db.elephantsql.com:5432/uskepgdp');
+const sequelize = new Sequelize(process.env.DB_URL);
 
 const Users = sequelize.define('users', {
   name: {
+    type: STRING
+  },
+  password: {
     type: STRING
   }
 })
@@ -35,8 +38,9 @@ const MessageInfo = sequelize.define('messageBoard', {
 Users.belongsTo(Fridge);
 Fridge.hasMany(Users);
 Fridge.hasMany(FridgeItems);
+FridgeItems.belongsTo(Fridge);
 Fridge.hasMany(MessageInfo);
-
+MessageInfo.belongsTo(Fridge);
 
 
 
