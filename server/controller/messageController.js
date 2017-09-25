@@ -1,11 +1,11 @@
-const db = require('../../db');
+const messageInfo = require('../../db/index').messageInfo;
 
 module.exports = {
   getMessages: (req, res) => {
-    db.messageInfo.findAll({
-      where: {fridgeId: req.body.fridgeId}
+    messageInfo.findAll({
+      where: {fridgeId: req.params.id}
     })
-      .then(({data}) => {
+      .then(data => {
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -14,11 +14,13 @@ module.exports = {
   },
 
   postMessages: (req, res) => {
-    db.messageInfo.create({
-      messageText: req.body.messageText
+    messageInfo.create({
+      messageText: req.body.messageText,
+      fridgeId: req.body.fridgeId,
+      userId: req.body.userId,
     })
-      .then(() => {
-        res.status(201).send('success');
+      .then((data) => {
+        res.status(201).send(data);
       })
       .catch((err) => {
         res.status(404).send(err);
@@ -26,7 +28,7 @@ module.exports = {
   },
 
   updateMessages: (req, res) => {
-    db.messageInfo.find({
+    messageInfo.find({
       where: {id: req.params.id}
     })
       .then((data) => {
@@ -40,7 +42,7 @@ module.exports = {
   },
 
   deleteMessages: (req, res) => {
-    db.messageInfo.destroy({
+    messageInfo.destroy({
       where: {id: req.params.id}
     })
       .then(() => {
