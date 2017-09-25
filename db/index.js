@@ -12,6 +12,9 @@ const Users = sequelize.define('user', {
 const Fridge = sequelize.define('fridge', {
   users: {
     type: Sequelize.ARRAY({type: Sequelize.INTEGER})
+  },
+  name: {
+    type: Sequelize.STRING
   }
 })
 
