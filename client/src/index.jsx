@@ -11,7 +11,7 @@ import FridgeApp from './reducers';
 import App from './component/app';
 
 const middleware = applyMiddleware(promise(), thunk, logger());
-const store = createStore(FridgeApp, middleWare);
+const store = createStore(FridgeApp, middleware);
 
 DOMReact.render(
   <Provider store={store}>
