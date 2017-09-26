@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import MessageListEntry from './messageListEntry';
-import messageActions from '../actions/messageActions.js';
+import MessageListEntry from './messageListEntry.jsx';
+import * as messageActions from '../actions/messageActions.js';
 
 class MessageListView extends Component {
   constructor(props) {
@@ -11,21 +11,26 @@ class MessageListView extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchMessages(this.props.fridgeId);
+    this.props.actions.fetchMessages(1); // DONT FORGET TO EDIT OUT THE 1
   }
 
   render() {
     const { messageList, messageFetched, messageFetching } = this.props;
 
-    if (messageList.length) {
+    if (messageFetched) {
       return (
         <div>
-          {messageList.map(message => {
+          {messageList.map(message => (
             <MessageListEntry {...this.props.actions} key={message.id} message={message} />
-          })}
+          ))}
         </div>
       )
+    } else {
+      return (
+        <div>This is message List</div>
+      )
     }
+
   }
 };
 
