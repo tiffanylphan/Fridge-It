@@ -28,13 +28,19 @@ module.exports = {
   },
 
   updateMessages: (req, res) => {
-    messageInfo.find({
+    messageInfo.findOne({
       where: {id: req.params.id}
     })
       .then((data) => {
         data.updateAttributes({
           messageText: req.body.messageText 
-        })
+        }) 
+          .then((updated) => {
+            res.status(202).send(updated);
+          })
+          .catch((err) => {
+            res.status(400).send(err);
+          })
       })
       .catch((err) => {
         res.status(500).send(err);
@@ -43,10 +49,16 @@ module.exports = {
 
   deleteMessages: (req, res) => {
     messageInfo.destroy({
-      where: {id: req.params.id}
+      where: {id: req.params.messageId}
     })
       .then(() => {
-        res.status(202).send('successfully deleted');
+        messageInfo.findAll({where: {fridgeId: req.params.fridgeId}})
+          .then(data => {
+            res.status(200).send(data);
+          })
+          .catch(err => {
+            res.status(500).send(err);
+          })
       })
       .catch((err) => {
         res.status(404).send(err);
