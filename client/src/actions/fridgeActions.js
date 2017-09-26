@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export function getFridge() {
+export function getFridge(id) {
   return function(dispatch) {
-    axios.get('/api/fridge/:fridgeId')
+    axios.get('/api/fridge/' + id)
       .then(({ data }) => {
         dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data})
       })
