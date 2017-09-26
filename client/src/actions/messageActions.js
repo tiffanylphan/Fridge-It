@@ -30,9 +30,26 @@ export const postMessages = (fridgeId, userId) => {
   };
 };
 
-// store.dispatch({type: POST_MESSAGE,});
-// store.dispatch({type: DELETE_MESSAGE,});
-// store.dispatch({type: UPDATE_MESSAGE});
+export const deleteMessages = (fridgeId, messageId) => {
+  return function(dispatch) {
+    axios.delete('/api/allMessages/' + fridgeId + '&' + messageId)
+    .then((response) => {
+      dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
+    })
+    .catch((err) => {
+      dispatch({type: 'DELETE_MESSAGES_REJECTED', payload: err});
+    });
+  };
+};
 
-
-// export default 
+export const updateMessage = (id) => {
+  return function(dispatch) {
+    axios.patch('/api/allMessages/' + id)
+    .then((response) => {
+      dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data});
+    })
+    .catch((err) => {
+      dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
+    });
+  };
+};
