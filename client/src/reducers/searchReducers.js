@@ -2,6 +2,7 @@ export default function reducer(state={
   recipes: [],
   fetching: false,
   fetched: false,
+  onRecipeListPage: false,
   error: null
 }, action) {
   switch(action.type) {
