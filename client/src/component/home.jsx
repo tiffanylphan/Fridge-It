@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
 import Messages from './messagesListView.jsx';
 import Search from './searchListView.jsx';
 import Fridge from './fridgeView.jsx';
-=======
-import Messages from './messagesListView';
-import Search from './searchListView';
-import Fridge from './fridgeView';
->>>>>>> [update] correct path for fridge
 
 class Home extends Component {
   constructor (props) {
