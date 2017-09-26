@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import SearchListEntry from './searchListEntry';
-import searchActions from '../actions/searchActions.js';
+import SearchListEntry from './searchListEntry.jsx';
+import * as searchActions from '../actions/searchActions.js';
 
 class SearchListView extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class SearchListView extends Component {
   }
   
   componentDidMount() {
-    !this.props.ingredients.length ? null : this.props.actions.fetchRecipes(this.props.ingredients);
+    // !this.props.ingredients.length ? null : this.props.actions.fetchRecipes(this.props.ingredients);
   }
 
   render() {
