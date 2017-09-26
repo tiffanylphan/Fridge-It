@@ -12,8 +12,12 @@ import { applyMiddleware, createStore } from 'redux';
 
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+<<<<<<< HEAD
 import promise from 'redux-promise';
 >>>>>>> [Update] Initialize Redux and middlewares
+=======
+import promise from 'redux-promise-middleware';
+>>>>>>> [Update] Update to correct promise package
 
 import FridgeApp from './reducers';
 import App from './component/app';
