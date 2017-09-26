@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import HomeView from './homeView';
 
 class App extends Component {
   constructor(props) {
@@ -8,9 +11,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>Hi</div>
+      <div>
+        <HomeView />
+      </div>
     )
   }
 };
 
-export default App;
+export default connect(null, null)(App);
