@@ -2,7 +2,7 @@ const router = require('express').Router();
 const messages = require('../controller/messageController')
 const fridge = require('../controller/fridgeController')
 const item = require('../controller/itemController')
-const search = require('../controller/search');
+const search = require('../controller/searchController');
 
 // Messages Routes
 router.get('/allMessages/:id', messages.getMessages)
