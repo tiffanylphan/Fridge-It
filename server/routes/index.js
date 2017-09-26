@@ -11,7 +11,7 @@ router.delete('/allMessages/:id', messages.deleteMessages)
 router.patch('/allMessages/:id', messages.updateMessages)
 
 // Fridge Routes
-router.post('/fridge:fridgeId', fridge.addFridge)
+router.post('/fridge', fridge.addFridge)
 router.get('/fridge/:fridgeId', fridge.getFridge)
 router.delete('/fridge/:fridgeId', fridge.deleteFridge)
 
