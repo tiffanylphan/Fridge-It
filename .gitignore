@@ -4,3 +4,5 @@ semantic
 
 semantic.json
 .env
+
+client/public/bundle.js
