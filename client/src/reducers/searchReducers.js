@@ -1,10 +1,12 @@
-export default function reducer(state={
+const initialState = {
   recipes: [],
   fetching: false,
   fetched: false,
   onRecipeListPage: false,
   error: null
-}, action) {
+}
+
+const searchReducer = (state=initialState, action) => {
   switch(action.type) {
     case "FETCH_RECIPE": {
       return {...state, fetching: true};
@@ -21,4 +23,8 @@ export default function reducer(state={
       }
     }
   }
+
+  return state;
 }
+
+export default searchReducer;
