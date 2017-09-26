@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react'
+import itemListEntry from './itemListEntry'
 
-class ItemListView extends Component {
-  constructor(props) {
-    super(props);
-  };
-
-  render() {
-    return (
-      <div>
-        This is ItemList
-      </div>
-    )
-  }
+const itemList = (props) => {
+  return (
+    <div>
+    {props.map(item => (
+      <ItemListEntry name={item.name} quantity={item.quantity} type={item.type}/>
+    ))}
+    </div> 
+  )
 }
 
-export default ItemListView;
+export default itemList; 
