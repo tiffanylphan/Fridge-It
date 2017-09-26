@@ -11,7 +11,7 @@ class SearchListView extends Component {
   }
 
   componentWillMount() {
-    this.props.actions.fetchRecipes(this.props.ingredients);
+    this.props.fetchRecipes(this.props.ingredients);
   }
 
   render() {
