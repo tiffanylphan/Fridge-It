@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 const MessageListEntry = ({ message }) => {
   return (
     <div id="entry">
-      {message.message}
+      {message.messageText}
     </div>
   )
 }
 
-export default connect(null, null)(MessageListEntry);
+export default MessageListEntry;
