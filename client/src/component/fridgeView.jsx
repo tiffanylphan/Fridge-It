@@ -26,14 +26,21 @@ class Fridge extends Component {
 
   render() {
     const types = []; 
-    for (let i = 0; i < types.length; i++) {
-      let filteredItems = filterItems(types[i]);
-          return (
-            <div className={types[i]}>
-              <ItemListView type={types[i]} items={filteredItems}/> 
-            </div>
-          )
-    
+    if (this.props.items.length) {
+      for (let i = 0; i < types.length; i++) {
+        let filteredItems = filterItems(types[i]);
+            return (
+              <div className={types[i]}>
+                <ItemListView type={types[i]} items={filteredItems}/> 
+              </div>
+            )
+      }
+    } else {
+      return (
+        <div>
+          No items in fridge
+        </div> 
+      )
     }
   }
 }
