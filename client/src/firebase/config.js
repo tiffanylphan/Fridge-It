@@ -13,4 +13,4 @@ firebase.initializeApp(config);
 
 export const ref = firebase.database().ref();
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
-export const auth = firebase.auth();
+export const auth = firebase.auth;
