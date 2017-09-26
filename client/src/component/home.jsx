@@ -13,7 +13,15 @@ class Home extends Component {
     return (
     
     <div>
-      
+      <div>
+        <Messages />
+      </div>
+      <div>
+        <Search />
+      </div>
+      <div> 
+        <Fridge />
+      </div>
     </div>
 
     )
