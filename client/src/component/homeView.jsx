@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Search from './searchView';
+import Home from './home';
 
 class HomeView extends Component {
   constructor(props) {
