@@ -10,7 +10,7 @@ class MessageListView extends Component {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchMessages(this.props.fridgeId);
   }
 

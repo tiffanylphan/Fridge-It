@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 const MessageListEntry = ({ message }) => {
   return (
     <div id="entry">
-      {this.props.message}
+      {message.message}
     </div>
   )
 }
