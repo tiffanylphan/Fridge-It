@@ -2,11 +2,7 @@ import axios from 'axios';
 
 export const fetchMessages = (fridgeId) => {
   return function(dispatch) {
-    axios.get('/api/allMessages', {
-      data: {
-        messageText: messages
-      }
-    })
+    axios.get('/api/allMessages/' + fridgeId)
     .then((response) => {
       dispatch({type: 'FETCH_MESSAGES_FULFILLED', payload: response.data});
     })
@@ -16,11 +12,13 @@ export const fetchMessages = (fridgeId) => {
   };
 };
  
-export const postMessages = () => {
+export const postMessages = (fridgeId, userId) => {
   return function(dispatch) {
     axios.post('/api/allMessages', {
       data: {
-        messages: messages
+        messages: messages,
+        fridgeId: fridgeId,
+        userId: userId,
       }
     })
     .then((response) => {

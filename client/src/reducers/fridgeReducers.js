@@ -1,4 +1,4 @@
-const initalState = {
+const initialState = {
   fridge: {},
   fetching: false,
   fetched: false,

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Messages from './messagesListView';
-import Search from './searchListView';
-import Fridge from './fridgeListView';
+import Messages from './messagesListView.jsx';
+import Search from './searchListView.jsx';
+import Fridge from './fridgeView.jsx';
 
 class Home extends Component {
   constructor (props) {
@@ -13,14 +13,17 @@ class Home extends Component {
     return (
     
     <div>
+      Hello this is HOME
       <div>
-        <Messages />
+        <div> 
+          <Fridge />
+        </div>
+        <div>
+          <Messages />
+        </div>
       </div>
       <div>
         <Search />
-      </div>
-      <div> 
-        <Fridge />
       </div>
     </div>
 
@@ -30,4 +33,4 @@ class Home extends Component {
 }
 
 
-
+export default Home;

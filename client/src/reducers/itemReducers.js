@@ -1,4 +1,4 @@
-const initalState = {
+const initialState = {
   items: [],
   fetching: false,
   fetched: false,

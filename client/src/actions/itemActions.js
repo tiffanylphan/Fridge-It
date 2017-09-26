@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export function getItems() {
+export function getItems(id) {
   return function(dispatch) {
-    axios.get('/api/items/:fridgeId')
+    axios.get('/api/items/' + id)
       .then(({ data }) => {
         dispatch({type: 'FETCH_ITEMS_FULFILLED', payload: data})
       })

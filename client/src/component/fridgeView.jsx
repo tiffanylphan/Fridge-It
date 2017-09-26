@@ -1,10 +1,10 @@
-import React, { Component } from 'React'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import ItemListView from './itemListView'
-import fridgeActions from '../actions/fridgeActions.js'
-import itemActions from '../actions/itemActions.js'
+import ItemListView from './itemListView.jsx';
+import * as fridgeActions from '../actions/fridgeActions.js';
+import * as itemActions from '../actions/itemActions.js';
 
 class Fridge extends Component {
   constructor(props) {
@@ -12,31 +12,33 @@ class Fridge extends Component {
   }
   
   componentWillMount() {
-    this.props.dispatch(getFridge());
-    this.props.dispatch(getItems());
+    this.props.fridgeActions.getFridge(1); // DONT FORGET TO EDIT OUT THE 1
+    this.props.itemActions.getItems(1); // DONT FORGET TO EDIT OUT THE 1
   }
 
   render() {
-    <div>
-      {this.props.fridge}
-      <ItemListView />
-    </div>
+    return (
+      <div>
+        Hi this is fridge
+        <ItemListView />
+      </div>
+    );
   }
 }
 
 const fridgeState = (store) => {
   return {
-    fridge: store.fridge
+    fridge: store.fridge.fridge
   }
 }
 
-const dispatch = (dispatch) => {
+const fridgeDispatch = (dispatch) => {
   return {
     fridgeActions: bindActionCreators(fridgeActions, dispatch),
     itemActions: bindActionCreators(itemActions, dispatch)
   }
 };
 
-export default connect(fridgeState, dispatch)(fridgeView); 
+export default connect(fridgeState, fridgeDispatch)(Fridge); 
 
 

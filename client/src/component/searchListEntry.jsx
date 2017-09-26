@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 const SearchListEntry = (props) => {
   let url = (this.props.recipe.title).split(' ').join('-');
@@ -14,4 +13,4 @@ const SearchListEntry = (props) => {
   );
 };
 
-export default connect(null, null)(SearchListEntry);
+export default SearchListEntry;
