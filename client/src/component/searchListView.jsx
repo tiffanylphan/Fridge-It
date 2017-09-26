@@ -11,18 +11,45 @@ class SearchListView extends Component {
   }
 
   componentWillMount() {
-    this.props.fetchRecipes(this.props.ingredients);
+    !this.props.ingredients.length ? null : this.props.actions.fetchRecipes(this.props.ingredients);
   }
 
   render() {
-    const { recipeList, recipeFetched, recipeFetching } = this.props;
+    const { recipeList, recipeFetched, recipeFetching, onRecipeListPage } = this.props;
 
-    if (!recipeList.length) {
+    if (!onRecipeListPage) {
+      if (!recipeList.length) {
+        return (
+          <div>
+            Add Ingredients into your Fridge!
+          </div>
+        )
+      } else {
+        let top3 = [];
+
+        for(let i = 0; i < 3; i++) {
+          top3.push(recipeList[i]);
+        }
+
+        return (
+          <div>
+            <div>
+              {top3.map(recipe => (
+                <SearchListEntry {...this.props.actions} key={recipe.id} recipe={recipe} />
+              ))}
+            </div>
+            <div>
+              <button onClick={this.props.actions.switchView}>Find me more!</button>
+            </div>
+          </div>
+        )
+      }
+    } else {
       return (
         <div>
-          {recipeList.map(recipe => {
+          {recipeList.map(recipe => (
             <SearchListEntry {...this.props.actions} key={recipe.id} recipe={recipe} />
-          })}
+          ))}
         </div>
       )
     }
