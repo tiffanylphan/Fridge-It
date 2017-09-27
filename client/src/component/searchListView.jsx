@@ -62,7 +62,7 @@ class SearchListView extends Component {
 
 const mapState = (store) => {
   return {
-    ingredients: store.fridgeItems, // TODO: update with correct prop name
+    ingredients: store.items.items, // TODO: update with correct prop name
     recipeList: store.search.recipes,
     recipeFetched: store.search.fetched,
     recipeFetching: store.search.fetching,
