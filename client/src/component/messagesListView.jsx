@@ -17,8 +17,11 @@ class MessageListView extends Component {
   handleSubmit(event) {
     event.preventDefault();
     let entry = document.getElementById('entry');
+    let entry1 = document.getElementById('entry1');
     if (entry.value !== '') {
-      this.props.actions.postMessages();
+      this.props.actions.postMessages(1, 1, entry.value || entry1.value);
+      entry.value = '';
+      entry1.value = '';
     } else {
       alert('Please enter a message');
     }
@@ -27,7 +30,7 @@ class MessageListView extends Component {
   render() {
     const { messageList, messageFetched, messageFetching, actions } = this.props;
 
-    if (messageFetched) {
+    if (messageList.length > 0) {
       return (
         <div>
           {messageList.map(message => (
@@ -37,18 +40,28 @@ class MessageListView extends Component {
           <form>
             <label>
               Message:
-              <input type="text" id="entry" />
+              <input type="text" id="entry1" />
             </label>
             <button onClick={this.handleSubmit.bind(this)}>Submit Message</button>
           </form>
         </div>
       )
+
     } else {
       return (
-        <div>Messages empty</div>
+        <div>
+          Messages empty
+          <form>
+            <label>
+              Message:
+              <input type="text" id="entry" />
+            </label>
+            <button onClick={this.handleSubmit.bind(this)}>Submit Message</button>
+          </form>
+        </div>
+
       )
     }
-
   }
 };
 

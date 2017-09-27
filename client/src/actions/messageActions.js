@@ -12,7 +12,7 @@ export const fetchMessages = (fridgeId) => {
   };
 };
  
-export const postMessages = (fridgeId, userId) => {
+export const postMessages = (fridgeId, userId, messages) => {
   return function(dispatch) {
     axios.post('/api/allMessages', {
       data: {
