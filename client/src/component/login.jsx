@@ -1,45 +1,26 @@
 import React from 'react';
-import {loginWithGoogle} from '../firebase/auth.js'
-// import semantic from 'semantic-ui';
+import {loginWithGoogle, redirect} from '../firebase/auth.js';
+import firebase, {auth, ref} from '../firebase/config.js'
 
-const firebaseAuthKey = "firebaseAuthInProgress";
-const appTokenKey = "appToken";
-const user = '';
+// const firebaseAuthKey = "firebaseAuthInProgress";
+// const appTokenKey = "appToken";
+// const user = '';
 
 class Login extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: JSON.parse(localStorage.getItem("user"))
+      // user: JSON.parse(localStorage.getItem("user"))
+      user: null
     }
     this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
+    this.test = this.test.bind(this);
   }
 
-  // from example.
-  handleGoogleLogin() {
-    // console.log(localStorage)
-    loginWithGoogle()
-    .catch(function (error) {
-      alert(error); // or show toast
-      localStorage.removeItem(firebaseAuthKey);
-    });
-    localStorage.setItem(firebaseAuthKey, "1");
-    // need to get the username off the page and save it on local storage
-    localStorage.setItem(user, "username");
-    }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log('button was clicked')
-    
-  }
-
-  // ought to save username to localstorage.
-  // firebase.auth().onAuthStateChanged(function(user) {
-  //   localStorage.user = user; // user is undefined if no user signed in
-  // });
 
   render() {
+    console.log(localStorage)
     return (
       <div>
     
@@ -53,7 +34,7 @@ class Login extends React.Component {
           <label> Last Name </label>
           <input type="text" placeholder="Password"></input>
         </div>
-        <button  type="button" onClick={this.handleSubmit}>Submit</button>
+        <button  type="button" onClick={this.test}>Submit</button>
       </form>    
     </div>
         <div>
