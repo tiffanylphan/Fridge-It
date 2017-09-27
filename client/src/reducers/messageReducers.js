@@ -37,6 +37,7 @@ const messageReducer = (state=initialState, action) => {
       return {...state, posting: false, error: action.payload};
     }
     case "POST_MESSAGES_FULFILLED": {
+      console.log(state.messages);
       return Object.assign({}, state, {
         posting: false,
         posted: true,
@@ -54,7 +55,7 @@ const messageReducer = (state=initialState, action) => {
         ...state, 
         deleting: false,
         deleted: true,
-        messages: action.payload,
+        messages: state.messages.filter(message => message.id !== action.payload.id), //make sure this works
       })
     }
     case "UPDATE_MESSAGES_PENDING": {
@@ -68,7 +69,9 @@ const messageReducer = (state=initialState, action) => {
         ...state, 
         updating: false,
         updated: true,
-        messages: action.payload,
+        messages: state.messages.filter(
+          message => message.id === action.payload.id ? message.messageText = action.payload.message : null
+        ),
       })
     }
   }
