@@ -18,12 +18,12 @@ const fridgeReducer = (state=initialState, action) => {
       break;
     }
     case 'FETCH_FRIDGE_FULFILLED': {
-      return {
+      return Object.assign({}, state, {
         ...state,
         fetching: false,
         fetched: true,
         fridge: action.payload
-      }
+      })
       break; 
     }
     case 'POST_FRIDGE_PENDING': {
@@ -35,12 +35,12 @@ const fridgeReducer = (state=initialState, action) => {
       break;
     }
     case 'POST_FRIDGE_FULFILLED': {
-      return {
+      return Object.assign({}, state, {
         ...state,
         posting: false,
         posted: true,
         fridge: action.payload
-      }
+      })
       break; 
     }
   }

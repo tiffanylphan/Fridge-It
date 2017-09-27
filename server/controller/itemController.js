@@ -16,7 +16,8 @@ module.exports = {
     Item.create({
       name: req.body.name,
       quantity: req.body.quantity,
-      type: req.body.type
+      type: req.body.type,
+      fridgeId: req.body.fridgeId
     })
     .then((data) => {
       res.send(data)

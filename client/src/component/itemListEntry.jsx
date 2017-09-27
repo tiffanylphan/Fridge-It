@@ -5,12 +5,27 @@ class Item extends Component {
     super(props);
   }
   
+  // addOne() {
+
+  // }
+
+  // subtractOne() {
+
+  // }
+
+  // delete() {
+
+  // }
+  
   render() {
     return (
       <div>
-        {this.props.name}
-        {this.props.quantity}
-        {this.props.type}
+        <div>
+          {this.props.name}
+        </div>
+        <div>
+          {this.props.quantity}
+        </div>
       </div>
     )
   }

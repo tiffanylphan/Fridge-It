@@ -17,7 +17,7 @@ router.delete('/fridge/:fridgeId', fridge.deleteFridge)
 
 // Items Routes
 router.get('/items/:fridgeId', item.getAllItems)
-router.post('/items/:fridgeId', item.addItem)
+router.post('/items', item.addItem)
 router.post('/items/:id', item.updateItem)
 router.delete('/items/:id', item.deleteItem)
 
