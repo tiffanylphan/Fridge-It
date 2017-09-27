@@ -10,6 +10,8 @@ class SearchView extends Component {
   };
 
   render() {
+    let { actions, ingredients, recipeList } = this.props;
+
     return (
       <div>SEARCH VIEW</div>
     )
@@ -19,8 +21,7 @@ class SearchView extends Component {
 const searchState = (store) => {
   return {
     ingredients: store.items.items,
-    recipeList: store.search.recipes,
-    filtered: store.search.filtered,
+    recipeList: store.search.recipes
   }
 };
 
