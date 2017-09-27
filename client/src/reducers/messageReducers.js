@@ -5,6 +5,10 @@ const initialState = {
   fetched: false,
   posting: false,
   posted: false,
+  deleting: false,
+  deleted: false,
+  updating: false,
+  updated: false,
   messages: [],
   error: null,
 
@@ -37,6 +41,34 @@ const messageReducer = (state=initialState, action) => {
         ...state, 
         posting: false,
         posted: true,
+        messages: action.payload,
+      }
+    }
+    case "DELETE_MESSAGES_PENDING": {
+      return {...state, deleting: true}
+    }
+    case "DELETE_MESSAGES_REJECTED": {
+      return {...state, deleting: false, error: action.payload};
+    }
+    case "DELETE_MESSAGES_FULFILLED": {
+      return {
+        ...state, 
+        deleting: false,
+        deleted: true,
+        messages: action.payload,
+      }
+    }
+    case "UPDATE_MESSAGES_PENDING": {
+      return {...state, updating: true}
+    }
+    case "UPDATE_MESSAGES_REJECTED": {
+      return {...state, updating: false, error: action.payload};
+    }
+    case "UPDATE_MESSAGES_FULFILLED": {
+      return {
+        ...state, 
+        updating: false,
+        updated: true,
         messages: action.payload,
       }
     }
