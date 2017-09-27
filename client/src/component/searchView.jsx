@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as searchActions from '../actions/searchActions.js';
+import SearchListEntry from './searchListEntry.jsx';
 
 class SearchView extends Component {
   constructor(props){
@@ -10,6 +11,18 @@ class SearchView extends Component {
   };
 
   render() {
+    let { actions, ingredients, recipeList } = this.props;
+
+    if(recipeList.length > 0) {
+      return (
+        <div>
+          {recipeList.map(recipe => (
+            <SearchListEntry key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
+      )
+    }
+
     return (
       <div>SEARCH VIEW</div>
     )
@@ -19,8 +32,7 @@ class SearchView extends Component {
 const searchState = (store) => {
   return {
     ingredients: store.items.items,
-    recipeList: store.search.recipes,
-    filtered: store.search.filtered,
+    recipeList: store.search.recipes
   }
 };
 
