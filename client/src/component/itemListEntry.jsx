@@ -5,17 +5,17 @@ class Item extends Component {
     super(props);
   }
   
-  addOne() {
+  // addOne() {
 
-  }
+  // }
 
-  subtractOne() {
+  // subtractOne() {
 
-  }
+  // }
 
-  delete() {
+  // delete() {
 
-  }
+  // }
   
   render() {
     return (
@@ -26,9 +26,6 @@ class Item extends Component {
         <div>
           {this.props.quantity}
         </div>
-        <button /> 
-        <button /> 
-        <button /> 
       </div>
     )
   }

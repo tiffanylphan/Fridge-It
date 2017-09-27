@@ -4,7 +4,7 @@ import ItemListEntry from './itemListEntry.jsx'
 const ItemList = (props) => {
   return (
     <div>
-    {props.map(item => (
+    {this.props.items.map(item => (
       <ItemListEntry name={item.name} quantity={item.quantity} type={item.type}/>
     ))}
     </div> 
