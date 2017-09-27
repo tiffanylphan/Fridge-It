@@ -21,7 +21,7 @@ class SearchListView extends Component {
   render() {
     const { recipeList, recipeFetched, recipeFetching, onRecipeListPage, actions } = this.props;
 
-    if(recipe.length === 0) {
+    if(recipeList.length === 0) {
       return (
         <div>
           Add Ingredients into your Fridge!
