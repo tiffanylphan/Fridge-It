@@ -14,20 +14,38 @@ class MessageListView extends Component {
     this.props.actions.fetchMessages(1); // DONT FORGET TO EDIT OUT THE 1
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    let entry = document.getElementById('entry');
+    if (entry.value !== '') {
+      this.props.actions.postMessages();
+    } else {
+      alert('Please enter a message');
+    }
+  }
+
   render() {
-    const { messageList, messageFetched, messageFetching } = this.props;
+    const { messageList, messageFetched, messageFetching, actions } = this.props;
 
     if (messageFetched) {
       return (
         <div>
           {messageList.map(message => (
-            <MessageListEntry {...this.props.actions} key={message.id} message={message} />
+            <MessageListEntry {...actions} key={message.id} message={message} />
           ))}
+
+          <form>
+            <label>
+              Message:
+              <input type="text" id="entry" />
+            </label>
+            <button onClick={this.handleSubmit.bind(this)}>Submit Message</button>
+          </form>
         </div>
       )
     } else {
       return (
-        <div>This is message List</div>
+        <div>Messages empty</div>
       )
     }
 
