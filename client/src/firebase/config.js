@@ -1,12 +1,12 @@
 import firebase from 'firebase';
-require('dotenv').config();
+import FB from '../../../firebase.json';
 
 var config = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DB_URL,
+    apiKey: FB.FIREBASE_API_KEY,
+    authDomain: FB.FIREBASE_AUTH_DOMAIN,
+    databaseURL: FB.FIREBASE_DB_URL,
     projectId: "fridgit-82db7",
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    storageBucket: FB.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: "614537900777"
   };
   
