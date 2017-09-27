@@ -1,7 +1,7 @@
 import React from 'react'
-import itemListEntry from './itemListEntry.jsx'
+import ItemListEntry from './itemListEntry.jsx'
 
-const itemList = (props) => {
+const ItemList = (props) => {
   return (
     <div>
     {props.map(item => (
@@ -11,4 +11,4 @@ const itemList = (props) => {
   )
 }
 
-export default itemList; 
+export default ItemList; 
