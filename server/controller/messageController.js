@@ -53,13 +53,6 @@ module.exports = {
       where: {id: req.params.messageId}
     })
       .then(() => {
-        // messageInfo.findAll({where: {fridgeId: req.params.fridgeId}})
-        //   .then(data => {
-        //     res.status(200).send(data);
-        //   })
-        //   .catch(err => {
-        //     res.status(500).send(err);
-        //   })
         res.status(202).send({id: req.params.messageId})
       })
       .catch((err) => {

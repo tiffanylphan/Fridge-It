@@ -30,10 +30,11 @@ export const postMessages = (fridgeId, userId, messages) => {
   };
 };
 
-export const deleteMessages = (fridgeId, messageId) => {
+export const deleteMessages = (messageId) => {
   return function(dispatch) {
-    axios.delete('/api/allMessages/' + fridgeId + '&' + messageId)
+    axios.delete('/api/allMessages/' + messageId)
     .then((response) => {
+      console.log('delete payload: ', response.data);
       dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
     })
     .catch((err) => {

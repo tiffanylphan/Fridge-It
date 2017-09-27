@@ -8,55 +8,62 @@ import * as messageActions from '../actions/messageActions.js';
 class MessageListView extends Component {
   constructor(props) {
     super(props);
+
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.actions.fetchMessages(1); // DONT FORGET TO EDIT OUT THE 1
+    this.props.actions.fetchMessages(1); // DONT FORGET TO EDIT OUT THE 1 (fridgeId)
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    let entry = document.getElementById('entry');
-    let entry1 = document.getElementById('entry1');
-    if (entry.value !== '') {
-      this.props.actions.postMessages(1, 1, entry.value || entry1.value);
-      entry.value = '';
-      entry1.value = '';
-    } else {
-      alert('Please enter a message');
-    }
-  }
-
+  
   render() {
+    const handleSubmit = () => {
+      let entry = document.getElementById('entry');
+      let entry1 = document.getElementById('entry1');
+      if (entry.value !== '') {
+        this.props.actions.postMessages(1, 1, entry.value || entry1.value); //(fridgeId, messageId)
+        entry.value = '';
+        entry1.value = '';
+      } else {
+        alert('Please enter a message');
+      }
+    }
     const { messageList, messageFetched, messageFetching, actions } = this.props;
 
     if (messageList.length > 0) {
+      console.log('view before/after reducer: ', messageList);
       return (
         <div>
-          {messageList.map(message => (
-            <MessageListEntry {...actions} key={message.id} message={message} />
-          ))}
 
           <form>
             <label>
+            <div className="ui comments">
+              <h3 className="ui dividing header">Messages</h3>
+            </div>
               Message:
               <input type="text" id="entry1" />
             </label>
-            <button onClick={this.handleSubmit.bind(this)}>Submit Message</button>
+            <button onClick={() => handleSubmit()}>
+              Submit Message
+            </button>
           </form>
+
+          {messageList.map(message => (
+            <MessageListEntry {...actions} key={message.id} message={message} />
+          ))}
         </div>
       )
 
     } else {
       return (
         <div>
-          Messages empty
           <form>
             <label>
               Message:
               <input type="text" id="entry" />
             </label>
-            <button onClick={this.handleSubmit.bind(this)}>Submit Message</button>
+            <button onClick={() => handleSubmit()}>Submit Message</button>
           </form>
         </div>
 
