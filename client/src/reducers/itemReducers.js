@@ -14,71 +14,60 @@ const initialState = {
 const itemReducer = (state=initialState, action) => {
   switch(action.type) {
     case 'FETCH_ITEMS_PENDING': {
-      return {...state, fetching: true}
-      break;
+      return Object.assign({}, state, {fetching: true});
     }
     case 'FETCH_ITEMS_REJECTED': {
-      state = {...state, fetching: false, error: action.payload};
-      break;
+      return Object.assign({}, state, {fetching: false, error: action.payload});
     }
     case 'FETCH_ITEMS_FULFILLED': {
       return Object.assign({}, state, {
         fetching: false,
         fetched: true,
-        items: state.items.concat(action.payload)
-      })
-      break; 
+        items: action.payload
+      }) 
     }
     case 'POST_ITEM_PENDING': {
-      return {...state, posting: true}
-      break;
+      return Object.assign({}, state, {posting: true}); 
     }
     case 'POST_ITEM_REJECTED': {
-      state = {...state, posting: false, error: action.payload}
-      break;
+      return Object.assign({}, state, {posting: false, error: action.payload});
     }
     case 'POST_ITEM_FULFILLED': {
       return Object.assign({}, state, {
-        ...state,
         posting: false,
         posted: true,
         items: state.items.concat(action.payload)
       })
-      break;
     }
     case 'UPDATE_ITEM_PENDING': {
-      return {...state, updating: true}
-      break;
+      return Object.assign({}, state, {updating: true});
     }
     case 'UPDATE_ITEM_REJECTED': {
-      state = {...state, updating: false, error: action.payload}
-      break;
+      return Object.assign({}, state, {updating: false, error: action.payload});
     }
     case 'UPDATE_ITEM_FULFILLED': {
-      return {
-        ...state,
+      return Object.assign({}, state, {
         updating: false,
         updated: true,
-        // items: fill me in
-      }
-      break;
+        items: state.items.map(item => {
+          return item.id === action.payload[0].id ? item = action.payload[0] : item;
+        })
+      });
     }
     case 'DELETE_ITEM_PENDING': {
-      return {...state, deleting: true}
-      break;
+      return Object.assign({}, state, {deleting: true});
     }
     case 'DELETE_ITEM_REJECTED': {
-      state = {...state, deleting: false, error: action.payload}
-      break;
+      return Object.assign({}, state, {deleting: false, error: action.payload});
     }
-    case 'DELETE_ITEMS_FULFILLED': {
-      return {
-        ...state,
+    case 'DELETE_ITEM_FULFILLED': {
+      return Object.assign({}, state, {
         deleting: false,
         deleted: true,
-        items: state.items.splice(indexOf(action.payload), 1)
-      }
-      break;
+        items: state.items.filter(item => {
+          return item.id === Number(action.payload.id) ? null : item;
+        })
+      })
     }
   }
   return state;
