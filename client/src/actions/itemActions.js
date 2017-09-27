@@ -31,7 +31,7 @@ export function addItem(item, fridgeId) {
 
 export function updateItem(item, id) {
   return function(dispatch) {
-    axios.post('/items' + id, {
+    axios.post('api/items/' + id, {
       name: item.name,
       quantity: item.quantity, 
       type: item.type
@@ -47,7 +47,7 @@ export function updateItem(item, id) {
 
 export function deleteItem(id) {
   return function(dispatch) {
-    axios.delete('/items' + id)
+    axios.delete('api/items/' + id)
       .then(({ data }) => {
         dispatch({type: 'DELETE_ITEM_FULFILLED', payload: data})
       })
