@@ -23,12 +23,12 @@ const messageReducer = (state=initialState, action) => {
       return {...state, fetching: false, error: action.payload};
     }
     case "FETCH_MESSAGES_FULFILLED": {
-      return {
+      return Object.assign({}, state, {
         ...state, 
         fetching: false,
         fetched: true,
-        messages: action.payload,
-      }
+        messages: state.messages.concat(action.payload),
+      })
     }
     case "POST_MESSAGES_PENDING": {
       return {...state, posting: true}
@@ -37,12 +37,11 @@ const messageReducer = (state=initialState, action) => {
       return {...state, posting: false, error: action.payload};
     }
     case "POST_MESSAGES_FULFILLED": {
-      return {
-        ...state, 
+      return Object.assign({}, state, {
         posting: false,
         posted: true,
-        messages: action.payload,
-      }
+        messages: state.messages.concat(action.payload),
+      })
     }
     case "DELETE_MESSAGES_PENDING": {
       return {...state, deleting: true}
@@ -51,12 +50,12 @@ const messageReducer = (state=initialState, action) => {
       return {...state, deleting: false, error: action.payload};
     }
     case "DELETE_MESSAGES_FULFILLED": {
-      return {
+      return Object.assign({}, state, {
         ...state, 
         deleting: false,
         deleted: true,
         messages: action.payload,
-      }
+      })
     }
     case "UPDATE_MESSAGES_PENDING": {
       return {...state, updating: true}
@@ -65,12 +64,12 @@ const messageReducer = (state=initialState, action) => {
       return {...state, updating: false, error: action.payload};
     }
     case "UPDATE_MESSAGES_FULFILLED": {
-      return {
+      return Object.assign({}, state, {
         ...state, 
         updating: false,
         updated: true,
         messages: action.payload,
-      }
+      })
     }
   }
   
