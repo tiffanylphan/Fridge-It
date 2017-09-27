@@ -1,11 +1,12 @@
 import firebase from 'firebase';
+import FB from '../../../firebase.json';
 
 var config = {
-    apiKey: "AIzaSyBqIoEd9aUE3whBSe-nYqsdPAPUnewQwu4",
-    authDomain: "fridgit-82db7.firebaseapp.com",
-    databaseURL: "https://fridgit-82db7.firebaseio.com",
+    apiKey: FB.FIREBASE_API_KEY,
+    authDomain: FB.FIREBASE_AUTH_DOMAIN,
+    databaseURL: FB.FIREBASE_DB_URL,
     projectId: "fridgit-82db7",
-    storageBucket: "fridgit-82db7.appspot.com",
+    storageBucket: FB.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: "614537900777"
   };
   
