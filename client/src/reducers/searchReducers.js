@@ -9,22 +9,22 @@ const initialState = {
 const searchReducer = (state=initialState, action) => {
   switch(action.type) {
     case "FETCH_RECIPE": {
-      return {...state, fetching: true};
+      return Object.assign({}, state, {fetching: true});
     }
     case "FETCH_RECIPE_REJECTED": {
-      return {...state, fetching: false, error: action.payload};
+      return Object.assign({}, state, {fetching: false, error: action.payload});
     }
     case "FETCH_RECIPE_FULFILLED": {
-      return {
-        ...state,
+      return Object.assign({}, state, {
         fetching: false,
         fetched: true,
         recipes: action.payload,
-      }
+      });
+    }
+    default: {
+      return state;
     }
   }
-
-  return state;
 }
 
 export default searchReducer;
