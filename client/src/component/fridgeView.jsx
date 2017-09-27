@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import ItemListView from './itemListView.jsx';
+import ItemAddition from './itemAddition.jsx';
+
 import * as fridgeActions from '../actions/fridgeActions.js';
 import * as itemActions from '../actions/itemActions.js';
 
@@ -26,6 +28,11 @@ class Fridge extends Component {
   
 
   render() {
+    return (
+      <div>
+        <ItemAddition />
+      </div>
+    )
     const types = ["test"]; 
     if (this.props.items.length) {
       for (let i = 0; i < types.length; i++) {

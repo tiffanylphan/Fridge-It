@@ -17,7 +17,7 @@ export function addItem(item, fridgeId) {
     axios.post('/api/items/' + fridgeId, {
       name: item.name,
       quantity: item.quantity,
-      type: req.body.type
+      type: item.type
     })
       .then(({ data }) => {
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data})
