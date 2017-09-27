@@ -14,10 +14,11 @@ module.exports = {
   },
 
   postMessages: (req, res) => {
+    console.log(req.body);
     messageInfo.create({
-      messageText: req.body.messageText,
-      fridgeId: req.body.fridgeId,
-      userId: req.body.userId,
+      messageText: req.body.data.messages,
+      fridgeId: req.body.data.fridgeId,
+      userId: req.body.data.userId,
     })
       .then((data) => {
         res.status(201).send(data);
