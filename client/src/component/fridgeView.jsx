@@ -11,15 +11,16 @@ import * as itemActions from '../actions/itemActions.js';
 class Fridge extends Component {
   constructor(props) {
     super(props);
+    this.filterItems = this.filterItems.bind(this);
   }
   
-  componentWillMount() {
+  componentDidMount() {
     this.props.fridgeActions.getFridge(1); // DONT FORGET TO EDIT OUT THE 1
     this.props.itemActions.getItems(1); // DONT FORGET TO EDIT OUT THE 1
   }
 
   filterItems(type) {
-    this.props.items.filter(item => {
+    return this.props.items.filter(item => {
       if (item.type === type) {
         return item; 
       }
@@ -28,26 +29,36 @@ class Fridge extends Component {
   
 
   render() {
-    return (
-      <div>
-        <ItemAddition />
-      </div>
-    )
+    console.log('store items', this.props.items);
     const types = ["test"]; 
-    if (this.props.items.length) {
-      for (let i = 0; i < types.length; i++) {
-        let filteredItems = filterItems(types[i]);
-            return (
-              <div className={types[i]}>
-                <ItemListView type={types[i]} items={filteredItems}/> 
-              </div>
-            )
-      }
+
+    if (this.props.items.length > 0) {
+      return (
+        <div>
+          <div>
+            <ItemAddition />
+          </div>
+          {types.map(type => {
+              let filteredItems = this.filterItems(type);
+              console.log('filteredItems array: ', filteredItems);
+                return (
+                  <div className={type}>
+                    <ItemListView type={type} items={filteredItems}/> 
+                  </div>
+                )
+          })}
+        </div>
+      )
     } else {
       return (
         <div>
-          No items in fridge
-        </div> 
+          <div>
+            <ItemAddition />
+          </div>
+          <div>
+            No items in fridge
+          </div> 
+        </div>
       )
     }
   }

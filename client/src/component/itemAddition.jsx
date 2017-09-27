@@ -13,13 +13,13 @@ class itemAddition extends Component {
     e.preventDefault();
     const item = {};
     for (const field in this.refs) {
-      item[field] = this.refs[field]
+      item[field] = this.refs[field].value;
     }
-    this.props.itemActions.addItem(item);
+    console.log('item being created', item);
+    this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
   }
 
   render() {
-    let item = {}; 
     return (
       <div>
         <form onSubmit={this.handleSubmit.bind(this)}>
@@ -46,6 +46,10 @@ class itemAddition extends Component {
       </div>
     )
   }
+}
+
+const fridgeState = (store) => {
+  fridge: store.fridge.fridge
 }
 
 const dispatch = (dispatch) => {

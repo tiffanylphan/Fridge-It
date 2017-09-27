@@ -22,12 +22,11 @@ const itemReducer = (state=initialState, action) => {
       break;
     }
     case 'FETCH_ITEMS_FULFILLED': {
-      return {
-        ...state,
+      return Object.assign({}, state, {
         fetching: false,
         fetched: true,
-        items: action.payload
-      }
+        items: state.items.concat(action.payload)
+      })
       break; 
     }
     case 'POST_ITEM_PENDING': {
@@ -39,12 +38,12 @@ const itemReducer = (state=initialState, action) => {
       break;
     }
     case 'POST_ITEM_FULFILLED': {
-      return {
+      return Object.assign({}, state, {
         ...state,
         posting: false,
         posted: true,
-        items: [...state.items, action.payload]
-      }
+        items: state.items.concat(action.payload)
+      })
       break;
     }
     case 'UPDATE_ITEM_PENDING': {
@@ -77,7 +76,7 @@ const itemReducer = (state=initialState, action) => {
         ...state,
         deleting: false,
         deleted: true,
-        items: initialState.items.splice(indexOf(action.payload), 1)
+        items: state.items.splice(indexOf(action.payload), 1)
       }
       break;
     }

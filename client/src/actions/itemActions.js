@@ -14,10 +14,11 @@ export function getItems(fridgeId) {
 
 export function addItem(item, fridgeId) {
   return function(dispatch) {
-    axios.post('/api/items/' + fridgeId, {
+    axios.post('/api/items', {
       name: item.name,
       quantity: item.quantity,
-      type: item.type
+      type: item.type,
+      fridgeId: fridgeId
     })
       .then(({ data }) => {
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data})
