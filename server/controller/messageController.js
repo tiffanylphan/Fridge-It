@@ -6,6 +6,7 @@ module.exports = {
       where: {fridgeId: req.params.id}
     })
       .then(data => {
+        console.log('i am working');
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -14,7 +15,7 @@ module.exports = {
   },
 
   postMessages: (req, res) => {
-    console.log(req.body);
+    console.log('post message: ', req.body);
     messageInfo.create({
       messageText: req.body.data.messages,
       fridgeId: req.body.data.fridgeId,
@@ -29,19 +30,27 @@ module.exports = {
   },
 
   updateMessages: (req, res) => {
-    messageInfo.findOne({
-      where: {id: req.params.id}
+    messageInfo.update({
+      fridgeId: req.body.fridgeId,
+      userId: req.body.userId,
+      messageText: req.body.messageText,
+      like: req.body.like,
+    },
+    {
+      where: {id: req.params.id},
+      returning: true,
     })
       .then((data) => {
-        data.updateAttributes({
-          messageText: req.body.messageText 
-        }) 
-          .then((updated) => {
-            res.status(202).send({id: updated.id, message: updated.messageText});
-          })
-          .catch((err) => {
-            res.status(400).send(err);
-          })
+        // data.updateAttributes({
+        //   messageText: req.body.messageText 
+        // }) 
+        //   .then((updated) => {
+        //     res.status(202).send({id: updated.id, message: updated.messageText});
+        //   })
+        //   .catch((err) => {
+        //     res.status(400).send(err);
+        //   })
+      res.status(202).send(data);
       })
       .catch((err) => {
         res.status(500).send(err);

@@ -17,6 +17,7 @@ export const postMessages = (fridgeId, userId, messages) => {
     axios.post('/api/allMessages', {
       data: {
         messages: messages,
+        like: 0,
         fridgeId: fridgeId,
         userId: userId,
       }
@@ -43,11 +44,16 @@ export const deleteMessages = (messageId) => {
   };
 };
 
-export const updateMessage = (id) => {
+export const updateMessages = (msg) => {
   return function(dispatch) {
-    axios.patch('/api/allMessages/' + id)
+    axios.patch('/api/allMessages/' + msg.id, {
+      like: msg.like,
+      fridgeId: msg.fridgeId,
+      userId: msg.userId,
+      messageText: msg.messageText
+    })
     .then((response) => {
-      dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data});
+      dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data[1]});
     })
     .catch((err) => {
       dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
