@@ -25,7 +25,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        Hello?
         <HomeView />
         <button onClick={this.handleLogout}>Log out</button>
       </div>
