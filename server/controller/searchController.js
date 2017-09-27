@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const search = {
   getRecipes: (req, res) => {
-    let ingredients = req.body.ingredients;
+    let ingredients = req.body.data.ingredients;
 
     unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
                   + "?ingredients=" + ingredients.join(',') + '&fillIngredients=false'
