@@ -17,41 +17,36 @@ const initialState = {
 const messageReducer = (state=initialState, action) => {
   switch(action.type) {
     case "FETCH_MESSAGES_PENDING": {
-      return Object.assign({}, state, {
-        ...state, 
+      return Object.assign({}, state, { 
         fetching: true
       })
     }
     case "FETCH_MESSAGES_REJECTED": {
-      return Object.assign({}, state, {
-        ...state, 
+      return Object.assign({}, state, { 
         fetching: false, 
         error: action.payload
       })
     }
     case "FETCH_MESSAGES_FULFILLED": {
-      return Object.assign({}, state, {
-        ...state, 
+      return Object.assign({}, state, { 
         fetching: false,
         fetched: true,
         messages: action.payload,
       })
     }
     case "POST_MESSAGES_PENDING": {
-      return Object.assign({}, state, {
-        ...state, 
+      return Object.assign({}, state, { 
         posting: true
       })
     }
     case "POST_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
-        ...state, 
         posting: false, 
         error: action.payload
       })
     }
     case "POST_MESSAGES_FULFILLED": {
-      console.log(state.messages);
+      console.log('messages: ', state.messages);
       return Object.assign({}, state, {
         posting: false,
         posted: true,
@@ -60,13 +55,11 @@ const messageReducer = (state=initialState, action) => {
     }
     case "DELETE_MESSAGES_PENDING": {
       return Object.assign({}, state, {
-        ...state, 
         deleting: true
       })
     }
     case "DELETE_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
-        ...state, 
         deleting: false, 
         error: action.payload
       })
@@ -83,13 +76,11 @@ const messageReducer = (state=initialState, action) => {
     }
     case "UPDATE_MESSAGES_PENDING": {
       return Object.assign({}, state, {
-        ...state, 
         updating: true
       })
     }
     case "UPDATE_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
-        ...state,
         updating: false,
         error: action.payload
       })
@@ -98,9 +89,9 @@ const messageReducer = (state=initialState, action) => {
       return Object.assign({}, state, {
         updating: false,
         updated: true,
-        messages: state.messages.filter(
-          message => message.id === Number(action.payload.id) ? message.messageText = action.payload.message : null
-        ),
+        messages: state.messages.map(message => { 
+          return message.id === action.payload[0].id ? message = action.payload[0] : message
+        }),
       })
     }
   }

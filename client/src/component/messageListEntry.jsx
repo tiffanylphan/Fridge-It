@@ -1,16 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const MessageListEntry = ({ message, deleteMessages }) => {
+const MessageListEntry = ({ message, deleteMessages, updateMessages }) => {
   return (
     <div id="entry">
-      {message.messageText}
-      <button className="ui icon button" onClick={() => deleteMessages(message.id)}>              
-        <i className="minus icon" />
-      </button>
+      user: {message.messageText} - {message.like}
       <div>
-        <button className="ui icon button"> 
+        <button className="ui icon button" onClick={
+          () => {
+            let newLikes = message.like + 1;
+            const msg = {...message, like: newLikes};
+            updateMessages(msg)}
+        }> 
           <i className="thumbs outline up icon" />
+        </button>
+        <button className="ui icon button" onClick={() => deleteMessages(message.id)}>              
+          <i className="remove icon" />
         </button>
       </div>
     </div>

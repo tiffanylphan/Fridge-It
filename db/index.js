@@ -33,6 +33,9 @@ const FridgeItems = sequelize.define('fridgeItem', {
 const MessageInfo = sequelize.define('messageInfo', {
   messageText: {
     type: Sequelize.STRING
+  },
+  like: {
+    type: Sequelize.INTEGER
   }
 })
 
