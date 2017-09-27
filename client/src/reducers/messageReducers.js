@@ -34,7 +34,7 @@ const messageReducer = (state=initialState, action) => {
         ...state, 
         fetching: false,
         fetched: true,
-        messages: state.messages.concat(action.payload),
+        messages: action.payload,
       })
     }
     case "POST_MESSAGES_PENDING": {

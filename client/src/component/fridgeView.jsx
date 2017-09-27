@@ -29,7 +29,6 @@ class Fridge extends Component {
   
 
   render() {
-    console.log('store items', this.props.items);
     const types = ["test"]; 
 
     if (this.props.items.length > 0) {
@@ -40,7 +39,6 @@ class Fridge extends Component {
           </div>
           {types.map(type => {
               let filteredItems = this.filterItems(type);
-              console.log('filteredItems array: ', filteredItems);
                 return (
                   <div className={type}>
                     <ItemListView type={type} items={filteredItems}/> 

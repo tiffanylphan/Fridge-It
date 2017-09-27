@@ -31,13 +31,13 @@ export function addItem(item, fridgeId) {
 
 export function updateItem(item, id) {
   return function(dispatch) {
-    axios.post('api/items/' + id, {
+    axios.patch('api/items/' + id, {
       name: item.name,
       quantity: item.quantity, 
       type: item.type
     }) 
-    .then(({ data }) => {
-      dispatch({type: 'UPDATE_ITEM_FULFILLED', payload: data})
+    .then((response) => {
+      dispatch({type: 'UPDATE_ITEM_FULFILLED', payload: response.data[1]})
     })
     .catch(err => {
       dispatch({type: 'UPDATE_ITEM_REJECTED', payload: err})
@@ -48,8 +48,8 @@ export function updateItem(item, id) {
 export function deleteItem(id) {
   return function(dispatch) {
     axios.delete('api/items/' + id)
-      .then(({ data }) => {
-        dispatch({type: 'DELETE_ITEM_FULFILLED', payload: data})
+      .then((response) => {
+        dispatch({type: 'DELETE_ITEM_FULFILLED', payload: response.data})
       })
       .catch(err => {
         dispatch({type: 'DELETE_ITEM_REJECTED', payload: err})
