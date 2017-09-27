@@ -23,9 +23,10 @@ class Fridge extends Component {
       }
     })
   }
+  
 
   render() {
-    const types = []; 
+    const types = ["test"]; 
     if (this.props.items.length) {
       for (let i = 0; i < types.length; i++) {
         let filteredItems = filterItems(types[i]);

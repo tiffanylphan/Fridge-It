@@ -4,6 +4,8 @@ const initialState = {
   fetched: false,
   posting: false,
   posted: false,
+  updating: false,
+  updated: false,
   deleting: false,
   deleted: false,
   error: null
@@ -28,20 +30,54 @@ const itemReducer = (state=initialState, action) => {
       }
       break; 
     }
-    case 'POST_ITEMS_PENDING': {
+    case 'POST_ITEM_PENDING': {
       return {...state, posting: true}
       break;
     }
-    case 'POST_ITEMS_REJECTED': {
+    case 'POST_ITEM_REJECTED': {
       state = {...state, posting: false, error: action.payload}
       break;
     }
-    case 'POST_ITEMS_FULFILLED': {
+    case 'POST_ITEM_FULFILLED': {
       return {
         ...state,
         posting: false,
         posted: true,
-        items: state.items.push(action.payload)
+        items: [...state.items, action.payload]
+      }
+      break;
+    }
+    case 'UPDATE_ITEM_PENDING': {
+      return {...state, updating: true}
+      break;
+    }
+    case 'UPDATE_ITEM_REJECTED': {
+      state = {...state, updating: false, error: action.payload}
+      break;
+    }
+    case 'UPDATE_ITEM_FULFILLED': {
+      return {
+        ...state,
+        updating: false,
+        updated: true,
+        // items: fill me in
+      }
+      break;
+    }
+    case 'DELETE_ITEM_PENDING': {
+      return {...state, deleting: true}
+      break;
+    }
+    case 'DELETE_ITEM_REJECTED': {
+      state = {...state, deleting: false, error: action.payload}
+      break;
+    }
+    case 'DELETE_ITEMS_FULFILLED': {
+      return {
+        ...state,
+        deleting: false,
+        deleted: true,
+        items: initialState.items.splice(indexOf(action.payload), 1)
       }
       break;
     }
