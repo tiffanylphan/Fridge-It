@@ -34,6 +34,8 @@ class Login extends React.Component {
         this.setState({
           user
         });
+        localStorage.setItem('userid', user.uid)
+        console.log(user)
       })
       .catch(function(error) {
         // Handle Errors here.

@@ -27,7 +27,11 @@ class Signup extends React.Component {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // ...
+
+    })
+    .then(result => {
+      let user = result.user;
+      console.log(result);
     })
   }
 
@@ -41,14 +45,14 @@ class Signup extends React.Component {
       <h1>KaWhy?</h1>
       <form>
         <label>
-          Email:
+          Email: 
           <input type="text" name="name" onChange={this.handleName}/>
         </label>
       </form>
       <form>
         <label>
-          Password:
-          <input type="text" name="pw" onChange={this.handlePw}/>
+          Password: 
+          <input type="password" name="pw" onChange={this.handlePw}/>
         </label>
       </form>
         <button onClick={this.handle}>Submit</button>     
