@@ -16,23 +16,23 @@ const Item = (props) => {
       </div>
       <button 
         className="ui icon button"
-        /*onClick={() => {props.itemActions.updateItem({
+        onClick={() => {props.itemActions.updateItem({
           name: props.name, 
           quantity: props.quantity + 1,
           type: props.type
-        }, props.id)}}*/ 
+        }, props.id)}}
       ><i className="plus icon"></i></button>
       <button 
         className="ui icon button"
-        /*onClick={() => {props.itemActions.updateItem({
+        onClick={() => {props.itemActions.updateItem({
           name: props.name,
           quantity: props.quantity - 1,
           type: props.type
-        }, props.id)}}*/
+        }, props.id)}}
       ><i className="minus icon"></i></button>
       <button 
         className="ui icon button"
-        /*onClick={()=> {props.itemActions.deleteItem(props.id)}}*/
+        onClick={()=> {props.itemActions.deleteItem(props.id)}}
       ><i className="remove icon"></i></button>
     </div>
   )
