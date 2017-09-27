@@ -48,8 +48,8 @@ export function updateItem(item, id) {
 export function deleteItem(id) {
   return function(dispatch) {
     axios.delete('api/items/' + id)
-      .then(({ data }) => {
-        dispatch({type: 'DELETE_ITEM_FULFILLED', payload: data})
+      .then((response) => {
+        dispatch({type: 'DELETE_ITEM_FULFILLED', payload: response.data})
       })
       .catch(err => {
         dispatch({type: 'DELETE_ITEM_REJECTED', payload: err})
