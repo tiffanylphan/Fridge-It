@@ -1,11 +1,12 @@
 import firebase from 'firebase';
+require('dotenv').config();
 
 var config = {
-    apiKey: "AIzaSyBqIoEd9aUE3whBSe-nYqsdPAPUnewQwu4",
-    authDomain: "fridgit-82db7.firebaseapp.com",
-    databaseURL: "https://fridgit-82db7.firebaseio.com",
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.FIREBASE_DB_URL,
     projectId: "fridgit-82db7",
-    storageBucket: "fridgit-82db7.appspot.com",
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
     messagingSenderId: "614537900777"
   };
   
