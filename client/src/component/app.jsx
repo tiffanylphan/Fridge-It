@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import firebase, { auth, provider } from './firebase.js';
+import {logout} from "../firebase/auth";
+import HomeView from './homeView.jsx'
+
+const appTokenKey = "appToken";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    // from the example I'm modeling off of.
     this.state = {
-      user: null
+      user: JSON.parse(localStorage.getItem("user"))
     }
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
-// log in function.  Not sure if the async keyword needs to be here.
-async login() {
-  const result = await auth().signInWithPopup(provider)
-  this.setState({user: result.user});
-}
-
-// log out function
-logout() {
-  await auth().signOut()
-  this.setState({user: null});
-}
+  handleLogout() {
+    logout().then(function () {
+        localStorage.removeItem(appTokenKey);
+        // this.props.history.push("/login"); Need to redirect to Sign In page.
+        console.log("user signed out from firebase", localStorage);
+    })
+  };
 
   render() {
     return (
       <div>
         Hello?
         <HomeView />
+        <button onClick={this.handleLogout}>Log out</button>
       </div>
     )
   }

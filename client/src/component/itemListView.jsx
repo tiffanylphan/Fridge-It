@@ -1,5 +1,5 @@
 import React from 'react'
-import itemListEntry from './itemListEntry'
+import itemListEntry from './itemListEntry.jsx'
 
 const itemList = (props) => {
   return (
