@@ -35,12 +35,9 @@ class MessageListView extends Component {
       console.log('view before/after reducer: ', messageList);
       return (
         <div>
-
+          <h3 className="ui dividing header">Messages</h3>
           <form>
             <label>
-            <div className="ui comments">
-              <h3 className="ui dividing header">Messages</h3>
-            </div>
               Message:
               <input type="text" id="entry1" />
             </label>
