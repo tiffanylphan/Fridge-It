@@ -15,25 +15,25 @@ const Item = (props) => {
         {props.quantity}
       </div>
       <button 
-        className="addQuantity"
-        onClick={props.itemActions.updateItem({
+        className="ui icon button"
+        /*onClick={() => {props.itemActions.updateItem({
           name: props.name, 
           quantity: props.quantity + 1,
           type: props.type
-        }, props.id)}
-      ></button>
+        }, props.id)}}*/ 
+      ><i className="plus icon"></i></button>
       <button 
-        className="subtractQuantity"
-        onClick={props.itemActions.updateItem({
+        className="ui icon button"
+        /*onClick={() => {props.itemActions.updateItem({
           name: props.name,
           quantity: props.quantity - 1,
           type: props.type
-        }, props.id)}
-      ></button>
+        }, props.id)}}*/
+      ><i className="minus icon"></i></button>
       <button 
-        className="deleteItem"
-        onClick={props.itemActions.deleteItem(props.id)}
-      ></button>
+        className="ui icon button"
+        /*onClick={()=> {props.itemActions.deleteItem(props.id)}}*/
+      ><i className="remove icon"></i></button>
     </div>
   )
 }
