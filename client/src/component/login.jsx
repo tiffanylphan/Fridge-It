@@ -9,11 +9,9 @@ class Login extends React.Component {
     }  
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
+    this.test = this.test.bind(this);
   }
 
-  handleChange(e) {
-  /* ... */
-  }
 
   logout() {
     auth.signOut()
@@ -36,20 +34,30 @@ class Login extends React.Component {
         this.setState({
           user
         });
-        console.log(token);
       })
       .catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // The email of the user's account used.
         var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        console.log('Error: ' + errorCode + ', ' + error)
+        console.log('Error: ' + errorCode + ', ' + errorMessage)
       });
   }
-
+  test() {
+    firebase.database().ref('users/').set({
+      name: 'testing',
+      pw: 'hehe'
+    }).then(()=>{
+      firebase.database().ref('users/name').once('value').then(value => {console.log(child)})
+    })
+    
+  }
+//   var userId = firebase.auth().currentUser.uid;
+// return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+//   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+//   // ...
+// });
 
   render() {
     return (
@@ -58,8 +66,10 @@ class Login extends React.Component {
       {this.state.user ?
         <button onClick={this.logout}>Log Out</button>                
         :
-        <button onClick={this.login}>Log In</button>              
+        <button onClick={this.login}>Sign in With Google</button>              
       }
+      <button onClick={this.test}>Unknown</button>              
+
     </div>
     )
   }
