@@ -1,12 +1,10 @@
 import React from 'react';
-// import {loginWithGoogle, redirect} from '../firebase/auth.js';
 import firebase, {auth, googleProvider} from '../firebase/config.js'
 
 class Signup extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      // user: JSON.parse(localStorage.getItem("user"))
       user: null
     }  
     this.login = this.login.bind(this); 
@@ -17,37 +15,22 @@ class Signup extends React.Component {
   /* ... */
   }
 
-  logout() {
-    auth.signOut()
-    .then(() => {
-      this.setState({
-        user: null
-      });
+
+  emailSignup() {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
     });
-    console.log('this.state.user.displayname')
-  }
-    
-  login() {
-    auth.signInWithPopup(googleProvider) 
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
-        console.log(user);
-      });
   }
 
 
   render() {
     return (
     <div className="wrapper">
-      <h1>Fun Food Friends</h1>
-      {this.state.user ?
-        <button onClick={this.logout}>Log Out</button>                
-        :
-        <button onClick={this.login}>Log In</button>              
-      }
+      <h1>KaWhy?</h1>
+        <button onClick={this.login}>Submit</button>     
     </div>
     )
   }

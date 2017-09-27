@@ -20,10 +20,12 @@ class HomeView extends Component {
             <li><Link to="/">HOME</Link></li>
             <li><Link to="/search">Recipes</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
+            <li><Link to="/login">Log In</Link></li>
           </ul>
           <Route exact path="/" render={() => {return <Home />}}/>
           <Route path="/search" render={() => {return <Search />}}/>
           <Route path="/signup" render={() => {return <Signup />}}/>
+          <Route path="/login" render={() => {return <Login />}}/>
         </div>
       </Router>
     );

@@ -1,47 +1,68 @@
 import React from 'react';
-import {loginWithGoogle, redirect} from '../firebase/auth.js';
-import firebase, {auth, ref} from '../firebase/config.js'
-
-// const firebaseAuthKey = "firebaseAuthInProgress";
-// const appTokenKey = "appToken";
-// const user = '';
+import firebase, {auth, googleProvider} from '../firebase/config.js'
 
 class Login extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      // user: JSON.parse(localStorage.getItem("user"))
       user: null
-    }
-    this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
-    this.test = this.test.bind(this);
+    }  
+    this.login = this.login.bind(this); 
+    this.logout = this.logout.bind(this); 
   }
 
+  handleChange(e) {
+  /* ... */
+  }
+
+  logout() {
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+      console.log('this.state.user.displayname')
+    })
+    .catch(function(error) {
+      console.log('Error: ' + error)
+    });
+  }
+    
+  login() {
+    auth.signInWithPopup(googleProvider) 
+      .then((result) => {
+        const token = result.credential.accessToken;
+        const user = result.user;
+        this.setState({
+          user
+        });
+        console.log(token);
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        console.log('Error: ' + errorCode + ', ' + error)
+      });
+  }
 
 
   render() {
-    console.log(localStorage)
     return (
-      <div>
-    
-    <div>
-      <form >
-        <div >
-          <label> First Name </label>
-          <input type="text" placeholder="Username"></input>
-        </div>
-        <div >
-          <label> Last Name </label>
-          <input type="text" placeholder="Password"></input>
-        </div>
-        <button  type="button" onClick={this.test}>Submit</button>
-      </form>    
+    <div className="wrapper">
+      <h1>Fun Food Friends</h1>
+      {this.state.user ?
+        <button onClick={this.logout}>Log Out</button>                
+        :
+        <button onClick={this.login}>Log In</button>              
+      }
     </div>
-        <div>
-          <button onClick={this.handleGoogleLogin}>Sign in with Google</button>
-        </div>
-      </div>
     )
   }
 }
+
 export default Login;
