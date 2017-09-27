@@ -32,9 +32,11 @@ module.exports = {
       quantity: req.body.quantity,
       type: req.body.type
     },
-    { where: {id: req.params.id} })
+    { where: {id: req.params.id},
+      returning: true,
+    })
     .then((data) => {
-      res.send(data);
+      res.status(202).send(data);
     })
     .catch(err => {
       res.status(500).send(err);
@@ -45,7 +47,7 @@ module.exports = {
       where: {id: req.params.id}
     })
     .then((data) => {
-      res.send('successfully deleted item');
+      res.send({id: req.params.id});
     })
     .catch(err => {
       res.status(500).send(err);
