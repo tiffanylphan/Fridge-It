@@ -1,34 +1,52 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class Item extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  // addOne() {
+import * as itemActions from '../actions/itemActions.js'
 
-  // }
-
-  // subtractOne() {
-
-  // }
-
-  // delete() {
-
-  // }
-  
-  render() {
-    return (
+const Item = (props) => {
+  console.log('item props:', props);
+  return (
+    <div>
       <div>
-        <div>
-          {this.props.name}
-        </div>
-        <div>
-          {this.props.quantity}
-        </div>
+        {props.name}
       </div>
-    )
+      <div>
+        {props.quantity}
+      </div>
+      <button 
+        className="addQuantity"
+        onClick={props.itemActions.updateItem({
+          name: props.name, 
+          quantity: props.quantity + 1,
+          type: props.type
+        }, props.id)}
+      ></button>
+      <button 
+        className="subtractQuantity"
+        onClick={props.itemActions.updateItem({
+          name: props.name,
+          quantity: props.quantity - 1,
+          type: props.type
+        }, props.id)}
+      ></button>
+      <button 
+        className="deleteItem"
+        onClick={props.itemActions.deleteItem(props.id)}
+      ></button>
+    </div>
+  )
+}
+
+// const state = (store) => {
+//   fridge: store.fridge.fridge
+//   items: store.fridge.items
+// }
+
+const dispatch = (dispatch) => {
+  return {
+    itemActions: bindActionCreators(itemActions, dispatch)
   }
 }
 
-export default Item;
+export default connect(null, dispatch)(Item);
