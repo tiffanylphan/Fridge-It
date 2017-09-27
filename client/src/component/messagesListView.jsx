@@ -35,24 +35,29 @@ class MessageListView extends Component {
       console.log('view before/after reducer: ', messageList);
       return (
         <div>
-          {messageList.map(message => (
-            <MessageListEntry {...actions} key={message.id} message={message} />
-          ))}
 
           <form>
             <label>
+            <div className="ui comments">
+              <h3 className="ui dividing header">Messages</h3>
+            </div>
               Message:
               <input type="text" id="entry1" />
             </label>
-            <button onClick={() => handleSubmit()}>Submit Message</button>
+            <button onClick={() => handleSubmit()}>
+              Submit Message
+            </button>
           </form>
+
+          {messageList.map(message => (
+            <MessageListEntry {...actions} key={message.id} message={message} />
+          ))}
         </div>
       )
 
     } else {
       return (
         <div>
-          Messages empty
           <form>
             <label>
               Message:
