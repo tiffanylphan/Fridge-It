@@ -5,6 +5,7 @@ const MessageListEntry = ({ message }) => {
   return (
     <div id="entry">
       {message.messageText}
+      
     </div>
   )
 }

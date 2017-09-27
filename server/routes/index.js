@@ -7,7 +7,7 @@ const search = require('../controller/searchController');
 // Messages Routes
 router.get('/allMessages/:id', messages.getMessages)
 router.post('/allMessages', messages.postMessages)
-router.delete('/allMessages/:fridgeId&:messageId', messages.deleteMessages)
+router.delete('/allMessages/:messageId', messages.deleteMessages)
 router.patch('/allMessages/:id', messages.updateMessages)
 
 // Fridge Routes
