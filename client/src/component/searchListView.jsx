@@ -10,16 +10,20 @@ class SearchListView extends Component {
     super(props);
   }
 
-  componentWillMount() {
-    
-  }
-  
   componentDidMount() {
-    // !this.props.ingredients.length ? null : this.props.actions.fetchRecipes(this.props.ingredients);
+    
   }
 
   render() {
-    const { recipeList, recipeFetched, recipeFetching, onRecipeListPage, actions } = this.props;
+    const { recipeList, recipeFetched, recipeFetching, onRecipeListPage, actions, ingredients, ingredientsFetched } = this.props;
+    const ingredientList = ingredients.map(ingredient => {
+      return ingredient.name;
+    });
+    
+    // DO NOT UNCOMMENT FOR REST OF THE DAY! IT WORKS THOUGH!
+    // if(ingredientsFetched && !recipeFetched) {
+    //   ingredientList.length > 0 ? actions.fetchRecipes(ingredientList) : null;
+    // }
 
     if(recipeList.length === 0) {
       return (
@@ -52,7 +56,8 @@ class SearchListView extends Component {
 
 const mapState = (store) => {
   return {
-    ingredients: store.items.items, // TODO: update with correct prop name
+    ingredients: store.items.items,
+    ingredientsFetched: store.items.fetched,
     recipeList: store.search.recipes,
     recipeFetched: store.search.fetched,
     recipeFetching: store.search.fetching,
