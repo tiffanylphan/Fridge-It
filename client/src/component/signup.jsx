@@ -32,7 +32,7 @@ class Signup extends React.Component {
     .then(result => {
       localStorage.setItem('name', result.email);
       localStorage.setItem('userid', result.uid);
-      console.log(result);
+      // console.log(result);
     })
   }
 
