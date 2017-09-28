@@ -35,13 +35,13 @@ export default class LandingPage extends Component {
             <Container text>
               <Header
                 as='h1'
-                content='Imagine-a-Company'
+                content='Fridge-It'
                 inverted
                 style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
               />
               <Header
                 as='h2'
-                content='Do whatever you want when you want to.'
+                content='Meal planning made convenient and easy.'
                 inverted
                 style={{ fontSize: '1.7em', fontWeight: 'normal' }}
               />
@@ -56,14 +56,13 @@ export default class LandingPage extends Component {
           <Grid container stackable verticalAlign='middle'>
             <Grid.Row>
               <Grid.Column width={8}>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Help Companies and Companions</Header>
+                <Header as='h3' style={{ fontSize: '2em' }}>Plan meals with items already in your fridge</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  We can give your company superpowers to do things that they never thought possible. Let us delight
-                  your customers and empower your needs... through pure data analytics.
+                  Fridge-It allows you to see the contents of your refrigerator no matter where you are. No more getting to the grocery store and forgetting what you already have. Plan meals, bookmark recipes, and eliminate food waste.  
                 </p>
-                <Header as='h3' style={{ fontSize: '2em' }}>We Make Bananas That Can Dance</Header>
+                <Header as='h3' style={{ fontSize: '2em' }}>Share a fridge with family and friends</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.
+                  Fridge-It makes sharing refrigerators a breeze. Stick magnets on your fridge to send others notes, requests, and reminders, and to make sure no one eats the leftover pizza you've been thinking about all day. 
                 </p>
               </Grid.Column>
               <Grid.Column floated='right' width={6}>
@@ -71,13 +70,13 @@ export default class LandingPage extends Component {
                   bordered
                   rounded
                   size='large'
-                  src='/assets/images/wireframe/white-image.png'
+                  src='https://i.pinimg.com/564x/fe/7a/14/fe7a147b77ba7e2960d6708e9178b8e5.jpg'
                 />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column textAlign='center'>
-                <Button size='huge'>Check Them Out</Button>
+                <Button size='huge'>Check It Out</Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -86,14 +85,14 @@ export default class LandingPage extends Component {
           <Grid celled='internally' columns='equal' stackable>
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as='h3' style={{ fontSize: '2em' }}>"What a Company"</Header>
-                <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+                <Header as='h3' style={{ fontSize: '2em' }}>"What a company"</Header>
+                <p style={{ fontSize: '1.33em' }}>The idea for Fridge-It was born out of Team TADA's</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                <Header as='h3' style={{ fontSize: '2em' }}>"I shouldn't have gone with their competitor."</Header>
+                <Header as='h3' style={{ fontSize: '2em' }}>"I'll never not use Fridge-It ever again!"</Header>
                 <p style={{ fontSize: '1.33em' }}>
-                  <Image avatar src='/assets/images/avatar/large/nan.jpg' />
-                  <b>Nan</b> Chief Fun Officer Acme Toys
+                  <Image avatar src='https://www.allbusiness.com/asset/2015/09/satisfied-customer.jpg'/>
+                  <b>Nan</b> - very satisfied customer
                 </p>
               </Grid.Column>
             </Grid.Row>
