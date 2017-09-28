@@ -1,5 +1,6 @@
 const initialState = {
-  username: "",
+  username: '',
+  userId: '',
   loggingIn: false,
   loggedIn: false,
   error: null
