@@ -1,4 +1,5 @@
 import firebase, { auth, googleProvider } from '../firebase/config.js';
+import { push } from 'react-router-redux';
 
 export const googleLogin = () => {
   return function(dispatch) {
@@ -24,6 +25,7 @@ export const emailLogin = (email, pw) => {
         localStorage.setItem('name', result.email)
         localStorage.setItem('userid', result.uid)
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
+        dispatch(push('/home'));
       })
       .catch((error) => {
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
@@ -38,6 +40,7 @@ export const logoutUser = () => {
         localStorage.removeItem('userid');
         localStorage.removeItem('name');
         dispatch({type: 'USER_LOGOUT_FULFILLED'});
+        dispatch(push('/'));
       })
       .catch((error) => {
         dispatch({type: 'USER_LOGOUT_REJECTED', payload: error.message});
@@ -54,5 +57,5 @@ export const emailSignUp = (email, pw) => {
     })
     .catch(function(error) {
       dispatch({type: 'USER_SIGNUP_REJECTED', payload: error.message});
-    })
+    });
 };
