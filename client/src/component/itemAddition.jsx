@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import { Dropdown, Menu } from 'semantic-ui-react'
+
 import * as itemActions from '../actions/itemActions.js'
 
 class itemAddition extends Component {
@@ -22,16 +24,18 @@ class itemAddition extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <Menu attached="top"
           <input
             ref="name"
             className="itemName"
             placeholder="input name here"
             type="text"
           ></input>
-          <select ref="type" className="itemType">
-            <option>test</option>
-          </select>
+          <Dropdown 
+            ref="type" 
+            placeholder="Browse categories"
+            fluid selection options={"test"}
+          />
           <input
             ref="quantity"
             className="itemQuantity"
@@ -41,8 +45,9 @@ class itemAddition extends Component {
             type="submit"
             className="itemSubmit"
             value="Submit"
+            onSubmit={this.handleSubmit.bind(this)}
           ></input>
-        </form>
+        />
       </div>
     )
   }

@@ -42,7 +42,7 @@ class Fridge extends Component {
               let filteredItems = this.filterItems(type);
                 return (
                   <div className={type}>
-                    <ItemListView type={type} items={filteredItems}/> 
+                    <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
                   </div>
                 )
           })}

@@ -46,8 +46,13 @@ module.exports = {
     Item.destroy({
       where: {id: req.params.id}
     })
+<<<<<<< HEAD
     .then((data) => {
       res.send({id: req.params.id});
+=======
+    .then(() => {
+      res.send('successfully deleted item');
+>>>>>>> Add React Semantic UI .
     })
     .catch(err => {
       res.status(500).send(err);
