@@ -19,29 +19,35 @@ class MessageListView extends Component {
   
   render() {
     const handleSubmit = () => {
-      let entry = document.getElementById('entry');
-      let entry1 = document.getElementById('entry1');
-      if (entry.value !== '') {
-        this.props.actions.postMessages(1, 1, entry.value || entry1.value); //(fridgeId, messageId)
+      let entry = document.getElementById('inputMsg');
+      let entry1 = document.getElementById('inputMsg1');
+      console.log(entry, entry1);
+      if (entry !== null || entry1 !== null) {
+        console.log('im here');
+        this.props.actions.postMessages(1, 1, entry !== null ? entry.value : entry1.value); //(fridgeId, messageId)
         entry.value = '';
         entry1.value = '';
       } else {
         alert('Please enter a message');
       }
     }
+    
     const { messageList, messageFetched, messageFetching, actions } = this.props;
-
     if (messageList.length > 0) {
-      console.log('view before/after reducer: ', messageList);
+      // console.log('view before/after reducer: ', messageList);
+      // console.log('what is handlesubmit: ', handleSubmit);
       return (
         <div>
           <h3 className="ui dividing header">Messages</h3>
           <form>
             <label>
               Message:
-              <input type="text" id="entry1" />
+              <input type="text" id="inputMsg" />
             </label>
-            <button onClick={() => handleSubmit()}>
+            <button onClick={(e) => {
+              e.preventDefault();
+              handleSubmit();
+              }}>
               Submit Message
             </button>
           </form>
@@ -55,12 +61,16 @@ class MessageListView extends Component {
     } else {
       return (
         <div>
+          <h3 className="ui dividing header">Messages</h3>
           <form>
             <label>
               Message:
-              <input type="text" id="entry" />
+              <input type="text" id="inputMsg1" />
             </label>
-            <button onClick={() => handleSubmit()}>Submit Message</button>
+            <button onClick={(e) => {
+              e.preventDefault();
+              handleSubmit();
+              }}>Submit Message</button>
           </form>
         </div>
 
