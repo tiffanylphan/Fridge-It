@@ -31,7 +31,8 @@ class Login extends React.Component {
   logout() {
     auth.signOut()
     .then(() => {
-      localStorage.removeItem('userid')
+      localStorage.removeItem('userid');
+      localStorage.removeItem('name')
       this.setState({
         user: '',
         pw: ''
