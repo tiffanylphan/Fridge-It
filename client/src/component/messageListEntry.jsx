@@ -6,7 +6,7 @@ const MessageListEntry = ({ message, deleteMessages, updateMessages }) => {
   return (
     <div id="entry">
       <Message compact>
-        user: {message.messageText} - {message.like}
+        user: {message.messageText}
       </Message>
       {/* <div> */}
         <button className="ui icon button" onClick={
@@ -15,7 +15,9 @@ const MessageListEntry = ({ message, deleteMessages, updateMessages }) => {
             const msg = {...message, like: newLikes};
             updateMessages(msg)}
         }> 
-          <i className="thumbs outline up icon" />
+          <i className="thumbs outline up icon">
+            {message.like}
+          </i>
         </button>
         <button className="ui icon button" onClick={() => deleteMessages(message.id)}>              
           <i className="remove icon" />
