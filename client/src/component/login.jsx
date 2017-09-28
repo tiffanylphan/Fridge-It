@@ -1,80 +1,66 @@
 import React from 'react';
-import firebase, {auth, googleProvider} from '../firebase/config.js'
+import {loginWithGoogle} from '../firebase/auth.js'
+// import semantic from 'semantic-ui';
+
+const firebaseAuthKey = "firebaseAuthInProgress";
+const appTokenKey = "appToken";
+const user = '';
 
 class Login extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      user: null
-    }  
-    this.login = this.login.bind(this); 
-    this.logout = this.logout.bind(this); 
-    this.test = this.test.bind(this);
+      user: JSON.parse(localStorage.getItem("user"))
+    }
+    this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
   }
 
-
-  logout() {
-    auth.signOut()
-    .then(() => {
-      this.setState({
-        user: null
-      });
-      console.log('this.state.user.displayname')
-    })
-    .catch(function(error) {
-      console.log('Error: ' + error)
+  // from example.
+  handleGoogleLogin() {
+    // console.log(localStorage)
+    loginWithGoogle()
+    .catch(function (error) {
+      alert(error); // or show toast
+      localStorage.removeItem(firebaseAuthKey);
     });
-  }
-    
-  login() {
-    auth.signInWithPopup(googleProvider) 
-      .then((result) => {
-        const token = result.credential.accessToken;
-        const user = result.user;
-        this.setState({
-          user
-        });
-        localStorage.setItem('userid', user.uid)
-        console.log(user)
-      })
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        var email = error.email;
-        var credential = error.credential;
-        console.log('Error: ' + errorCode + ', ' + errorMessage)
-      });
-  }
-  test() {
-    firebase.database().ref('users/').set({
-      name: 'testing',
-      pw: 'hehe'
-    }).then(()=>{
-      firebase.database().ref('users/name').once('value').then(value => {console.log(child)})
-    })
+    localStorage.setItem(firebaseAuthKey, "1");
+    // need to get the username off the page and save it on local storage
+    localStorage.setItem(user, "username");
+    }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('button was clicked')
     
   }
-//   var userId = firebase.auth().currentUser.uid;
-// return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-//   var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-//   // ...
-// });
+
+  // ought to save username to localstorage.
+  // firebase.auth().onAuthStateChanged(function(user) {
+  //   localStorage.user = user; // user is undefined if no user signed in
+  // });
 
   render() {
     return (
-    <div className="wrapper">
-      <h1>Fun Food Friends</h1>
-      {this.state.user ?
-        <button onClick={this.logout}>Log Out</button>                
-        :
-        <button onClick={this.login}>Sign in With Google</button>              
-      }
-      <button onClick={this.test}>Unknown</button>              
-
+      <div>
+    
+    <div>
+      <form >
+        <div >
+          <label> First Name </label>
+          <input type="text" placeholder="Username"></input>
+        </div>
+        <div >
+          <label> Last Name </label>
+          <input type="text" placeholder="Password"></input>
+        </div>
+        <button  type="button" onClick={this.handleSubmit}>Submit</button>
+      </form>    
     </div>
+        <div>
+          <button onClick={this.handleGoogleLogin}>Sign in with Google</button>
+        </div>
+      </div>
     )
   }
 }
-
 export default Login;
