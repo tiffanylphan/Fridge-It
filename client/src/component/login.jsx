@@ -16,14 +16,6 @@ class Login extends Component {
 
     this.props.actions.emailLogin(user.value, pw.value);
   }
-  
-  getinfo() {
-    console.log(localStorage.userid);
-  }
-  // ["red","orange","yellow","olive","green","teal","blue",
-  // "violet","purple","pink","brown","grey","black","facebook","google plus",
-  // "instagram","linkedin","twitter","vk","youtube"]
-
 
   render() {
     return (
@@ -68,13 +60,13 @@ class Login extends Component {
                     e.preventDefault();
                     this.emailSignin();
                   }}>Login</Button>
-                  
+
               </Segment>
                 <Button color='google plus' fluid size='large'
                 onClick={() => this.props.actions.googleLogin()}>Log In with Google</Button>
             </Form>
             <Message>
-              New to us? <a href='/signup'>Sign Up</a>
+              Don't have an account yet? <a href='/signup'> Sign Up</a>
             </Message>
           </Grid.Column>
         </Grid>
@@ -90,24 +82,3 @@ const loginDispatch = (dispatch) => {
 }
 
 export default connect(null, loginDispatch)(Login);
-    // <div className="wrapper">
-    //   <h1>Log In</h1>
-    //   <form>
-    //     <label>
-    //       Email: 
-    //       <input type="text" id="inputNM"/>
-    //     </label>
-    //   </form>
-    //   <form>
-    //     <label>
-    //       Password: 
-    //       <input type="password" id="inputPW"/>
-    //     </label>
-    //   </form>
-    //   <button onClick={(e) => {
-    //     e.preventDefault();
-    //     this.emailSignin();
-    //     }}>Log In</button>             
-    //   <button onClick={() => this.props.actions.googleLogin()}>Sign in With Google</button>              
-    //   <button onClick={() => this.getinfo()}>Show User Info</button>
-    //   </div>
