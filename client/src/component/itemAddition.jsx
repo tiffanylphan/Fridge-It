@@ -2,44 +2,65 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Input, Menu, Dropdown, Button } from 'semantic-ui-react'
+import { Form, Button, Input, Select } from 'semantic-ui-react'
 
 import * as itemActions from '../actions/itemActions.js'
+
 
 class itemAddition extends Component {
   constructor(props) {
     super(props);
   }
   
-  handleSubmit(e) {
-    e.preventDefault();
-    const item = {};
-    for (const field in this.refs) {
-      item[field] = this.refs[field].value;
-    }
-    console.log('item being created', item);
-    this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
-  }
+  // handleSubmit() {
+  //   const item = {};
+    
+  //   let name = document.getElementById('inputItm');
+  //   item.name = name.value;
+  //   let qty = document.getElementById('InputQty');
+  //   item.quantity = qty.value;
+
+  //   console.log('item being created', item);
+  //   this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
+  // }
 
   render() {
-    const item = {}
+    const options = [{
+      key: 1, 
+      text: "test",
+      value: "test"
+    }]; 
+
+    const item = {}; 
+
     return (
-      <Menu> 
-      <Menu.Item>
-        <Input placeholder='Item name'/>
-      </Menu.Item>
-      <Dropdown ref='type' item text='Browse categories'>
-        <Dropdown.Menu>
-          <Dropdown.Item data-value="test">Test</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-      <Menu.Item>
-        <Input placeholder='Quantity' type='number'/>
-      </Menu.Item>
-      <Menu.Item>
-        <Button content='Go' onClick={this.props.addItem(item, 1)}></Button>
-      </Menu.Item>
-    </Menu>
+      <Form>
+        <Form.Group widths='equal'>
+          <Form.Field 
+            control={Input}
+            width={4} 
+            placeholder='Type name here' 
+            onChange={(e) => (item.name = e.target.value)}
+          />
+          <Form.Field 
+            control={Input} 
+            width={3}
+            type='number'
+            onChange={(e) => (item.quantity = e.target.value)}
+          />
+          <Form.Field 
+            control={Select} 
+            width={2}
+            options={options} 
+            placeholder='Browse categories' 
+            onChange={(e) => (item.type = e.target.value)}
+          />
+        <Form.Button content='Go' onClick={ (e) => {
+            e.preventDefault();
+            this.props.itemActions.addItem(item, 1);
+            }}/>
+        </Form.Group>
+      </Form>
     )
   }
 }
