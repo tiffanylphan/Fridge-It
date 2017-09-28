@@ -44,3 +44,15 @@ export const logoutUser = () => {
       });
   };
 };
+
+export const emailSignUp = (email, pw) => {
+  firebase.auth().createUserWithEmailAndPassword(email, pw)
+    .then(result => {
+      localStorage.setItem('name', result.email);
+      localStorage.setItem('userid', result.uid);
+      dispatch({type: 'USER_SIGNUP_FULFILLED', payload: result.email});
+    })
+    .catch(function(error) {
+      dispatch({type: 'USER_SIGNUP_REJECTED', payload: error.message});
+    })
+};
