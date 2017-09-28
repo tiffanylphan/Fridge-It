@@ -5,8 +5,11 @@ import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui
 
 import Search from './searchView.jsx';
 import Home from './home.jsx';
+<<<<<<< HEAD
 import Login from './login.jsx';
 import Signup from './signup.jsx';
+=======
+>>>>>>> [Update] Move over views over to app
 
 class HomeView extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class HomeView extends Component {
     return (
       <Router>
         <div>
+<<<<<<< HEAD
           <div className="ui pointing menu">
             <a className="item"><Link to="/">Home</Link></a>
             <a className="item"><Link to="/search">Recipes</Link></a>
@@ -28,6 +32,14 @@ class HomeView extends Component {
           <Route path="/search" render={() => {return <Search />}}/>
           <Route path="/signup" render={() => {return <Signup />}}/>
           <Route path="/login" render={() => {return <Login />}}/>
+=======
+          <ul>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/search">Recipes</Link></li>
+          </ul>
+          <Route exact path="/home" render={() => {return <Home />}}/>
+          <Route path="/search" render={() => {return <Search />}}/>
+>>>>>>> [Update] Move over views over to app
         </div>
       </Router>
     );
