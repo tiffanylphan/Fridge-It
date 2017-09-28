@@ -41,8 +41,7 @@ class MessageListView extends Component {
           <h3 className="ui dividing header">Messages</h3>
           <form>
             <label>
-              Message:
-              <input type="text" id="inputMsg" />
+              <input type="text" id="inputMsg" placeholder="enter message here" />
             </label>
             <button onClick={(e) => {
               e.preventDefault();
@@ -64,8 +63,7 @@ class MessageListView extends Component {
           <h3 className="ui dividing header">Messages</h3>
           <form>
             <label>
-              Message:
-              <input type="text" id="inputMsg1" />
+              <input type="text" id="inputMsg1" placeholder="enter message here" />
             </label>
             <button onClick={(e) => {
               e.preventDefault();
