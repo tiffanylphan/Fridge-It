@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Redirect, withRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 
@@ -17,7 +17,7 @@ class HomeView extends Component {
   render() {
     if(localStorage.getItem('userid')) {
       return (
-        <Router>
+        <Router history={this.props.history}>
           <div>
             <div className="ui pointing menu">
               <a className="item"><Link to="/home">Home</Link></a>
@@ -50,4 +50,4 @@ const homeDispatch = (dispatch) => {
   }
 };
 
-export default withRouter(connect(homeState, homeDispatch)(HomeView));
+export default connect(homeState, homeDispatch)(HomeView);

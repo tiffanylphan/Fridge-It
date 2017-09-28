@@ -3,6 +3,7 @@ import DOMReact from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import createHistory from 'history/createBrowserHistory';
+import { Router } from 'react-router-dom';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 import { createLogger as logger } from 'redux-logger';
@@ -19,9 +20,9 @@ const store = createStore(FridgeApp, middleware);
 
 DOMReact.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <App />
-    </ConnectedRouter>
+    <Router history={history}>
+      <App history={history} />
+    </Router>
   </Provider>,
   document.getElementById('app')
 );

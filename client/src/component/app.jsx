@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-=======
-import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
-import { logout } from "../firebase/auth";
->>>>>>> [Edit] Change render condition to local storage
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 
 import HomeView from './homeView.jsx';
