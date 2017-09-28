@@ -7,7 +7,6 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
-import { logout } from "../firebase/auth";
 
 import HomeView from './homeView.jsx';
 import Login from './login.jsx';
