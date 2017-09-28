@@ -19,8 +19,9 @@ class HomeView extends Component {
       <Router>
         <div>
           <div className="ui pointing menu">
-            <a className="item"><Link to="/">HOME</Link></a>
+            <a className="item"><Link to="/">Home</Link></a>
             <a className="item"><Link to="/search">Recipes</Link></a>
+            <a className="item"><Link to="/signup">Sign Up</Link></a>
             <a className="item"><Link to="/login">Log In</Link></a>
           </div>
           <Route exact path="/" render={() => {return <Home />}}/>
