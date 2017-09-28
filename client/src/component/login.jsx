@@ -15,10 +15,11 @@ class Login extends React.Component {
     }  
     this.login = this.login.bind(this); 
     this.logout = this.logout.bind(this); 
-    this.test = this.test.bind(this);
+    this.emailSignin = this.emailSignin.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handlePw = this.handlePw.bind(this);
   }
+
   handleName(event) {
     this.setState({user: event.target.value});
   }
@@ -49,6 +50,8 @@ class Login extends React.Component {
         this.setState({
           user
         });
+        let name = user.displayName || user.email;
+        localStorage.setItem('name', name)
         localStorage.setItem('userid', user.uid)
         console.log(user)
       })
@@ -62,8 +65,8 @@ class Login extends React.Component {
       });
   }
 
-  emailSignin(email, pw) {
-    console.log('emailsignin function')
+  emailAuth(email, pw) {
+    // console.log('emailAuth function')
     firebase.auth().signInWithEmailAndPassword(email, pw).catch((error) => {
       // Handle Errors here.
       var errorCode = error.code;
@@ -71,14 +74,15 @@ class Login extends React.Component {
       console.log('Error: ' + errorMessage)
     })
     .then(result => {
+      localStorage.setItem('name', result.email)
       localStorage.setItem('userid', result.uid)
       console.log(result);
     })
   }
 
-  test() {
-    this.emailSignin(this.state.user, this.state.pw)
-    console.log('test function')
+  emailSignin() {
+    this.emailAuth(this.state.user, this.state.pw)
+    // console.log('emailSignin function')
   }
   getinfo() {
     console.log(localStorage.userid);
@@ -87,20 +91,20 @@ class Login extends React.Component {
   render() {
     return (
     <div className="wrapper">
-      <h1>Fun Food Friends</h1>
+      <h1>Log In</h1>
       <form>
         <label>
           Email: 
-          <input type="text" name="name" onChange={this.handleName}/>
+          <input type="text" id="name" onChange={this.handleName}/>
         </label>
       </form>
       <form>
         <label>
           Password: 
-          <input type="password" name="pw" onChange={this.handlePw}/>
+          <input type="password" id="pw" onChange={this.handlePw}/>
         </label>
       </form>
-        <button onClick={this.test}>Log In</button>     
+        <button onClick={this.emailSignin}>Log In</button>     
       
         <button onClick={this.logout}>Log Out</button>                
         

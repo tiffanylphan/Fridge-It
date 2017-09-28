@@ -9,24 +9,10 @@ import Login from './login.jsx';
 import LandingPage from './landingPage.jsx';
 import SignUp from './signup.jsx';
 
-// const appTokenKey = "appToken";
-
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // user: JSON.parse(localStorage.getItem("user"))
-    }
-    // this.handleLogout = this.handleLogout.bind(this);
   }
-
-  // handleLogout() {
-  //   logout().then(function () {
-  //       localStorage.removeItem(appTokenKey);
-  //       // this.props.history.push("/login"); 
-  //       console.log("user signed out from firebase", localStorage);
-  //   })
-  // };
 
   render() {
     // let { loggedIn } = this.props;
@@ -59,5 +45,4 @@ class App extends Component {
   }
 };
 
-{/* <button onClick={this.handleLogout}>Log out</button> */}
 export default connect(null, null)(App);
