@@ -33,11 +33,11 @@ const FixedMenu = () => (
             </Menu.Item>
           </Menu.Menu>
           </div>
-          <div>
+          {/* <div>
             <Route exact path="/" render={() => (<LandingPage />)} />
             <Route path="/login" render={() => (<Login />)} />
             <Route path="/signup" render={() => (<SignUp />)} />
-          </div>
+          </div> */}
         </div>
       </Router>
     </Container>
