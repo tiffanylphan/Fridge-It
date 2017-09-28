@@ -18,6 +18,7 @@ class App extends Component {
 
   render() {
     let { loggedIn } = this.props;
+    console.log(loggedIn);
 
     if(loggedIn) {
       return (
@@ -30,10 +31,12 @@ class App extends Component {
             <div>
               <div className="ui pointing menu" >
                 <a className="item"><Link to="/">FRIDGE-IT</Link></a>
+                <a className="item"><Link to="/home">TEMP HOME</Link></a>
                 <a className="item"><Link to="/login">Login</Link></a>
                 <a className="item"><Link to="/signup">Sign Up</Link></a>
               </div>
                 <Route exact path="/" render={() => (<LandingPage />)} />
+                <Route path="/home" render={() => (<HomeView />)} />
                 <Route path="/login" render={() => (<Login />)} />
                 <Route path="/signup" render={() => (<SignUp />)} />
             </div>
