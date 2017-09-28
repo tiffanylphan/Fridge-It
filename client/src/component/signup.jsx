@@ -9,25 +9,9 @@ class Signup extends Component {
     super(props); 
   }
 
-<<<<<<< HEAD
-  emailAuth(email, pw) {
-    firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log('Error: ' + errorCode, ', ' + errorMessage);
-    })
-    .then(result => {
-      localStorage.setItem('name', result.email);
-      localStorage.setItem('userid', result.uid);
-      // console.log(result);
-    })
-  }
-=======
   emailSignUp() {
     let email = document.getElementById('inputSignupEmail');
     let pw = document.getElementById('inputSignupPw');
->>>>>>> [Edit] Refactor to implement redux
 
     this.props.actions.emailSignUp(email.value, pw.value);
   }
