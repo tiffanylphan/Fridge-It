@@ -35,7 +35,7 @@ class itemAddition extends Component {
 
     return (
       <Form>
-        <Form.Group widths='equal'>
+        <Form.Group>
           <Form.Field 
             control={Input}
             width={4} 
@@ -48,8 +48,7 @@ class itemAddition extends Component {
             type='number'
             onChange={(e) => (item.quantity = e.target.value)}
           />
-          <Form.Field 
-            control={Select} 
+          <Form.Select 
             width={2}
             options={options} 
             placeholder='Browse categories' 
