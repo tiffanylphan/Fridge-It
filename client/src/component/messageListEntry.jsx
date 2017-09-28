@@ -19,7 +19,7 @@ class MessageListEntry extends Component {
             <Comment.Metadata>
               Date: {message.createdAt.split('T')[0]}
               {' '}
-              Time: {message.createdAt.split('T')[1].split('Z')[0].split('.')[0]}
+              Time: {Math.abs(Number(message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[0]) - 7)}:{message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[1]}:{message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[2]}
             </Comment.Metadata>
             <Comment.Text>
               {message.messageText}
