@@ -8,8 +8,6 @@ import * as messageActions from '../actions/messageActions.js';
 class MessageListView extends Component {
   constructor(props) {
     super(props);
-
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
