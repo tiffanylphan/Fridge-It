@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Dropdown, Menu } from 'semantic-ui-react'
+import { Input, Menu, Dropdown, Button } from 'semantic-ui-react'
 
 import * as itemActions from '../actions/itemActions.js'
 
@@ -22,33 +22,24 @@ class itemAddition extends Component {
   }
 
   render() {
+    const item = {}
     return (
-      <div>
-        <Menu attached="top"
-          <input
-            ref="name"
-            className="itemName"
-            placeholder="input name here"
-            type="text"
-          ></input>
-          <Dropdown 
-            ref="type" 
-            placeholder="Browse categories"
-            fluid selection options={"test"}
-          />
-          <input
-            ref="quantity"
-            className="itemQuantity"
-            type="number"
-          ></input>
-          <input
-            type="submit"
-            className="itemSubmit"
-            value="Submit"
-            onSubmit={this.handleSubmit.bind(this)}
-          ></input>
-        />
-      </div>
+      <Menu> 
+      <Menu.Item>
+        <Input placeholder='Item name'/>
+      </Menu.Item>
+      <Dropdown ref='type' item text='Browse categories'>
+        <Dropdown.Menu>
+          <Dropdown.Item data-value="test">Test</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <Menu.Item>
+        <Input placeholder='Quantity' type='number'/>
+      </Menu.Item>
+      <Menu.Item>
+        <Button content='Go' onClick={this.props.addItem(item, 1)}></Button>
+      </Menu.Item>
+    </Menu>
     )
   }
 }
