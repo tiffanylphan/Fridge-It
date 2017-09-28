@@ -17,8 +17,16 @@ const authReducer = (state=initialState, action) => {
     case 'USER_LOGIN_FULFILLED': {
       return Object.assign({}, state, {loggingIn: false, loggedIn: true, username: action.payload});
     }
+    case 'USER_LOGOUT_FULFILLED': {
+      return Object.assign({}, state, {loggedIn: false, username: ''});
+    }
+    case 'USER_LOGOUT_REJECTED': {
+      return Object.assign({}, state, {error: action.payload});
+    }
     default: {
       return state;
     }
   }
 }
+
+export default authReducer;
