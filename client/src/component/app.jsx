@@ -30,12 +30,10 @@ class App extends Component {
             <div>
               <div className="ui pointing menu" >
                 <a className="item"><Link to="/">FRIDGE-IT</Link></a>
-                <a className="item"><Link to="/home">Temporary Home View</Link></a>
                 <a className="item"><Link to="/login">Login</Link></a>
                 <a className="item"><Link to="/signup">Sign Up</Link></a>
               </div>
                 <Route exact path="/" render={() => (<LandingPage />)} />
-                <Route path="/home" render={() => (<HomeView />)} />
                 <Route path="/login" render={() => (<Login />)} />
                 <Route path="/signup" render={() => (<SignUp />)} />
             </div>
@@ -52,13 +50,9 @@ const appState = (store) => {
   }
 };
 
-<<<<<<< HEAD
-export default connect(null, null)(App);
-=======
 const appDispatch =(dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
 }
 export default connect(appState, appDispatch)(App);
->>>>>>> [Update] Implement redux on app
