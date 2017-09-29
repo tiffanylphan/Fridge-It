@@ -28,7 +28,7 @@ const FridgeItems = sequelize.define('fridgeItem', {
   user: {
     type: Sequelize.STRING,
     allowNull: false,
-  }
+  },
 })
 
 const MessageInfo = sequelize.define('messageInfo', {

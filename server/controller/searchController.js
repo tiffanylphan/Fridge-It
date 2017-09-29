@@ -8,8 +8,6 @@ const search = {
   getRecipes: (req, res) => {
     let ingredients = req.body.data.ingredients;
 
-    console.log(temp.data);
-
     // Implements example recipe data
     res.status(200).send(temp.data);
 

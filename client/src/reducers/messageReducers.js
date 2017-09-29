@@ -46,7 +46,6 @@ const messageReducer = (state=initialState, action) => {
       })
     }
     case "POST_MESSAGES_FULFILLED": {
-      console.log('messages: ', state.messages);
       return Object.assign({}, state, {
         posting: false,
         posted: true,
