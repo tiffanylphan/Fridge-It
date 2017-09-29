@@ -12,7 +12,6 @@ class MessageListEntry extends Component {
     const style = {
       textAlign: "right",
     }
-    console.log(message.createdAt);
     return (
       <Card.Group>
         <Card>
@@ -43,7 +42,7 @@ class MessageListEntry extends Component {
               </Icon>
             </Button>
             <Button onClick={() => deleteMessages(message.id)}>              
-              <Icon name="remove icon" />
+              <Icon name="remove" />
             </Button>
           </div>
           </Card.Content>
