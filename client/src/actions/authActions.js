@@ -49,15 +49,32 @@ export const logoutUser = () => {
 };
 
 export const emailSignUp = (email, pw) => {
+<<<<<<< HEAD
   return function(dispatch) {    
+=======
+  return function(dispatch) {
+>>>>>>> [Fix] Fix email signUp
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
         localStorage.setItem('name', result.email);
         localStorage.setItem('userid', result.uid);
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
+<<<<<<< HEAD
+=======
+        dispatch(push('/home'));
+>>>>>>> [Fix] Fix email signUp
       })
       .catch(function(error) {
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
       });
+<<<<<<< HEAD
+=======
+  }
+};
+
+export const checkItOut = () => {
+  return function(dispatch) {
+    dispatch(push('/signup'));
+>>>>>>> [Fix] Fix email signUp
   };
 };
