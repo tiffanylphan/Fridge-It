@@ -25,18 +25,4 @@ router.delete('/items/:id', item.deleteItem)
 router.route('/search')
   .put(search.getRecipes);
 
-// Test User Routes
-const db = require('../../db');
-router.post('/user', (req, res) => {
-  db.users.create({
-    name: req.body.name
-  })
-  .then(user => {
-    res.status(201).send(user);
-  })
-  .catch(err => {
-    console.log('err creating test user: ', err);
-    res.status(400).send(err);
-  });
-});
 module.exports = router;
