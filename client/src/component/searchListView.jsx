@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Card } from 'semantic-ui-react';
 
 import SearchListEntry from './searchListEntry.jsx';
 import * as searchActions from '../actions/searchActions.js';
@@ -10,10 +11,6 @@ class SearchListView extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    
-  }
-
   render() {
     const { recipeList, recipeFetched, recipeFetching, onRecipeListPage, actions, ingredients, ingredientsFetched } = this.props;
     const ingredientList = ingredients.map(ingredient => {
@@ -21,9 +18,9 @@ class SearchListView extends Component {
     });
     
     // DO NOT UNCOMMENT FOR REST OF THE DAY! IT WORKS THOUGH!
-    // if(ingredientsFetched && !recipeFetched) {
-    //   ingredientList.length > 0 ? actions.fetchRecipes(ingredientList) : null;
-    // }
+    if(ingredientsFetched && !recipeFetched) {
+      ingredientList.length > 0 ? actions.fetchRecipes(ingredientList) : null;
+    }
 
     if(recipeList.length === 0) {
       return (
@@ -39,16 +36,11 @@ class SearchListView extends Component {
       };
   
       return (
-        <div>
-          <div>
-            {top3.map(recipe => (
-              <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
-            ))}
-          </div>
-          <div>
-            <button onClick={actions.switchView}>Find me more!</button>
-          </div>
-        </div>
+        <Card.Group itemsPerRow={3}>
+          {top3.map(recipe => (
+            <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
+          ))}
+        </Card.Group>
       );
     }
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Popup, Card } from 'semantic-ui-react';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
@@ -26,7 +27,6 @@ class Fridge extends Component {
       }
     })
   }
-  
 
   render() {
     const types = ["produce", "dairy", "protein", "grains and starches", "frozen", "miscellaneous"]; 
@@ -38,14 +38,20 @@ class Fridge extends Component {
           <div>
             <ItemAddition />
           </div>
-          {types.map(type => {
-              let filteredItems = this.filterItems(type);
-                return (
-                  <div className={type}>
-                    <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
-                  </div>
-                )
-          })}
+          <Card.Group itemsPerRow={2}>
+            {types.map(type => {
+                let filteredItems = this.filterItems(type);
+                  return (
+                    <Popup
+                      trigger={<Card>{type}</Card>}
+                      flowing
+                      hoverable
+                    >
+                      <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
+                    </Popup>
+                  )
+            })}
+          </Card.Group>
         </div>
       )
     } else {

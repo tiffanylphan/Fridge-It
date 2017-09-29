@@ -55,9 +55,16 @@ export const emailSignUp = (email, pw) => {
         localStorage.setItem('name', result.email);
         localStorage.setItem('userid', result.uid);
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
+        dispatch(push('/home'));
       })
       .catch(function(error) {
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
       });
+  }
+};
+
+export const checkItOut = () => {
+  return function(dispatch) {
+    dispatch(push('/signup'));
   };
 };
