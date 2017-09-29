@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 import Messages from './messagesListView.jsx';
 import Search from './searchListView.jsx';
@@ -11,19 +12,24 @@ class Home extends Component {
 
   render() {
     return (
-    <div className="ui grid">
-      <div className="row">
-        <div className="eight wide column"> 
+    <Grid divided="verticaly">
+      <Grid.Row columns={2} centered>
+        <Grid.Column> 
           <Fridge />
-        </div>
-        <div className="eight wide column">
+        </Grid.Column>
+        <Grid.Column>
           <Messages />
-        </div>
-      </div>
-      <div className="six wide column">
-        <Search />
-      </div>
-    </div>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row columns={8} centered>
+        <Grid.Column 
+          width={10}
+          textAlign="center"
+        >
+          <Search />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
 
     )
   }
