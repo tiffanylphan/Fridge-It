@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { Router, Route, Link, Redirect } from 'react-router-dom';
 
 import HomeView from './homeView.jsx';
 import Login from './login.jsx';
