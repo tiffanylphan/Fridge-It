@@ -29,7 +29,7 @@ class Fridge extends Component {
   
 
   render() {
-    const types = ["test"]; 
+    const types = ["produce", "dairy", "protein", "grains and starches", "frozen", "miscellaneous"]; 
 
     if (this.props.items.length > 0) {
       return (

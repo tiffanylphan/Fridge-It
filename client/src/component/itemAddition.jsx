@@ -12,52 +12,88 @@ class itemAddition extends Component {
     super(props);
   }
   
-  // handleSubmit() {
-  //   const item = {};
-    
-  //   let name = document.getElementById('inputItm');
-  //   item.name = name.value;
-  //   let qty = document.getElementById('InputQty');
-  //   item.quantity = qty.value;
-
-  //   console.log('item being created', item);
-  //   this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
-  // }
-
+  
   render() {
-    const options = [{
-      key: 1, 
-      text: "test",
-      value: "test"
-    }]; 
+    let type = '';
+    
+    const handleSubmit = () => {
+      const item = {};
+      
+      let name = document.getElementById('inputItm');
+      item.name = name.value;
+      let qty = document.getElementById('inputQty');
+      item.quantity = qty.value;
+      item.type = type;
+      console.log('item being created', item);
+      this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
+      name = '';
+      qty = '';
+      type = '';
+    }
+    const options = [
+      {
+        key: 1, 
+        text: "produce",
+        value: "produce"
+      },
+      {
+        key: 2, 
+        text: "dairy",
+        value: "dairy"
+      },
+      {
+        key: 3, 
+        text: "protein",
+        value: "protein"
+      },
+      {
+        key: 4, 
+        text: "grains and starches",
+        value: "grains and starches"
+      },
+      {
+        key: 5, 
+        text: "frozen",
+        value: "frozen"
+      },
+      {
+        key: 6, 
+        text: "miscellaneous",
+        value: "miscellaneous"
+      }
+    ]; 
 
-    const item = {}; 
+    const item = {};
 
     return (
-      <Form>
-        <Form.Group>
-          <Form.Field 
-            control={Input}
-            width={4} 
-            placeholder='Type name here' 
-            onChange={(e) => (item.name = e.target.value)}
+      <Form 
+        onSubmit={() => {
+          handleSubmit();
+        }}
+      >
+        <Form.Group inline>
+          <Form.Input 
+            //width={4} 
+            placeholder='Type name here'
+            id="inputItm"
           />
-          <Form.Field 
-            control={Input} 
-            width={3}
+          <Form.Input 
+            width={2}
             type='number'
-            onChange={(e) => (item.quantity = e.target.value)}
+            id="inputQty"
           />
           <Form.Select 
-            width={2}
-            options={options} 
+            //width={2}
             placeholder='Browse categories' 
-            onChange={(e) => (item.type = e.target.value)}
+            options={options} 
+            id="inputType"
+            onChange={(e, {value}) => {
+              type = value;
+            }}
           />
-        <Form.Button content='Go' onClick={ (e) => {
-            e.preventDefault();
-            this.props.itemActions.addItem(item, 1);
-            }}/>
+          <Form.Button 
+           //width={1} 
+            content='Go'/>
         </Form.Group>
       </Form>
     )
@@ -65,13 +101,16 @@ class itemAddition extends Component {
 }
 
 const fridgeState = (store) => {
-  fridge: store.fridge.fridge
+  return {
+    fridge: store.fridge.fridge,
+    items: store.items.items
+  }
 }
 
-const dispatch = (dispatch) => {
+const fridgeDispatch = (dispatch) => {
   return {
     itemActions: bindActionCreators(itemActions, dispatch)
   }
 }
 
-export default connect(null, dispatch)(itemAddition);
+export default connect(fridgeState, fridgeDispatch)(itemAddition);
