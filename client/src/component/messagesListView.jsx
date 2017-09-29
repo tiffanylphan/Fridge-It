@@ -19,21 +19,24 @@ class MessageListView extends Component {
   
   render() {
     const handleSubmit = () => {
-      let entry = document.getElementById('inputMsg');
-      let entry1 = document.getElementById('inputMsg1');
-      console.log(entry, entry1);
-      if (entry !== null || entry1 !== null) {
-        console.log('im here');
-        this.props.actions.postMessages(1, 1, entry !== null ? entry.value : entry1.value); //(fridgeId, messageId)
-        entry.value = '';
-        entry1.value = '';
+      let inputMsg = document.getElementById('inputMsg');
+      // let inputMsg1 = document.getElementById('inputMsg1');
+      if (!inputMsg.value.match(/[a-z0-9_]/i) ) {
+      
+        alert('Please enter a valid message');
       } else {
-        alert('Please enter a message');
+        console.log('im here');
+        console.log('input: ', inputMsg.value);
+        this.props.actions.postMessages(1, 1, inputMsg.value); //(fridgeId, messageId)
+        inputMsg.value = '';
+        inputMsg1.value = '';
       }
     }
+
     
     const { messageList, messageFetched, messageFetching, actions } = this.props;
-    if (messageList.length > 0) {
+
+    // if (messageList.length > 0) {
       // console.log('view before/after reducer: ', messageList);
       // console.log('what is handlesubmit: ', handleSubmit);
       return (
@@ -60,30 +63,30 @@ class MessageListView extends Component {
           ))}
         </div>
       )
-    } else {
-      return (
-        <div>
-          <h3 className="ui dividing header">Messages</h3>
-          <Form>
-            <Form.Group inline>
-              <Form.Input
-              type="text" 
-              label="Message:"
-              id="inputMsg1"
-              placeholder="Enter message here" />
-              <Form.Button 
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleSubmit();
-                }}
-                content="Submit"
-              />
-            </Form.Group>
-          </Form>
-        </div>
+    // } else {
+    //   return (
+    //     <div>
+    //       <h3 className="ui dividing header">Messages</h3>
+    //       <Form>
+    //         <Form.Group inline>
+    //           <Form.Input
+    //           type="text" 
+    //           label="Message:"
+    //           id="inputMsg1"
+    //           placeholder="Enter message here" />
+    //           <Form.Button 
+    //             onClick={(e) => {
+    //               e.preventDefault();
+    //               handleSubmit();
+    //             }}
+    //             content="Submit"
+    //           />
+    //         </Form.Group>
+    //       </Form>
+    //     </div>
 
-      )
-    }
+    //   )
+    // }
   }
 };
 
