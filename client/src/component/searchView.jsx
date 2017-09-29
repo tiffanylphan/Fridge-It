@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Card } from 'semantic-ui-react';
 
 import * as searchActions from '../actions/searchActions.js';
 import SearchListEntry from './searchListEntry.jsx';
@@ -16,9 +17,11 @@ class SearchView extends Component {
     if(recipeList.length > 0) {
       return (
         <div>
-          {recipeList.map(recipe => (
-            <SearchListEntry key={recipe.id} recipe={recipe} />
-          ))}
+          <Card.Group itemsPerRow={3}>
+            {recipeList.map(recipe => (
+              <SearchListEntry key={recipe.id} recipe={recipe} />
+            ))}
+          </Card.Group>
         </div>
       )
     }
