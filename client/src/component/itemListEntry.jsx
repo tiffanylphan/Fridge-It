@@ -1,9 +1,10 @@
 import React from 'react';
+import { Grid } from 'semantic-ui-react';
 
 const Item = (props) => {
   console.log('item props:', props);
   return (
-    <div>
+    <Grid.Column textAlign="center">
       <div>
         {props.name} {props.quantity}
       </div>
@@ -27,7 +28,7 @@ const Item = (props) => {
         className="ui mini icon button"
         onClick={()=> {props.deleteItem(props.id)}}
       ><i className="remove icon"></i></button>
-    </div>
+    </Grid.Column>
   )
 }
 
