@@ -8,13 +8,10 @@ class MessageListEntry extends Component {
   
   render() {
     const { message, deleteMessages, updateMessages } = this.props
-<<<<<<< HEAD
     const style = {
       textAlign: "right",
     }
-=======
-
->>>>>>> [Refactor] Clean up code and clear console logs
+    
     return (
       <Card.Group>
         <Card>
