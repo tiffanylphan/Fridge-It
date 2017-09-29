@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { Icon, Button, Form, Card, Image } from 'semantic-ui-react';
 
 class MessageListEntry extends Component { 
@@ -9,9 +8,13 @@ class MessageListEntry extends Component {
   
   render() {
     const { message, deleteMessages, updateMessages } = this.props
+<<<<<<< HEAD
     const style = {
       textAlign: "right",
     }
+=======
+
+>>>>>>> [Refactor] Clean up code and clear console logs
     return (
       <Card.Group>
         <Card>
