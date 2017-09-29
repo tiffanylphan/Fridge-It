@@ -30,6 +30,7 @@ class Login extends Component {
           body > div > div,
           body > div > div > div.login-form {
             height: 100%;
+            margin-top: 80px;
           }
         `}</style>
         <Grid
