@@ -8,17 +8,10 @@ const search = {
   getRecipes: (req, res) => {
     let ingredients = req.body.data.ingredients;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     console.log(temp.data);
 
-    res.status(200).send(temp.data);
-=======
-=======
     // Implements example recipe data
->>>>>>> [Update] Update documentation
-    res.send(temp.data);
->>>>>>> [Update] Update to reflect movement of example data
+    res.status(200).send(temp.data);
 
     // Uncomment this to use API
     // unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
