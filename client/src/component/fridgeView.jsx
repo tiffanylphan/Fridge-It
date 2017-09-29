@@ -16,8 +16,8 @@ class Fridge extends Component {
   }
   
   componentWillMount() {
-    this.props.fridge.id ? this.props.fridgeActions.getFridge(this.props.fridge.id) : null;
-    this.props.fridge.id ? this.props.itemActions.getItems(this.props.fridge.id) : null;
+    this.props.fridgeActions.getFridge(localStorage.getItem('name'));
+    localStorage.getItem('fId') ? this.props.itemActions.getItems(localStorage.getItem('fId')) : null;
   }
 
   filterItems(type) {
@@ -30,13 +30,14 @@ class Fridge extends Component {
 
   render() {
     const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
-    const { fridge, username, fridgeActions, itemActions } = this.props;
+    const { fridge, fridgeActions, itemActions, fetched, posted } = this.props;
+    let username = localStorage.getItem('name');
 
     return (
       <div>
         <h3 className='ui dividing header'>Fridge</h3>
         <div>
-          {fridge.id ? <ItemAddition /> : 
+          {(posted || fridge.id) ? <ItemAddition /> : 
             <button onClick={(e) => {
               e.preventDefault();
 
@@ -45,7 +46,7 @@ class Fridge extends Component {
 
               const fridgeObj = {
                 users: userArray,
-                name: "temp", // UPDATE THIS!
+                name: username,
               }
 
               this.props.fridgeActions.addFridge(fridgeObj);
@@ -78,6 +79,7 @@ const fridgeState = (store) => {
     username: store.auth.username,
     fridge: store.fridge.fridge,
     items: store.items.items,
+    posted: store.fridge.posted
   }
 }
 
