@@ -12,13 +12,14 @@ export function getItems(fridgeId) {
   }
 }
 
-export function addItem(item, fridgeId) {
+export function addItem(item, id) {
   return function(dispatch) {
     axios.post('/api/items', {
       name: item.name,
       quantity: item.quantity,
       type: item.type,
-      fridgeId: fridgeId
+      user: item.user,
+      fridgeId: id,
     })
       .then(({ data }) => {
         dispatch({type: 'POST_ITEM_FULFILLED', payload: data})
@@ -34,7 +35,9 @@ export function updateItem(item, id) {
     axios.patch('api/items/' + id, {
       name: item.name,
       quantity: item.quantity, 
-      type: item.type
+      type: item.type,
+      user: item.user,
+      fridgeId: id
     }) 
     .then((response) => {
       dispatch({type: 'UPDATE_ITEM_FULFILLED', payload: response.data[1]})
