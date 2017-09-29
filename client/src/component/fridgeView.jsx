@@ -29,7 +29,7 @@ class Fridge extends Component {
   
 
   render() {
-    const types = ["test"]; 
+    const types = ["produce", "dairy", "protein", "grains and starches", "frozen", "miscellaneous"]; 
 
     if (this.props.items.length > 0) {
       return (
@@ -42,7 +42,7 @@ class Fridge extends Component {
               let filteredItems = this.filterItems(type);
                 return (
                   <div className={type}>
-                    <ItemListView type={type} items={filteredItems}/> 
+                    <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
                   </div>
                 )
           })}

@@ -6,7 +6,7 @@ const ItemList = (props) => {
   return (
     <div>
       {props.items.map(item => (
-        <ItemListEntry name={item.name} quantity={item.quantity} type={item.type} id={item.id} key={item.id}/>
+        <ItemListEntry {...props.actions} name={item.name} quantity={item.quantity} type={item.type} id={item.id} key={item.id}/>
       ))}
     </div> 
   )

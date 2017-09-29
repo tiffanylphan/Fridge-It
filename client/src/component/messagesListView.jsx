@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { Form, Submit, Button } from 'semantic-ui-react'
+
 import MessageListEntry from './messageListEntry.jsx';
 import * as messageActions from '../actions/messageActions.js';
 
@@ -37,37 +39,47 @@ class MessageListView extends Component {
       return (
         <div>
           <h3 className="ui dividing header">Messages</h3>
-          <form>
-            <label>
-              <input type="text" id="inputMsg" placeholder="enter message here" />
-            </label>
-            <button onClick={(e) => {
-              e.preventDefault();
-              handleSubmit();
-              }}>
-              Submit Message
-            </button>
-          </form>
-
+          <Form>
+            <Form.Group inline>
+              <Form.Input 
+                type="text"
+                label="Message:"
+                id="inputMsg"
+                placeholder="Enter message here"
+              /> 
+              <Form.Button onClick={(e) => {
+                e.preventDefault();
+                handleSubmit();
+                }}
+                content="Submit"
+              />
+            </Form.Group>
+          </Form>
           {messageList.map(message => (
             <MessageListEntry {...actions} key={message.id} message={message} />
           ))}
         </div>
       )
-
     } else {
       return (
         <div>
           <h3 className="ui dividing header">Messages</h3>
-          <form>
-            <label>
-              <input type="text" id="inputMsg1" placeholder="enter message here" />
-            </label>
-            <button onClick={(e) => {
-              e.preventDefault();
-              handleSubmit();
-              }}>Submit Message</button>
-          </form>
+          <Form>
+            <Form.Group inline>
+              <Form.Input
+              type="text" 
+              label="Message:"
+              id="inputMsg1"
+              placeholder="Enter message here" />
+              <Form.Button 
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleSubmit();
+                }}
+                content="Submit"
+              />
+            </Form.Group>
+          </Form>
         </div>
 
       )
