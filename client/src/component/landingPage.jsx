@@ -10,12 +10,14 @@ import {
   List,
   Menu,
   Segment,
-} from 'semantic-ui-react'
+} from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import FixedMenu from './fixedMenu.jsx';
+import * as authActions from '../actions/authActions.js';
 
-
-export default class LandingPage extends Component {
+class LandingPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -44,7 +46,10 @@ export default class LandingPage extends Component {
                 inverted
                 style={{ fontSize: '1.7em', fontWeight: 'normal' }}
               />
-              <Button primary size='huge'>
+              <Button primary size='huge' onClick={(e) => {
+                e.preventDefault();
+                this.props.actions.checkItOut();
+              }}>
                 Get Started
                 <Icon name='right arrow' />
               </Button>
@@ -75,7 +80,10 @@ export default class LandingPage extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column textAlign='center'>
-                <Button size='huge'>Check It Out</Button>
+                <Button size='huge' onClick={(e) => {
+                  e.preventDefault();
+                  this.props.actions.checkItOut();
+                }}>Check It Out</Button>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -156,6 +164,12 @@ export default class LandingPage extends Component {
       </div>
     )
   }
+};
+
+const lpDispatch = (dispatch) => {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
 }
 
-// export default connect()(LandingPage);
+export default connect(null, lpDispatch)(LandingPage);
