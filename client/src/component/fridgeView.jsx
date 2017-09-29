@@ -58,20 +58,17 @@ class Fridge extends Component {
             />
           </Form.Group>
         </div>
-        <br/>
-        <div className='wrapper'>
+        <div className={styles.container}>
           {types.map(type => {
               let filteredItems = this.filterItems(type);
                 return (
-                  <div className={type}>
                     <Popup
-                      trigger={<Card>{type}</Card>}
+                      trigger={<div className={styles[type]}>{type}</div>}
                       flowing
                       hoverable
                     >
                       <ItemListView actions={itemActions} type={type} items={filteredItems}/> 
                     </Popup>
-                  </div>
                 )
           })}
         </div>

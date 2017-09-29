@@ -1,29 +1,68 @@
-.wrapper {
-  display: grid;
-
-  
-}
-
-.produce {
-
-}
-
-.dairy {
-
-}
-
-.protein {
-
-}
-
-.grains {
-
+.container {
+  position: relative;
+  height: 700px;
+  width: 450px;
+  border: none;
+  margin: 0 auto;
+  border-radius: .28571429rem
 }
 
 .frozen {
+  position: absolute;
+  border-radius: .28571429rem;
+  background-color:#A5C6EF;
+  height: 200px;
+  width: 450px;
+  border: 1px solid rgba(0,0,0,.6);
+  bottom: 500px;
+}
 
+.protein {
+  position: absolute;
+  border-radius: .28571429rem;
+  height: 145px;
+  width: 220px;
+  border: 1px solid rgba(0,0,0,.6);
+  bottom: 345px;
+  left: 0px
+}
+
+.grains {
+  position: absolute;
+  border-radius: .28571429rem;
+  height: 145px;
+  width: 220px;
+  border: 1px solid rgba(0,0,0,.6);
+  bottom: 345px;
+  right: 0px
+}
+
+.dairy {
+  position: absolute;
+  border-radius: .28571429rem;
+  height: 125px;
+  width: 450px;
+  border: 1px solid rgba(0,0,0,.6);
+  bottom: 210px
+}
+
+.produce {
+  position: absolute;
+  border-radius: .28571429rem;
+  height: 200px;
+  width: 290px;
+  border: 1px solid black;
+  bottom: 0px;
+  left: 0px 
 }
 
 .misc {
-
+  position: absolute;
+  border-radius: .28571429rem;
+  height: 200px;
+  width: 150px;
+  border: 1px solid black;
+  bottom: 0px;
+  right: 0px
 }
+
