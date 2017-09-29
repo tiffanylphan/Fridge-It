@@ -9,6 +9,7 @@ require('dotenv').config();
 const routes = require('./routes');
 const db = require('../db');
 
+// Express Initialization
 const port = process.env.PORT || 3000;
 const app = express();
 
@@ -26,8 +27,7 @@ app.get('*', (req, res) => {
 })
 
 // Server Initialization
-db.fridge.sync();
-db.users.sync()
+db.fridge.sync()
   .then(() => {
     db.messageInfo.sync();
     db.fridgeItems.sync()
