@@ -15,9 +15,9 @@ class Fridge extends Component {
     this.filterItems = this.filterItems.bind(this);
   }
   
-  componentDidMount() {
-    this.props.fridgeActions.getFridge(1); // DONT FORGET TO EDIT OUT THE 1
-    this.props.itemActions.getItems(1); // DONT FORGET TO EDIT OUT THE 1
+  componentWillMount() {
+    this.props.fridge.id ? this.props.fridgeActions.getFridge(this.props.fridge.id) : null;
+    this.props.fridge.id ? this.props.itemActions.getItems(this.props.fridge.id) : null;
   }
 
   filterItems(type) {
@@ -29,12 +29,13 @@ class Fridge extends Component {
   }
 
   render() {
-    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"]; 
+    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
+    
     return (
       <div>
         <h3 className='ui dividing header'>Fridge</h3>
         <div>
-          <ItemAddition />
+          {this.props.fridge.id ? <ItemAddition /> : <button>Create a Fridge</button>}
         </div>
         <div className='wrapper'>
           {types.map(type => {
@@ -60,7 +61,7 @@ class Fridge extends Component {
 const fridgeState = (store) => {
   return {
     fridge: store.fridge.fridge,
-    items: store.items.items
+    items: store.items.items,
   }
 }
 
