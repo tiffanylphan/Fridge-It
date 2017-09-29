@@ -6,15 +6,19 @@ class MessageListEntry extends Component {
   constructor(props) {
     super(props);
   }
-
   
   render() {
     const { message, deleteMessages, updateMessages } = this.props
-    console.log(message.createdAt);
+    const style = {
+      textAlign: "right",
+    }
     return (
       <Card.Group>
         <Card>
           <Card.Content>
+            <div style={style}>
+              <Icon name="pin" />
+            </div>
             <Card.Header as='a'> user </Card.Header>
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
@@ -38,7 +42,7 @@ class MessageListEntry extends Component {
               </Icon>
             </Button>
             <Button onClick={() => deleteMessages(message.id)}>              
-              <Icon name="remove icon" />
+              <Icon name="remove" />
             </Button>
           </div>
           </Card.Content>

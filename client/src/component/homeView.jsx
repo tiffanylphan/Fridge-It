@@ -22,7 +22,7 @@ class HomeView extends Component {
           body > div,
           body > div > div,
           body > div > div > div.home-form {
-            padding-top: 5%;
+            padding-top: 3%;
             padding-left: 5%;
             padding-right: 5%;
           }
