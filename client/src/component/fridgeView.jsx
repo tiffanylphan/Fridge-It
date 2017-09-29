@@ -31,7 +31,7 @@ class Fridge extends Component {
   render() {
     const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"]; 
 
-    if (this.props.items.length > 0) {
+    if (this.props.items.length >= 0) {
       return (
         <div className='wrapper'>
           <h3 className='ui dividing header'>Fridge</h3>
