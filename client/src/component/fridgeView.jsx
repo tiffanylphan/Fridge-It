@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-<<<<<<< HEAD
 import { Popup, Card } from 'semantic-ui-react';
-=======
-import { Grid } from "semantic-ui-react"
->>>>>>> Fixed buttons for items.
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
