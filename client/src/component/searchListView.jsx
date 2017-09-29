@@ -36,13 +36,11 @@ class SearchListView extends Component {
       };
   
       return (
-        <div>
-          <Card.Group itemsPerRow={3}>
-            {top3.map(recipe => (
-              <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
-            ))}
-          </Card.Group>
-        </div>
+        <Card.Group itemsPerRow={3}>
+          {top3.map(recipe => (
+            <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
+          ))}
+        </Card.Group>
       );
     }
   }
