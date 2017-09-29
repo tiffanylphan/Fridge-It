@@ -20,15 +20,16 @@ const FixedMenu = ({ history }) => (
       <div>
         <Menu fixed='top' size='large'>
           <Container>
-            <Menu.Item as='a' active>
-              <Link to="/">FRIDGE-IT</Link>
+            <Menu.Item as='a' href="/">
+              {/* <Link to="/">FRIDGE-IT</Link> */}
+              Fridge-It
             </Menu.Item>
             <Menu.Menu position='right'>
               <Menu.Item>
-                <Button as='a'><Link to="/login">Log In</Link></Button>
+                <Button as='a' href="login">Log In</Button>
               </Menu.Item>
               <Menu.Item>
-                <Button as='a'><Link to="/signup">Sign Up</Link></Button>
+                <Button as='a' href="/signup">Sign Up</Button>
               </Menu.Item>
             </Menu.Menu>
           </Container>

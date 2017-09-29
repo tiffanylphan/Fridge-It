@@ -31,11 +31,11 @@ class HomeView extends Component {
           <div>
             <Menu fixed='top' size='large'>
               <Container>
-                <Menu.Item as='a' className="active">
-                  <Link to="/home">Home</Link>
+                <Menu.Item as='a' href="/home">
+                  Home
                 </Menu.Item>
-                <Menu.Item as='a'>
-                  <Link to="/search">Recipes</Link>
+                <Menu.Item as='a' href="/search">
+                  Recipes
                 </Menu.Item>
                 <Menu.Menu position='right'>
                   <Menu.Item>
