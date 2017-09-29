@@ -30,12 +30,27 @@ class Fridge extends Component {
 
   render() {
     const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
-    
+    const { fridge, username, fridgeActions, itemActions } = this.props;
+
     return (
       <div>
         <h3 className='ui dividing header'>Fridge</h3>
         <div>
-          {this.props.fridge.id ? <ItemAddition /> : <button>Create a Fridge</button>}
+          {fridge.id ? <ItemAddition /> : 
+            <button onClick={(e) => {
+              e.preventDefault();
+
+              const userArray = [];
+              userArray.push(username);
+
+              const fridgeObj = {
+                users: userArray,
+                name: "temp", // UPDATE THIS!
+              }
+
+              this.props.fridgeActions.addFridge(fridgeObj);
+            }}
+            >Create a Fridge</button>}
         </div>
         <div className='wrapper'>
           {types.map(type => {
@@ -47,7 +62,7 @@ class Fridge extends Component {
                       flowing
                       hoverable
                     >
-                      <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
+                      <ItemListView actions={itemActions} type={type} items={filteredItems}/> 
                     </Popup>
                   </div>
                 )
@@ -60,6 +75,7 @@ class Fridge extends Component {
 
 const fridgeState = (store) => {
   return {
+    username: store.auth.username,
     fridge: store.fridge.fridge,
     items: store.items.items,
   }
