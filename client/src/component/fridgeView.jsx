@@ -36,20 +36,22 @@ class Fridge extends Component {
         <div>
           <ItemAddition />
         </div>
-        <Card.Group itemsPerRow={2}>
+        <div className='wrapper'>
           {types.map(type => {
               let filteredItems = this.filterItems(type);
                 return (
-                  <Popup
-                    trigger={<Card>{type}</Card>}
-                    flowing
-                    hoverable
-                  >
-                    <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
-                  </Popup>
+                  <div className={type}>
+                    <Popup
+                      trigger={<Card>{type}</Card>}
+                      flowing
+                      hoverable
+                    >
+                      <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
+                    </Popup>
+                  </div>
                 )
           })}
-        </Card.Group>
+        </div>
       </div>
     )
   }
