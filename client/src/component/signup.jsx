@@ -25,7 +25,8 @@ class Signup extends Component {
           body > div > div,
           body > div > div > div.login-form {
             height: 100%;
-            margin-top: 80px;
+            padding-top: 8%;
+            background-color: #e6e6ff;
           }
         `}</style>
         <Grid
@@ -34,7 +35,7 @@ class Signup extends Component {
           verticalAlign='middle'
         >
           <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as='h2' color='olive' textAlign='center'>
+            <Header as='h2' color='teal' textAlign='center'>
               {/* <Image src='/logo.png' /> */}
               {' '}Sign Up
             </Header>
@@ -56,14 +57,14 @@ class Signup extends Component {
                   type='password'
                 />
 
-                <Button color='olive' fluid size='large'
+                <Button color='teal' fluid size='large'
                   onClick={(e) => {
                     e.preventDefault();
                     this.emailSignUp();
                   }}>Sign Up</Button>
 
               </Segment>
-                <Button color='black' fluid size='large'
+                <Button color='facebook' fluid size='large'
                 onClick={() => this.props.actions.googleLogin()}>Sign Up with Google</Button>
             </Form>
             <Message>
@@ -83,23 +84,3 @@ const signupDispatch = (dispatch) => {
   }
 }
 export default connect(null, signupDispatch)(Signup);
-    // <div className="wrapper">
-    //   <h1>Sign Up</h1>
-    //   <form>
-    //     <label>
-    //       Email: 
-    //       <input type="text" id="inputSignupEmail" />
-    //     </label>
-    //   </form>
-    //   <form>
-    //     <label>
-    //       Password: 
-    //       <input type="password" id="inputSignupPw" />
-    //     </label>
-    //   </form>
-    //     <button onClick={(e) => {
-    //       e.preventDefault();
-    //       this.emailSignUp();
-    //       }}
-    //     >Submit</button>     
-    // </div>
