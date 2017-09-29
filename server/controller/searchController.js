@@ -1,6 +1,7 @@
 const unirest = require('unirest');
 require('dotenv').config();
 
+// Import example data
 const temp = require('../../db/seed/recipeDummy.json');
 
 const search = {
@@ -8,13 +9,18 @@ const search = {
     let ingredients = req.body.data.ingredients;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(temp.data);
 
     res.status(200).send(temp.data);
 =======
+=======
+    // Implements example recipe data
+>>>>>>> [Update] Update documentation
     res.send(temp.data);
 >>>>>>> [Update] Update to reflect movement of example data
 
+    // Uncomment this to use API
     // unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
     //               + "?ingredients=" + ingredients.join(',') + '&fillIngredients=false'
     //               + "&limitLicense=false" + "&number=9" + "&ranking=1")
