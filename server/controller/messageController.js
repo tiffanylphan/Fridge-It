@@ -6,7 +6,6 @@ module.exports = {
       where: {fridgeId: req.params.id}
     })
       .then(data => {
-        console.log('i am working');
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -41,16 +40,7 @@ module.exports = {
       returning: true,
     })
       .then((data) => {
-        // data.updateAttributes({
-        //   messageText: req.body.messageText 
-        // }) 
-        //   .then((updated) => {
-        //     res.status(202).send({id: updated.id, message: updated.messageText});
-        //   })
-        //   .catch((err) => {
-        //     res.status(400).send(err);
-        //   })
-      res.status(202).send(data);
+        res.status(202).send(data);
       })
       .catch((err) => {
         res.status(500).send(err);
