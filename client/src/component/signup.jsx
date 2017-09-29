@@ -1,43 +1,19 @@
-import React from 'react';
-import firebase, {auth, googleProvider} from '../firebase/config.js'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-class Signup extends React.Component {
+import * as authActions from '../actions/authActions.js';
+
+class Signup extends Component {
   constructor (props) {
-    super(props);
-    this.state = {
-      user: '',
-      pw: ''
-    }  
-    this.emailAuth = this.emailAuth.bind(this);
-    this.handleName = this. handleName.bind(this);
-    this.handlePw = this. handlePw.bind(this); 
-    this.emailSignin = this.emailSignin.bind(this);   
+    super(props); 
   }
 
-  handleName(event) {
-    this.setState({user: event.target.value});
-  }
+  emailSignUp() {
+    let email = document.getElementById('inputSignupEmail');
+    let pw = document.getElementById('inputSignupPw');
 
-  handlePw(event) {
-    this.setState({pw: event.target.value});
-  }
-
-  emailAuth(email, pw) {
-    firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log('Error: ' + errorCode, ', ' + errorMessage);
-    })
-    .then(result => {
-      localStorage.setItem('name', result.email);
-      localStorage.setItem('userid', result.uid);
-      // console.log(result);
-    })
-  }
-
-  emailSignin() {
-    this.emailAuth(this.state.user, this.state.pw);
+    this.props.actions.emailSignUp(email.value, pw.value);
   }
 
   render() {
@@ -47,18 +23,28 @@ class Signup extends React.Component {
       <form>
         <label>
           Email: 
-          <input type="text" id="name" onChange={this.handleName}/>
+          <input type="text" id="inputSignupEmail" />
         </label>
       </form>
       <form>
         <label>
           Password: 
-          <input type="password" id="pw" onChange={this.handlePw}/>
+          <input type="password" id="inputSignupPw" />
         </label>
       </form>
-        <button onClick={this.emailSignin}>Submit</button>     
+        <button onClick={(e) => {
+          e.preventDefault();
+          this.emailSignUp();
+          }}
+        >Submit</button>     
     </div>
     )
   }
+};
+
+const signupDispatch = (dispatch) => {
+  return {
+    actions: bindActionCreators(authActions, dispatch)
+  }
 }
-export default Signup;
+export default connect(null, signupDispatch)(Signup);

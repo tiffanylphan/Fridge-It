@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
 import message from './messageReducers';
 import search from './searchReducers';
@@ -12,6 +13,7 @@ const FridgeApp = combineReducers({
   search,
   fridge,
   items,
+  routing: routerReducer,
 });
 
 export default FridgeApp;
