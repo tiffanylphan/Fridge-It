@@ -30,18 +30,17 @@ class Fridge extends Component {
 
   render() {
     const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"]; 
-
-    if (this.props.items.length >= 0) {
-      return (
+    return (
+      <div>
+        <h3 className='ui dividing header'>Fridge</h3>
+        <div>
+          <ItemAddition />
+        </div>
         <div className='wrapper'>
-          <h3 className='ui dividing header'>Fridge</h3>
-          <div>
-            <ItemAddition />
-          </div>
-          <Card.Group itemsPerRow={2}>
-            {types.map(type => {
-                let filteredItems = this.filterItems(type);
-                  return (
+          {types.map(type => {
+              let filteredItems = this.filterItems(type);
+                return (
+                  <div className={type}>
                     <Popup
                       trigger={<Card>{type}</Card>}
                       flowing
@@ -49,23 +48,12 @@ class Fridge extends Component {
                     >
                       <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
                     </Popup>
-                  )
-            })}
-          </Card.Group>
+                  </div>
+                )
+          })}
         </div>
-      )
-    } else {
-      return (
-        <div>
-          <div>
-            <ItemAddition />
-          </div>
-          <div>
-            No items in fridge
-          </div> 
-        </div>
-      )
-    }
+      </div>
+    )
   }
 }
 
