@@ -40,6 +40,7 @@ export const logoutUser = () => {
       .then(() => {
         localStorage.removeItem('userid');
         localStorage.removeItem('name');
+        localStorage.removeItem('fId');
         dispatch({type: 'USER_LOGOUT_FULFILLED'});
         dispatch(push('/'));
       })
