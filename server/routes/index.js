@@ -12,7 +12,7 @@ router.patch('/allMessages/:id', messages.updateMessages)
 
 // Fridge Routes
 router.post('/fridge', fridge.addFridge)
-router.get('/fridge/:fridgeId', fridge.getFridge)
+router.get('/fridge/:name', fridge.getFridge)
 router.delete('/fridge/:fridgeId', fridge.deleteFridge)
 
 // Items Routes

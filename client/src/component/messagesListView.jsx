@@ -13,12 +13,13 @@ class MessageListView extends Component {
   }
 
   componentDidMount() {
-    this.props.fridge.id ? this.props.actions.fetchMessages(this.props.fridge.id) : null;
+    localStorage.getItem('fId') ? this.props.actions.fetchMessages(localStorage.getItem('fId')) : null;
   }
 
   
   render() {
-    const { messageList, messageFetched, messageFetching, username, fridge, actions } = this.props;
+    const { messageList, messageFetched, messageFetching, fridge, actions } = this.props;
+    let username = localStorage.getItem('name');
 
     const handleSubmit = () => {
       let inputMsg = document.getElementById('inputMsg');
@@ -26,11 +27,9 @@ class MessageListView extends Component {
       if (!inputMsg.value.match(/[a-z0-9_]/i) ) {
         alert('Please enter a valid message');
       } else {
-        console.log('im here');
-        console.log('input: ', inputMsg.value);
         this.props.actions.postMessages(fridge.id, username, inputMsg.value);
         inputMsg.value = '';
-        inputMsg1.value = '';
+        // inputMsg1.value = '';
       }
     }
 
