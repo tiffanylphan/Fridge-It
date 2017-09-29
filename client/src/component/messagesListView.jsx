@@ -24,12 +24,11 @@ class MessageListView extends Component {
       let inputMsg = document.getElementById('inputMsg');
       // let inputMsg1 = document.getElementById('inputMsg1');
       if (!inputMsg.value.match(/[a-z0-9_]/i) ) {
-      
         alert('Please enter a valid message');
       } else {
         console.log('im here');
         console.log('input: ', inputMsg.value);
-        this.props.actions.postMessages(1, 1, inputMsg.value); //(fridgeId, messageId)
+        this.props.actions.postMessages(fridge.id, username, inputMsg.value);
         inputMsg.value = '';
         inputMsg1.value = '';
       }
