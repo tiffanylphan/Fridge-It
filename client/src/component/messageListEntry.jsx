@@ -19,7 +19,7 @@ class MessageListEntry extends Component {
             <div style={style}>
               <Icon name="pin" />
             </div>
-            <Card.Header as='a'> user </Card.Header>
+            <Card.Header as='a'> {message.user} </Card.Header>
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
               {' '}
