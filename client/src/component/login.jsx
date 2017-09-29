@@ -17,6 +17,11 @@ class Login extends Component {
     this.props.actions.emailLogin(user.value, pw.value);
   }
 
+  // ["red","orange","yellow","olive","green","teal","blue",
+  // "violet","purple","pink","brown","grey","black","facebook","google plus",
+  // "instagram","linkedin","twitter","vk","youtube"]
+
+
   render() {
     return (
       <div className='login-form'>
@@ -25,6 +30,7 @@ class Login extends Component {
           body > div > div,
           body > div > div > div.login-form {
             height: 100%;
+            margin-top: 80px;
           }
         `}</style>
         <Grid
@@ -33,7 +39,7 @@ class Login extends Component {
           verticalAlign='middle'
         >
           <Grid.Column style={{ maxWidth: 500 }}>
-            <Header as='h2' color='olive' textAlign='center'>
+            <Header as='h2' color='teal' textAlign='center'>
               {/* <Image src='/logo.png' /> */}
               {' '}Log-in to your account
             </Header>
@@ -55,14 +61,14 @@ class Login extends Component {
                   type='password'
                 />
 
-                <Button color='olive' fluid size='large'
+                <Button color='teal' fluid size='large'
                   onClick={(e) => {
                     e.preventDefault();
                     this.emailSignin();
                   }}>Login</Button>
 
               </Segment>
-                <Button color='google plus' fluid size='large'
+                <Button color='facebook' fluid size='large'
                 onClick={() => this.props.actions.googleLogin()}>Log In with Google</Button>
             </Form>
             <Message>
