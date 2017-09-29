@@ -12,7 +12,7 @@ class Home extends Component {
 
   render() {
     return (
-    <Grid divided="verticaly">
+    <Grid divided="vertically">
       <Grid.Row columns={2} centered>
         <Grid.Column> 
           <Fridge />

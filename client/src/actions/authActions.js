@@ -11,6 +11,7 @@ export const googleLogin = () => {
         localStorage.setItem('name', name);
         localStorage.setItem('userid', user.uid);
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: name});
+        dispatch(push('/home'));
       })
       .catch(function(error) {
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});

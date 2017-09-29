@@ -9,7 +9,7 @@ const search = {
 
     console.log(temp.data);
 
-    res.send(temp.data);
+    res.status(200).send(temp.data);
 
     // unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients"
     //               + "?ingredients=" + ingredients.join(',') + '&fillIngredients=false'
