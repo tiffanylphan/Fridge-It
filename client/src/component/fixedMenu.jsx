@@ -21,8 +21,9 @@ const FixedMenu = ({ history }) => (
         <Menu fixed='top' size='large'>
           <Container>
             <Menu.Item as='a' href="/">
-              {/* <Link to="/">FRIDGE-IT</Link> */}
-              Fridge-It
+              <Link to="/">
+                Fridge-It
+              </Link>
             </Menu.Item>
             <Menu.Menu position='right'>
               <Menu.Item>
