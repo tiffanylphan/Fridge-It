@@ -32,10 +32,10 @@ class HomeView extends Component {
             <Menu fixed='top' size='large'>
               <Container>
                 <Menu.Item as='a' href="/home">
-                  Home
+                  <Link to="/home">Home</Link>
                 </Menu.Item>
                 <Menu.Item as='a' href="/search">
-                  Recipes
+                  <Link to="/search">Recipes</Link>
                 </Menu.Item>
                 <Menu.Menu position='right'>
                   <Menu.Item>
