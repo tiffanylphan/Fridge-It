@@ -34,9 +34,32 @@ class Fridge extends Component {
   }
 
   render() {
-    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
-    const { fridge, fridgeActions, itemActions, fetched, posted } = this.props;
-
+    const types = [
+      {
+        name: "produce", 
+        position: "top center"
+      }, 
+      {
+        name: "dairy", 
+        position: "top left"
+      },
+      {
+        name: "protein",
+        position: "left center"
+      },
+      {
+        name: "grains",
+        position: "top right"
+      }, 
+      {
+        name: "frozen",
+        position: "right center"
+      }, 
+      {
+        name: "misc",
+        position: "top left"
+      }
+    ]; 
     return (
       <div>
         <h3 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h3>
@@ -60,12 +83,13 @@ class Fridge extends Component {
         </div>
         <div className={styles.container}>
           {types.map(type => {
-              let filteredItems = this.filterItems(type);
+              let filteredItems = this.filterItems(type.name);
                 return (
                     <Popup
-                      trigger={<div className={styles[type]}>{type}</div>}
+                      trigger={<div className={styles[type.name]}>{type.name}</div>}
                       flowing
                       hoverable
+                      position={type.position}
                     >
                       <ItemListView actions={itemActions} type={type} items={filteredItems}/> 
                     </Popup>
