@@ -14,11 +14,10 @@ module.exports = {
   },
 
   postMessages: (req, res) => {
-    console.log('post message: ', req.body);
     messageInfo.create({
       messageText: req.body.data.messages,
       fridgeId: req.body.data.fridgeId,
-      userId: req.body.data.userId,
+      user: req.body.data.user,
     })
       .then((data) => {
         res.status(201).send(data);
@@ -31,7 +30,7 @@ module.exports = {
   updateMessages: (req, res) => {
     messageInfo.update({
       fridgeId: req.body.fridgeId,
-      userId: req.body.userId,
+      user: req.body.user,
       messageText: req.body.messageText,
       like: req.body.like,
     },
