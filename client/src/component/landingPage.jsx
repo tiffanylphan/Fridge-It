@@ -24,7 +24,6 @@ export default class LandingPage extends Component {
 
     return (
       <div>
-        <FixedMenu />
           <Segment
             inverted
             textAlign='center'
