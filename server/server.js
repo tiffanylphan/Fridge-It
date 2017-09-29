@@ -3,7 +3,6 @@ const parser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
-// const favicon = require('serve-favicon');
 require('dotenv').config();
 
 // File imports
@@ -20,7 +19,6 @@ app.use(morgan('dev'));
 app.use(cors());
 
 // Routes
-// app.use(favicon(path.join(__dirname, '..', 'client', 'public', 'favicon.ico')))
 app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.use('/api', routes);
 app.get('*', (req, res) => {
