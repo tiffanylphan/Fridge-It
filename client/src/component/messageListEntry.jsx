@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Message, Button, Comment, Form, Header } from 'semantic-ui-react';
+import { Icon, Button, Form, Card, Image } from 'semantic-ui-react';
 
 class MessageListEntry extends Component { 
   constructor(props) {
@@ -12,36 +12,38 @@ class MessageListEntry extends Component {
     const { message, deleteMessages, updateMessages } = this.props
     console.log(message.createdAt);
     return (
-      <Comment.Group>
-        <Comment>
-          <Comment.Content>
-            <Comment.Author as='a'> user </Comment.Author>
-            <Comment.Metadata>
+      <Card.Group>
+        <Card>
+          <Card.Content>
+            <Card.Header as='a'> user </Card.Header>
+            <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
               {' '}
               Time: {Math.abs(Number(message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[0]) - 7)}:{message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[1]}:{message.createdAt.split('T')[1].split('Z')[0].split('.')[0].split(':')[2]}
-            </Comment.Metadata>
-            <Comment.Text>
+            </Card.Meta>
+            <Card.Description>
               {message.messageText}
-            </Comment.Text>
-          </Comment.Content>
-        </Comment>
-
-          <button className="ui icon button" onClick={
-            () => {
-              let newLikes = message.like + 1;
-              const msg = {...message, like: newLikes};
-              updateMessages(msg)}
-          }> 
-            <i className="thumbs outline up icon">
-              {message.like}
-            </i>
-          </button>
-          <button className="ui icon button" onClick={() => deleteMessages(message.id)}>              
-            <i className="remove icon" />
-          </button>
-
-      </Comment.Group>
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+          <div className='ui two buttons'>
+            <Button onClick={
+              () => {
+                let newLikes = message.like + 1;
+                const msg = {...message, like: newLikes};
+                updateMessages(msg)}
+            }> 
+              <Icon name='thumbs outline up'> 
+                {message.like}
+              </Icon>
+            </Button>
+            <Button onClick={() => deleteMessages(message.id)}>              
+              <Icon name="remove icon" />
+            </Button>
+          </div>
+          </Card.Content>
+        </Card>
+      </Card.Group>
     ) 
   }
 }
