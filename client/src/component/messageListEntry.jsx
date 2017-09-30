@@ -26,6 +26,14 @@ class MessageListEntry extends Component {
         }
       } /> 
     )
+
+    const deleteButton = (
+      <Button onClick={() => {
+          deleteMessages(message.id)
+      }}>              
+        <Icon name="remove" />
+      </Button>
+    )
     
     return (
       <Card.Group>
@@ -53,9 +61,9 @@ class MessageListEntry extends Component {
                 })}
               </Popup.Content>
             </Popup>
-            <Button onClick={() => deleteMessages(message.id)}>              
-              <Icon name="remove" />
-            </Button>
+            {
+              message.user === localStorage.getItem('name') ? deleteButton : null
+            }
           </div>
           </Card.Content>
         </Card>
