@@ -49,7 +49,7 @@ class MessageListEntry extends Component {
             <Popup trigger={LikeView} basic>
               <Popup.Content>
                 {message.like.map(user => {
-                  return user !== ' ' ? <p>{user}</p> : null;
+                  return user !== ' ' ? <p>{user.split('@')[0]}</p> : null;
                 })}
               </Popup.Content>
             </Popup>
