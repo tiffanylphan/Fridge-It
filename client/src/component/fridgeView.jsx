@@ -92,5 +92,3 @@ const fridgeDispatch = (dispatch) => {
 };
 
 export default connect(fridgeState, fridgeDispatch)(Fridge); 
-
-
