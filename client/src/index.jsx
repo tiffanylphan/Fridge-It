@@ -8,7 +8,6 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk';
 import { createLogger as logger } from 'redux-logger';
 import promise from 'redux-promise-middleware';
-import { autoRehydrate } from 'redux-persist';
 
 import FridgeApp from './reducers';
 import App from './component/app.jsx';
@@ -17,12 +16,8 @@ import LandingPage from './component/landingPage.jsx';
 
 const history = createHistory();
 const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(history));
-const enhancers = compose(
-    middleware,
-    autoRehydrate(),
-    (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' || process.env.NODE_ENV !== 'production') ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
-);
-const store = createStore(FridgeApp, enhancers);
+
+const store = createStore(FridgeApp, middleware);
 
 DOMReact.render(
   <Provider store={store}>
