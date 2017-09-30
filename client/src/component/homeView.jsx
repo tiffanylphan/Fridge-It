@@ -31,20 +31,23 @@ class HomeView extends Component {
           <div>
             <Menu fixed='top' size='large'>
               <Container>
-                <Menu.Item as='a' href="/home">
-                  Home
+                <Menu.Item>
+                  <Link to="/home">
+                    <Button color={'blue'} content={'Home'} />
+                  </Link>
                 </Menu.Item>
-                <Menu.Item as='a' href="/search">
-                  Recipes
+                <Menu.Item>
+                  <Link to="/search">
+                    <Button color={'blue'} content={'Recipe'} />
+                  </Link>
                 </Menu.Item>
-                <Menu.Menu position='right'>
-                  <Menu.Item>
-                    <Button as='a' onClick={(e) => {
-                      e.preventDefault();
-                      this.props.actions.logoutUser();
-                      }}>Logout</Button>
-                  </Menu.Item>
-                </Menu.Menu>
+                <Menu.Item position={'right'} >
+                  <Button as='a' color={'blue'} content={'Logout'}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    this.props.actions.logoutUser();
+                    }} />
+                </Menu.Item>
               </Container>
             </Menu>
             <Route exact path="/home" render={() => {return <Home />}}/>

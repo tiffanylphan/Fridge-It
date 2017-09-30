@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-export function getFridge(id) {
+export function getFridge(name) {
   return function(dispatch) {
-    axios.get('/api/fridge/' + id)
+    axios.get('/api/fridge/' + name)
       .then(({ data }) => {
-        dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data})
+        localStorage.setItem('fId', data[0].id);
+        dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data[0]});
       })
       .catch(err => { 
-        dispatch({type: 'FETCH_FRIDGE_REJECTED', payload: err})
+        dispatch({type: 'FETCH_FRIDGE_REJECTED', payload: err});
       })
   }
 }

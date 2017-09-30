@@ -12,9 +12,10 @@ class itemAddition extends Component {
     super(props);
   }
   
-  
   render() {
+    const { itemActions, fridge } = this.props;
     let type = '';
+    let username = localStorage.getItem('name');
     
     const handleSubmit = () => {
       const item = {};
@@ -24,8 +25,9 @@ class itemAddition extends Component {
       let qty = document.getElementById('inputQty');
       item.quantity = qty.value;
       item.type = type;
+      item.user = username;
       console.log('item being created', item);
-      this.props.itemActions.addItem(item, 1); //change 1 to fridgeId
+      itemActions.addItem(item, fridge.id);
       name = '';
       qty = '';
       type = '';

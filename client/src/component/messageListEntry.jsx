@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { Icon, Button, Form, Card, Image } from 'semantic-ui-react';
 
 class MessageListEntry extends Component { 
@@ -12,6 +11,7 @@ class MessageListEntry extends Component {
     const style = {
       textAlign: "right",
     }
+    
     return (
       <Card.Group>
         <Card>
@@ -19,7 +19,7 @@ class MessageListEntry extends Component {
             <div style={style}>
               <Icon name="pin" />
             </div>
-            <Card.Header as='a'> user </Card.Header>
+            <Card.Header as='a'> {message.user} </Card.Header>
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
               {' '}

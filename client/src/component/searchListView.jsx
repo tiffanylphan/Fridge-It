@@ -16,7 +16,7 @@ class SearchListView extends Component {
     const ingredientList = ingredients.map(ingredient => {
       return ingredient.name;
     });
-    
+
     // DO NOT UNCOMMENT FOR REST OF THE DAY! IT WORKS THOUGH!
     if(ingredientsFetched && !recipeFetched) {
       ingredientList.length > 0 ? actions.fetchRecipes(ingredientList) : null;

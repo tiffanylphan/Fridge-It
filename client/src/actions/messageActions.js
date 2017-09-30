@@ -12,14 +12,14 @@ export const fetchMessages = (fridgeId) => {
   };
 };
  
-export const postMessages = (fridgeId, userId, messages) => {
+export const postMessages = (fridgeId, username, messages) => {
   return function(dispatch) {
     axios.post('/api/allMessages', {
       data: {
         messages: messages,
         like: 0,
         fridgeId: fridgeId,
-        userId: userId,
+        user: username,
       }
     })
     .then((response) => {
@@ -35,7 +35,6 @@ export const deleteMessages = (messageId) => {
   return function(dispatch) {
     axios.delete('/api/allMessages/' + messageId)
     .then((response) => {
-      console.log('delete payload: ', response.data);
       dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
     })
     .catch((err) => {
@@ -49,7 +48,7 @@ export const updateMessages = (msg) => {
     axios.patch('/api/allMessages/' + msg.id, {
       like: msg.like,
       fridgeId: msg.fridgeId,
-      userId: msg.userId,
+      user: msg.username,
       messageText: msg.messageText
     })
     .then((response) => {

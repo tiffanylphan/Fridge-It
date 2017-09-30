@@ -3,15 +3,9 @@ require('dotenv').config();
 
 const sequelize = new Sequelize(process.env.DB_URL);
 
-const Users = sequelize.define('user', {
-  name: {
-    type: Sequelize.STRING
-  }
-})
-
 const Fridge = sequelize.define('fridge', {
   users: {
-    type: Sequelize.ARRAY({type: Sequelize.INTEGER})
+    type: Sequelize.ARRAY({type: Sequelize.STRING})
   },
   name: {
     type: Sequelize.STRING
@@ -20,14 +14,21 @@ const Fridge = sequelize.define('fridge', {
 
 const FridgeItems = sequelize.define('fridgeItem', {
   name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   quantity: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    allowNull: false,
   },
   type: {
-    type: Sequelize.STRING
-  }
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  user: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 })
 
 const MessageInfo = sequelize.define('messageInfo', {
@@ -36,6 +37,10 @@ const MessageInfo = sequelize.define('messageInfo', {
   },
   like: {
     type: Sequelize.INTEGER
+  },
+  user: {
+    type: Sequelize.STRING,
+    allowNull: false,
   }
 })
 
@@ -45,13 +50,6 @@ Fridge.hasMany(FridgeItems, {foreignKey: 'fridgeId', allowNull: true, onDelete: 
 MessageInfo.belongsTo(Fridge, {foreignKey: 'fridgeId', allowNull: true, onDelete: 'CASCADE'});
 Fridge.hasMany(MessageInfo, {foreignKey: 'fridgeId', allowNull: true, onDelete: 'CASCADE'});
 
-MessageInfo.belongsTo(Users, {foreignKey: 'userId', allowNull: false, onDelete: 'CASCADE'});
-Users.hasMany(MessageInfo, {foreignKey: 'userId', allowNull: false, onDelete: 'CASCADE'});
-
-FridgeItems.belongsTo(Users, {foreignKey: 'userId', allowNull: false, onDelete: 'CASCADE'});
-Users.hasMany(FridgeItems, {foreignKey: 'userId', allowNull: false, onDelete: 'CASCADE'});
-
-module.exports.users = Users;
 module.exports.fridge = Fridge;
 module.exports.fridgeItems = FridgeItems;
 module.exports.messageInfo = MessageInfo;

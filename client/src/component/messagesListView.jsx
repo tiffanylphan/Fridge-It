@@ -13,28 +13,25 @@ class MessageListView extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.fetchMessages(1); // DONT FORGET TO EDIT OUT THE 1 (fridgeId)
+    localStorage.getItem('fId') ? this.props.actions.fetchMessages(localStorage.getItem('fId')) : null;
   }
 
   
   render() {
+    const { messageList, messageFetched, messageFetching, fridge, actions } = this.props;
+    let username = localStorage.getItem('name');
+
     const handleSubmit = () => {
       let inputMsg = document.getElementById('inputMsg');
       // let inputMsg1 = document.getElementById('inputMsg1');
       if (!inputMsg.value.match(/[a-z0-9_]/i) ) {
-      
         alert('Please enter a valid message');
       } else {
-        console.log('im here');
-        console.log('input: ', inputMsg.value);
-        this.props.actions.postMessages(1, 1, inputMsg.value); //(fridgeId, messageId)
+        this.props.actions.postMessages(fridge.id, username, inputMsg.value);
         inputMsg.value = '';
-        inputMsg1.value = '';
+        // inputMsg1.value = '';
       }
     }
-
-    
-    const { messageList, messageFetched, messageFetching, actions } = this.props;
 
     // if (messageList.length > 0) {
       // console.log('view before/after reducer: ', messageList);
@@ -92,11 +89,12 @@ class MessageListView extends Component {
 
 const mapState = (store) => {
   return {
-    fridgeId: store.fridgeId, // TODO: update with correct prop name
+    fridge: store.fridge.fridge,
     messageList: store.message.messages,
     messageFetched: store.message.fetched,
     messageFetching: store.message.fetching,
     messageError: store.message.error,
+    username: store.auth.username,
   }
 };
 

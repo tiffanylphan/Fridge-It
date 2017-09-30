@@ -6,7 +6,6 @@ module.exports = {
       where: {fridgeId: req.params.id}
     })
       .then(data => {
-        console.log('i am working');
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -15,11 +14,10 @@ module.exports = {
   },
 
   postMessages: (req, res) => {
-    console.log('post message: ', req.body);
     messageInfo.create({
       messageText: req.body.data.messages,
       fridgeId: req.body.data.fridgeId,
-      userId: req.body.data.userId,
+      user: req.body.data.user,
     })
       .then((data) => {
         res.status(201).send(data);
@@ -32,7 +30,7 @@ module.exports = {
   updateMessages: (req, res) => {
     messageInfo.update({
       fridgeId: req.body.fridgeId,
-      userId: req.body.userId,
+      user: req.body.user,
       messageText: req.body.messageText,
       like: req.body.like,
     },
@@ -41,16 +39,7 @@ module.exports = {
       returning: true,
     })
       .then((data) => {
-        // data.updateAttributes({
-        //   messageText: req.body.messageText 
-        // }) 
-        //   .then((updated) => {
-        //     res.status(202).send({id: updated.id, message: updated.messageText});
-        //   })
-        //   .catch((err) => {
-        //     res.status(400).send(err);
-        //   })
-      res.status(202).send(data);
+        res.status(202).send(data);
       })
       .catch((err) => {
         res.status(500).send(err);

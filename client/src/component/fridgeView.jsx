@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Popup, Card } from 'semantic-ui-react';
+import { Popup, Card, Button } from 'semantic-ui-react';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
@@ -15,9 +15,9 @@ class Fridge extends Component {
     this.filterItems = this.filterItems.bind(this);
   }
   
-  componentDidMount() {
-    this.props.fridgeActions.getFridge(1); // DONT FORGET TO EDIT OUT THE 1
-    this.props.itemActions.getItems(1); // DONT FORGET TO EDIT OUT THE 1
+  componentWillMount() {
+    this.props.fridgeActions.getFridge(localStorage.getItem('name'));
+    localStorage.getItem('fId') ? this.props.itemActions.getItems(localStorage.getItem('fId')) : null;
   }
 
   filterItems(type) {
@@ -29,12 +29,30 @@ class Fridge extends Component {
   }
 
   render() {
-    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"]; 
+    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
+    const { fridge, fridgeActions, itemActions, fetched, posted } = this.props;
+    let username = localStorage.getItem('name');
+
     return (
       <div>
         <h3 className='ui dividing header'>Fridge</h3>
         <div>
-          <ItemAddition />
+          {(posted || fridge.id) ? <ItemAddition /> : 
+            <Button content={'Create a Fridge'} color={'blue'}
+            onClick={(e) => {
+              e.preventDefault();
+
+              const userArray = [];
+              userArray.push(username);
+
+              const fridgeObj = {
+                users: userArray,
+                name: username,
+              }
+
+              this.props.fridgeActions.addFridge(fridgeObj);
+            }}
+            />}
         </div>
         <div className='wrapper'>
           {types.map(type => {
@@ -46,7 +64,7 @@ class Fridge extends Component {
                       flowing
                       hoverable
                     >
-                      <ItemListView actions={this.props.itemActions} type={type} items={filteredItems}/> 
+                      <ItemListView actions={itemActions} type={type} items={filteredItems}/> 
                     </Popup>
                   </div>
                 )
@@ -59,8 +77,10 @@ class Fridge extends Component {
 
 const fridgeState = (store) => {
   return {
+    username: store.auth.username,
     fridge: store.fridge.fridge,
-    items: store.items.items
+    items: store.items.items,
+    posted: store.fridge.posted
   }
 }
 

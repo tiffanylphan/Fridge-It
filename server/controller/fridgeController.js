@@ -15,7 +15,7 @@ module.exports = {
   },
   getFridge: (req, res) => {
     Fridge.findAll({
-      where: {id: req.params.fridgeId}
+      where: {name: req.params.name}
     })
     .then((data) => {
       res.send(data);
