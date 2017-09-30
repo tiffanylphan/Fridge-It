@@ -16,11 +16,11 @@ class MessageListEntry extends Component {
       <Button icon='thumbs outline up'
       onClick={
         () => {
-          if (!message.like.includes(message.user)) {
-            const msg = {...message, like: [...message.like, message.user]};
+          if (!message.like.includes(localStorage.getItem('name'))) {
+            const msg = {...message, like: [...message.like, localStorage.getItem('name')]};
             updateMessages(msg)
           } else {
-            message.like.splice(message.like.indexOf(message.user), 1);
+            message.like.splice(message.like.indexOf(localStorage.getItem('name')), 1);
             updateMessages(message)
           }
         }
