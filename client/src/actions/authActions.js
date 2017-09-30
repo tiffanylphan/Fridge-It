@@ -46,6 +46,7 @@ export const logoutUser = () => {
         localStorage.removeItem('visitorId');
         dispatch({type: 'USER_LOGOUT_FULFILLED'});
         dispatch(push('/'));
+        location.reload();
       })
       .catch((error) => {
         alert(error.message);        
