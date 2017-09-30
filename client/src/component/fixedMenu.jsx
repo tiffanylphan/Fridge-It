@@ -18,22 +18,27 @@ const FixedMenu = ({ history }) => (
   <Router history={history}>
     <div>
       <div>
-        <Menu fixed='top' size='large'>
+        <Menu fixed='top' size='large' id='navbar'>
           <Container>
+          <style>{
+            `#navbar {
+              background-color: #2185d0;
+            }
+          `}</style>
             <Menu.Item>
               <Link to="/">
-                <Button content={'Fridge-It'} color={'blue'} />
+                <Button content={'Fridge-It'} color={'blue'} size={'huge'}/>
               </Link>
             </Menu.Item>
             <Menu.Menu position='right'>
               <Menu.Item>
                 <Link to="/login">
-                  <Button content={'Login'} color={'blue'} />
+                  <Button content={'Login'} color={'blue'} size={'large'}/>
                 </Link>
               </Menu.Item>
               <Menu.Item>
                 <Link to="/signup">
-                  <Button content={"Signup"} color={'blue'} />
+                  <Button content={"Signup"} color={'blue'} size={'large'}/>
                 </Link>
               </Menu.Item>
             </Menu.Menu>

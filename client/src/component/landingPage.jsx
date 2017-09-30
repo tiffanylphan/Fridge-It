@@ -27,18 +27,29 @@ class LandingPage extends Component {
     return (
       <div>
           <Segment
+            id='landingPage'
             inverted
             textAlign='center'
             style={{ minHeight: 700, padding: '1em 0em' }}
             vertical
           >
 
-            <Container text>
+            <Container text >
+              <style>{
+                `#landingPage {
+                  margin-top: 40px;
+                  background-image: url('http://www.oversixty.com.au/media/3589/full-fridge.jpg');
+                  background-size:contain;
+                  background-position:center;
+                  background-repeat: no-repeat;
+                  background-color: white;
+                }
+              `}</style>
               <Header
                 as='h1'
                 content='Fridge-It'
                 inverted
-                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em' }}
+                style={{ fontSize: '4em', fontWeight: 'normal', marginBottom: 0, marginTop: '3em', color: 'white' }}
               />
               <Header
                 as='h2'
