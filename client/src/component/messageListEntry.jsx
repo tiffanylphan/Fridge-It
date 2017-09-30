@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button, Form, Card, Image } from 'semantic-ui-react';
+import { Icon, Button, Form, Card, Image, Popup } from 'semantic-ui-react';
 
 class MessageListEntry extends Component { 
   constructor(props) {
@@ -11,6 +11,21 @@ class MessageListEntry extends Component {
     const style = {
       textAlign: "right",
     }
+
+    const LikeView = (
+      <Button icon='thumbs outline up'
+      onClick={
+        () => {
+          if (!message.like.includes(message.user)) {
+            const msg = {...message, like: [...message.like, message.user]};
+            updateMessages(msg)
+          } else {
+            message.like.splice(message.like.indexOf(message.user), 1);
+            updateMessages(message)
+          }
+        }
+      } /> 
+    )
     
     return (
       <Card.Group>
@@ -31,21 +46,13 @@ class MessageListEntry extends Component {
           </Card.Content>
           <Card.Content extra>
           <div className='ui two buttons'>
-            <Button onClick={
-              () => {
-                if (!message.like.includes(message.user)) {
-                  const msg = {...message, like: [...message.like, message.user]};
-                  updateMessages(msg)
-                } else {
-                  message.like.splice(message.like.indexOf(message.user), 1);
-                  updateMessages(message)
-                }
-              }
-            }> 
-              <Icon name='thumbs outline up'> 
-                {message.like}
-              </Icon>
-            </Button>
+            <Popup trigger={LikeView} basic>
+              <Popup.Content>
+                {message.like.map(user => {
+                  return user !== ' ' ? <p>{user}</p> : null;
+                })}
+              </Popup.Content>
+            </Popup>
             <Button onClick={() => deleteMessages(message.id)}>              
               <Icon name="remove" />
             </Button>
