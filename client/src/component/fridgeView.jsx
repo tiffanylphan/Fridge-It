@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Popup, Card } from 'semantic-ui-react';
+import { Popup, Card, Button } from 'semantic-ui-react';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
@@ -38,7 +38,8 @@ class Fridge extends Component {
         <h3 className='ui dividing header'>Fridge</h3>
         <div>
           {(posted || fridge.id) ? <ItemAddition /> : 
-            <button onClick={(e) => {
+            <Button content={'Create a Fridge'} color={'blue'}
+            onClick={(e) => {
               e.preventDefault();
 
               const userArray = [];
@@ -51,7 +52,7 @@ class Fridge extends Component {
 
               this.props.fridgeActions.addFridge(fridgeObj);
             }}
-            >Create a Fridge</button>}
+            />}
         </div>
         <div className='wrapper'>
           {types.map(type => {
