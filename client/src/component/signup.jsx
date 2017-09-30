@@ -36,7 +36,6 @@ class Signup extends Component {
         >
           <Grid.Column style={{ maxWidth: 500 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              {/* <Image src='/logo.png' /> */}
               {' '}Sign Up
             </Header>
             <Form size='large'>
@@ -73,7 +72,6 @@ class Signup extends Component {
           </Grid.Column>
         </Grid>
       </div>
-
     )
   }
 };
@@ -83,4 +81,5 @@ const signupDispatch = (dispatch) => {
     actions: bindActionCreators(authActions, dispatch)
   }
 }
+
 export default connect(null, signupDispatch)(Signup);
