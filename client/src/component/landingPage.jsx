@@ -38,7 +38,7 @@ class LandingPage extends Component {
               <style>{
                 `#landingPage {
                   margin-top: 40px;
-                  background-image: url('http://www.oversixty.com.au/media/3589/full-fridge.jpg');
+                  background-image: url('https://greatist.com/sites/default/files/fridge-of-food.jpg');
                   background-size:contain;
                   background-position:center;
                   background-repeat: no-repeat;
@@ -104,7 +104,7 @@ class LandingPage extends Component {
             <Grid.Row textAlign='center'>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>"What a company"</Header>
-                <p style={{ fontSize: '1.33em' }}>The idea for Fridge-It was born out of Team TADA's</p>
+                <p style={{ fontSize: '1.33em' }}>The members of Team TADA are brilliant! <br/> I never knew I needed Fridge-It until I started using it!</p>
               </Grid.Column>
               <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                 <Header as='h3' style={{ fontSize: '2em' }}>"I'll never not use Fridge-It ever again!"</Header>
@@ -118,28 +118,28 @@ class LandingPage extends Component {
         </Segment>
         <Segment style={{ padding: '8em 0em' }} vertical>
           <Container text>
-            <Header as='h3' style={{ fontSize: '2em' }}>Breaking The Grid, Grabs Your Attention</Header>
+            <Header as='h3' style={{ fontSize: '2em' }}>More about Team TADA</Header>
             <p style={{ fontSize: '1.33em' }}>
-              Instead of focusing on content creation and hard work, we have learned how to master the art of doing
-              nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic
-              and worth your attention.
+              Team TADA was formed on September 22, 2017 and were inspired to make Fridge-It by Hack Reactor's fridge. 
+              They realized that the idea of keeping track of food was important for all students, thus
+              Fridge-It was born! 
             </p>
-            <Button as='a' size='large'>Read More</Button>
+            <Button as='a' href='https://github.com/TEAM-TADA' size='large'>Read More</Button>
             <Divider
               as='h4'
               className='header'
               horizontal
               style={{ margin: '3em 0em', textTransform: 'uppercase' }}
             >
-              <a href='#'>Case Studies</a>
+              <a href='https://github.com/TEAM-TADA'>Members</a>
             </Divider>
-            <Header as='h3' style={{ fontSize: '2em' }}>Did We Tell You About Our Bananas?</Header>
+            <Header as='h3' style={{ fontSize: '2em' }}>Members</Header>
             <p style={{ fontSize: '1.33em' }}>
-              Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but its really
-              true.
-              It took years of gene splicing and combinatory DNA research, but our bananas can really dance.
+              TADA is an acronym of the creators of this group: Tiffany Phan, Angie Tang, Daniel Chong and Aaron Liss.
+              <br/>The project owner of this app is Tiffany Phan.
+              <br/>The scrum master of this app is Daniel Chong. 
             </p>
-            <Button as='a' size='large'>I'm Still Quite Interested</Button>
+            <Button as='a' href="https://github.com/TEAM-TADA" size='large'>I'm Still Quite Interested</Button>
           </Container>
         </Segment>
         <Segment inverted vertical style={{ padding: '5em 0em' }}>
