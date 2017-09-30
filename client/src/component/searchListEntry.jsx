@@ -1,16 +1,18 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 
 const SearchListEntry = ({ recipe }) => {
   let url = (recipe.title).split(' ').join('-');
 
   return (
-    <Card raised image={recipe.image}
-          fluid={false}
-          header={recipe.title}
+    <Card centered raised color={'blue'}
+          fluid={true}
           href={"https://spoonacular.com/" + url + '-' + recipe.id} 
           target="_blank"
-    />
+    >
+      <Card.Header content={recipe.title} />
+      <Image src={recipe.image} height={200} />
+    </Card>
   );
 };
 
