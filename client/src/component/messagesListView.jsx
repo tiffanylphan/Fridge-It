@@ -59,6 +59,7 @@ class MessageListView extends Component {
 const mapState = (store) => {
   return {
     fridge: store.fridge.fridge,
+    fridgePosted: store.fridge.posted,
     messageList: store.message.messages,
     messageFetched: store.message.fetched,
     messageFetching: store.message.fetching,
