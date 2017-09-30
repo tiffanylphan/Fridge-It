@@ -13,7 +13,10 @@ class MessageListView extends Component {
   }
 
   componentDidMount() {
-    localStorage.getItem('fId') ? this.props.actions.fetchMessages(localStorage.getItem('fId')) : null;
+    let state = this;
+    setTimeout(() => {
+      state.props.actions.fetchMessages(localStorage.getItem('fId'));
+    }, 500);
   }
 
   
@@ -60,6 +63,7 @@ const mapState = (store) => {
   return {
     fridge: store.fridge.fridge,
     fridgePosted: store.fridge.posted,
+    fridgeFetched: store.fridge.fetched,
     messageList: store.message.messages,
     messageFetched: store.message.fetched,
     messageFetching: store.message.fetching,
