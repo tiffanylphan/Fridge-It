@@ -19,7 +19,8 @@ const history = createHistory();
 const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(history));
 const enhancers = compose(
     middleware,
-    autoRehydrate()
+    autoRehydrate(),
+    (typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' || process.env.NODE_ENV !== 'production') ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f,
 );
 const store = createStore(FridgeApp, enhancers);
 
