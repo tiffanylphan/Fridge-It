@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Popup, Card, Button } from 'semantic-ui-react';
+import { Popup, Card, Button, Input } from 'semantic-ui-react';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
@@ -53,6 +53,19 @@ class Fridge extends Component {
               this.props.fridgeActions.addFridge(fridgeObj);
             }}
             />}
+          <Button content={'Join a Fridge'} color={'blue'}
+            onClick={(e) => {
+              e.preventDefault();
+              this.props.fridgeActions.getFridge(document.getElementById('inputFid').value)
+              document.getElementById('inputFid').value = '';
+
+            }}/>
+          <Input
+            id="inputFid"
+            size='tiny'
+            placeholder='Fridge ID'
+            type='text'
+          />        
         </div>
         <div className='wrapper'>
           {types.map(type => {
