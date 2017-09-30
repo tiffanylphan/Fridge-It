@@ -33,9 +33,14 @@ class MessageListEntry extends Component {
           <div className='ui two buttons'>
             <Button onClick={
               () => {
-                let newLikes = message.like + 1;
-                const msg = {...message, like: newLikes};
-                updateMessages(msg)}
+                if (!message.like.includes(message.user)) {
+                  const msg = {...message, like: [...message.like, message.user]};
+                  updateMessages(msg)
+                } else {
+                  message.like.splice(message.like.indexOf(message.user), 1);
+                  updateMessages(message)
+                }
+              }
             }> 
               <Icon name='thumbs outline up'> 
                 {message.like}
