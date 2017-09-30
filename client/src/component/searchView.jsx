@@ -11,6 +11,13 @@ class SearchView extends Component {
     super(props);
   };
 
+  componentDidMount() {
+    let items = document.getElementsByClassName("item nav-item");
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].text === "Recipes") items[i].className = "item nav-item active";
+    };
+  }
+
   render() {
     let { actions, ingredients, recipeList } = this.props;
 

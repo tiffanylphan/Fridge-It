@@ -31,6 +31,7 @@ class HomeView extends Component {
           <div>
             <Menu fixed='top' size='large'>
               <Container>
+<<<<<<< HEAD
                 <Menu.Item>
                   <Link to="/home">
                     <Button color={'blue'} content={'Home'} />
@@ -47,6 +48,21 @@ class HomeView extends Component {
                     e.preventDefault();
                     this.props.actions.logoutUser();
                     }} />
+=======
+<<<<<<< HEAD
+                <Menu.Item as='a' href="/home">
+                  Home
+                </Menu.Item>
+                <Menu.Item as='a' href="/search">
+                  Recipes
+=======
+                <Menu.Item as='a' className="nav-item" >
+                  <Link to="/home">Home</Link>
+                </Menu.Item>
+                <Menu.Item as='a' className="nav-item">
+                  <Link to="/search">Recipes</Link>
+>>>>>>> [add] Attempting switches to active
+>>>>>>> [add] Attempting switches to active
                 </Menu.Item>
               </Container>
             </Menu>
