@@ -19,7 +19,7 @@ const fridgeReducer = (state=initialState, action) => {
       return Object.assign({}, state, {
         fetching: false,
         fetched: true,
-        fridge: action.payload
+        fridge: Object.assign(action.payload)
       })
       break; 
     }
