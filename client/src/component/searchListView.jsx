@@ -22,7 +22,7 @@ class SearchListView extends Component {
       ingredientList.length > 0 ? actions.fetchRecipes(ingredientList) : null;
     }
 
-    if(recipeList.length === 0) {
+    if(ingredientList.length === 0) {
       return (
         <div>
           Add Ingredients into your Fridge!
@@ -34,13 +34,16 @@ class SearchListView extends Component {
       for(let i = 0; i < 3; i++) {
         top3.push(recipeList[i]);
       };
-  
+
       return (
-        <Card.Group itemsPerRow={3}>
-          {top3.map(recipe => (
-            <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
-          ))}
-        </Card.Group>
+        <div>
+          <h3 className='ui dividing header'>Recommended Recipes</h3>
+          <Card.Group itemsPerRow={3}>
+            {top3.map(recipe => {
+              return <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
+            })}
+          </Card.Group>
+        </div>
       );
     }
   }
@@ -54,6 +57,7 @@ const mapState = (store) => {
     recipeFetched: store.search.fetched,
     recipeFetching: store.search.fetching,
     recipeError: store.search.error,
+    fridgePosted: store.fridge.posted
   }
 };
 
