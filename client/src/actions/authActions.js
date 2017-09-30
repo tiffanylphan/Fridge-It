@@ -63,7 +63,7 @@ export const emailSignUp = (email, pw) => {
         dispatch(push('/home'));
       })
       .catch(function(error) {
-        alert(errorMsgs[error.message]);        
+        alert(error.message);        
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
       });
   }
