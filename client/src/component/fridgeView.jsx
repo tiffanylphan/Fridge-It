@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Popup, Card, Button, Input } from 'semantic-ui-react';
+import { Popup, Card, Button, Input, Form } from 'semantic-ui-react';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
@@ -15,9 +15,12 @@ class Fridge extends Component {
     this.filterItems = this.filterItems.bind(this);
   }
   
-  componentWillMount() {
+  componentDidMount() {
     this.props.fridgeActions.getFridge(localStorage.getItem('visitorId') || localStorage.getItem('name'));
-    localStorage.getItem('fId') ? this.props.itemActions.getItems(localStorage.getItem('fId')) : null;
+    let state = this;
+    setTimeout(() => {
+      state.props.itemActions.getItems(localStorage.getItem('fId'));
+    }, 500);
   }
 
   filterItems(type) {
@@ -31,42 +34,29 @@ class Fridge extends Component {
   render() {
     const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
     const { fridge, fridgeActions, itemActions, fetched, posted } = this.props;
-    let username = localStorage.getItem('name');
 
     return (
       <div>
-        <h3 className='ui dividing header'>Fridge</h3>
+        <h3 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h3>
         <div>
-          {(posted || fridge.id) ? <ItemAddition /> : 
-            <Button content={'Create a Fridge'} color={'blue'}
-            onClick={(e) => {
-              e.preventDefault();
-
-              const userArray = [];
-              userArray.push(username);
-
-              const fridgeObj = {
-                users: userArray,
-                name: username,
-              }
-
-              this.props.fridgeActions.addFridge(fridgeObj);
-            }}
-            />}
-          <Button content={'Join a Fridge'} color={'blue'}
-            onClick={(e) => {
-              e.preventDefault();
-              this.props.fridgeActions.getFridge(document.getElementById('inputFid').value);
-              localStorage.setItem('visitorId', document.getElementById('inputFid').value);
-              document.getElementById('inputFid').value = '';
-            }}/>
-          <Input
-            id="inputFid"
-            size='tiny'
-            placeholder='Fridge ID'
-            type='text'
-          />        
+          <ItemAddition />
+          <Form.Group inline>
+            <Form.Input 
+              id="inputFid"
+              placeholder='Fridge ID'
+            />
+            <Form.Button content={'Switch Fridge'} color={'blue'}
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.fridgeActions.getFridge(document.getElementById('inputFid').value);
+                localStorage.setItem('visitorId', document.getElementById('inputFid').value);
+                location.reload();
+                document.getElementById('inputFid').value = '';
+              }}
+            />
+          </Form.Group>
         </div>
+        <br/>
         <div className='wrapper'>
           {types.map(type => {
               let filteredItems = this.filterItems(type);
@@ -93,7 +83,8 @@ const fridgeState = (store) => {
     username: store.auth.username,
     fridge: store.fridge.fridge,
     items: store.items.items,
-    posted: store.fridge.posted
+    posted: store.fridge.posted,
+    fetched: store.fridge.fetched
   }
 }
 
