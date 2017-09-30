@@ -42,11 +42,7 @@ class MessageListEntry extends Component {
             <div style={style}>
               <Icon name="pin" />
             </div>
-<<<<<<< HEAD
             <Card.Header> {message.user.split('@')[0]} </Card.Header>
-=======
-            <Card.Header content={(message.user).split('@')[0]} />
->>>>>>> [Update] Update to show username if email
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
               {' '}
