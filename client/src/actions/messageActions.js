@@ -17,7 +17,7 @@ export const postMessages = (fridgeId, username, messages) => {
     axios.post('/api/allMessages', {
       data: {
         messages: messages,
-        like: 0,
+        like: [' '],
         fridgeId: fridgeId,
         user: username,
       }
@@ -48,7 +48,7 @@ export const updateMessages = (msg) => {
     axios.patch('/api/allMessages/' + msg.id, {
       like: msg.like,
       fridgeId: msg.fridgeId,
-      user: msg.username,
+      user: msg.user,
       messageText: msg.messageText
     })
     .then((response) => {

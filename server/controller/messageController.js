@@ -18,6 +18,7 @@ module.exports = {
       messageText: req.body.data.messages,
       fridgeId: req.body.data.fridgeId,
       user: req.body.data.user,
+      like: req.body.data.like
     })
       .then((data) => {
         res.status(201).send(data);

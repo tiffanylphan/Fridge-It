@@ -36,7 +36,7 @@ const MessageInfo = sequelize.define('messageInfo', {
     type: Sequelize.STRING
   },
   like: {
-    type: Sequelize.INTEGER
+    type: Sequelize.ARRAY({type: Sequelize.STRING})
   },
   user: {
     type: Sequelize.STRING,
