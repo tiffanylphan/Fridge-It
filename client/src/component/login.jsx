@@ -9,14 +9,14 @@ class Login extends Component {
   constructor (props) {
     super(props);
   }
-
+  
   emailSignin() {
     let user = document.getElementById('inputNM');
     let pw = document.getElementById('inputPW');
-
+    
     this.props.actions.emailLogin(user.value, pw.value);
   }
-  
+    
   render() {
     return (
       <div className='login-form'>
@@ -32,11 +32,10 @@ class Login extends Component {
         <Grid
           textAlign='center'
           style={{ height: '100%' }}
-          verticalAlign='middle'
-        >
+          verticalAlign='middle'>
+          
           <Grid.Column style={{ maxWidth: 500 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              {/* <Image src='/logo.png' /> */}
               {' '}Log-in to your account
             </Header>
             <Form size='large'>
