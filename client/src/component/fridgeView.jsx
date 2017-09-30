@@ -16,7 +16,7 @@ class Fridge extends Component {
   }
   
   componentWillMount() {
-    this.props.fridgeActions.getFridge(localStorage.getItem('name'));
+    this.props.fridgeActions.getFridge(localStorage.getItem('visitorId') || localStorage.getItem('name'));
     localStorage.getItem('fId') ? this.props.itemActions.getItems(localStorage.getItem('fId')) : null;
   }
 
@@ -56,9 +56,9 @@ class Fridge extends Component {
           <Button content={'Join a Fridge'} color={'blue'}
             onClick={(e) => {
               e.preventDefault();
-              this.props.fridgeActions.getFridge(document.getElementById('inputFid').value)
+              this.props.fridgeActions.getFridge(document.getElementById('inputFid').value);
+              localStorage.setItem('visitorId', document.getElementById('inputFid').value);
               document.getElementById('inputFid').value = '';
-
             }}/>
           <Input
             id="inputFid"
