@@ -34,6 +34,7 @@ class Fridge extends Component {
   }
 
   render() {
+    let { fridge, fridgeActions, itemActions } = this.props;
     const types = [
       {
         name: "produce", 
@@ -79,7 +80,7 @@ class Fridge extends Component {
             <Form.Button content={'Switch Fridge'} color={'blue'}
               onClick={(e) => {
                 e.preventDefault();
-                this.props.fridgeActions.getFridge(document.getElementById('inputFid').value);
+                fridgeActions.getFridge(document.getElementById('inputFid').value);
                 localStorage.setItem('visitorId', document.getElementById('inputFid').value);
                 location.reload();
                 document.getElementById('inputFid').value = '';
