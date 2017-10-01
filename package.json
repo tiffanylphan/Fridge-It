@@ -6,8 +6,9 @@
   "scripts": {
     "start": "node server/server.js",
     "compile": "webpack --watch",
+    "build": "webpack -d",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm run compile"
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
