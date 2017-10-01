@@ -25,7 +25,7 @@ class SearchListView extends Component {
     if(ingredientList.length === 0) {
       return (
         <div>
-          <h3 className='ui dividing header'>Recommended Recipes</h3>
+          <h2 className='ui dividing header'>Recommended Recipes</h2>
           <Message>
             <Message.Header content={'No Recipes to Show'} />
           <p style={{textAlign: 'center'}}>Add ingredients to the Fridge if you'd like to see some recipes!</p>
@@ -41,7 +41,7 @@ class SearchListView extends Component {
 
       return (
         <div>
-          <h3 className='ui dividing header'>Recommended Recipes</h3>
+          <h2 className='ui dividing header'>Recommended Recipes</h2>
           <Card.Group itemsPerRow={3}>
             {top3.map(recipe => {
               return <SearchListEntry {...actions} key={recipe.id} recipe={recipe} />
