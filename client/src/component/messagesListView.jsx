@@ -34,7 +34,7 @@ class MessageListView extends Component {
 
       return (
         <div>
-          <h3 className="ui dividing header">Message Board</h3>
+          <h2 className="ui dividing header">Message Board</h2>
           <Form>
             <Form.Group inline>
               <Form.Input 
@@ -52,7 +52,7 @@ class MessageListView extends Component {
           </Form>
           {messageList.length > 0 ? messageList.map(message => (
             <MessageListEntry {...actions} key={message.id} message={message} />
-          )): 'Your message board is empty'}
+          )): <h3> 'Your message board is empty' </h3>}
         </div>
       )
   }

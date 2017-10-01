@@ -58,7 +58,7 @@ class MessageListEntry extends Component {
               <Popup.Content>
                 {message.like.length > 1 ? message.like.map(user => {
                   return user !== ' ' ? <p>{user.split('@')[0]}</p> : null;
-                }): 'no likes'}
+                }):'no likes yet'}
               </Popup.Content>
             </Popup>
             {

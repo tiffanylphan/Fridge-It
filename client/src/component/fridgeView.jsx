@@ -69,7 +69,7 @@ class Fridge extends Component {
     ]; 
     return (
       <div>
-        <h3 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h3>
+        <h2 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h2>
         <div>
           <ItemAddition />
           <Form.Group inline>
