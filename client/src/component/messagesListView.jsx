@@ -26,7 +26,7 @@ class MessageListView extends Component {
 
     const handleSubmit = () => {
       let inputMsg = document.getElementById('inputMsg');
-      if (inputMsg.value.match(/[a-z0-9_]/i) ) {
+      if (inputMsg.value.match(/[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]/i) ) {
         this.props.actions.postMessages(fridge.id, username, inputMsg.value);
         inputMsg.value = '';
       }
@@ -34,12 +34,11 @@ class MessageListView extends Component {
 
       return (
         <div>
-          <h3 className="ui dividing header">Messages</h3>
+          <h2 className="ui dividing header">Message Board</h2>
           <Form>
             <Form.Group inline>
               <Form.Input 
                 type="text"
-                label="Message:"
                 id="inputMsg"
                 placeholder="Enter message here"
               /> 
@@ -51,9 +50,9 @@ class MessageListView extends Component {
               />
             </Form.Group>
           </Form>
-          {messageList.map(message => (
+          {messageList.length > 0 ? messageList.map(message => (
             <MessageListEntry {...actions} key={message.id} message={message} />
-          ))}
+          )): <h3> 'Your message board is empty' </h3>}
         </div>
       )
   }

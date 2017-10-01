@@ -56,9 +56,9 @@ class MessageListEntry extends Component {
           <div className='ui two buttons'>
             <Popup trigger={LikeView} basic>
               <Popup.Content>
-                {message.like.map(user => {
+                {message.like.length > 1 ? message.like.map(user => {
                   return user !== ' ' ? <p>{user.split('@')[0]}</p> : null;
-                })}
+                }):'no likes yet'}
               </Popup.Content>
             </Popup>
             {
