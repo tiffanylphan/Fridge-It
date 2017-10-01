@@ -28,11 +28,3 @@ export function addFridge(fridge) {
   }
 }
 
-// export function deleteFridge(fridge) {
-//   return function(dispatch) {
-//     axios.delete('/fridge/:{fridge.id}') 
-//       .then(({ data }) => {
-//         dispath
-//       }
-//   }
-// }
