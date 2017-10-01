@@ -20,11 +20,11 @@ app.use(morgan('dev'));
 app.use(cors());
 
 // Routes
-app.use(express.static(path.resolve(__dirname, '../client/public')));
+app.use('/', express.static(path.resolve(__dirname, '../client/public')));
 app.use('/api', routes);
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../client/public/index.html'));
+// })
 
 // Server Initialization
 db.fridge.sync({force:true})
