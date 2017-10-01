@@ -39,7 +39,6 @@ class MessageListView extends Component {
             <Form.Group inline>
               <Form.Input 
                 type="text"
-                label="Message:"
                 id="inputMsg"
                 placeholder="Enter message here"
               /> 

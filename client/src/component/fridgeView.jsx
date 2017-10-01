@@ -72,21 +72,23 @@ class Fridge extends Component {
         <h3 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h3>
         <div>
           <ItemAddition />
-          <Form.Group inline>
-            <Form.Input 
-              id="inputFid"
-              placeholder='Fridge ID'
-            />
-            <Form.Button content={'Switch Fridge'} color={'blue'}
-              onClick={(e) => {
-                e.preventDefault();
-                fridgeActions.getFridge(document.getElementById('inputFid').value);
-                localStorage.setItem('visitorId', document.getElementById('inputFid').value);
-                location.reload();
-                document.getElementById('inputFid').value = '';
-              }}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group inline>
+              <Form.Input 
+                id="inputFid"
+                placeholder='Fridge ID'
+              />
+              <Form.Button content={'Switch fridge'}
+                onClick={(e) => {
+                  e.preventDefault();
+                  fridgeActions.getFridge(document.getElementById('inputFid').value);
+                  localStorage.setItem('visitorId', document.getElementById('inputFid').value);
+                  location.reload();
+                  document.getElementById('inputFid').value = '';
+                }}
+              />
+            </Form.Group>
+          </Form>
         </div>
         <div className={styles.container}>
           {types.map(type => {
