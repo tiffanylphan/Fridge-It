@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Card } from 'semantic-ui-react';
+import { Card, Message } from 'semantic-ui-react';
 
 import SearchListEntry from './searchListEntry.jsx';
 import * as searchActions from '../actions/searchActions.js';
@@ -25,7 +25,11 @@ class SearchListView extends Component {
     if(ingredientList.length === 0) {
       return (
         <div>
-          Add Ingredients into your Fridge!
+          <h3 className='ui dividing header'>Recommended Recipes</h3>
+          <Message>
+            <Message.Header content={'No Recipes to Show'} />
+          <p style={{textAlign: 'center'}}>Add ingredients to the Fridge if you'd like to see some recipes!</p>
+          </Message>
         </div>
       )
     } else {
