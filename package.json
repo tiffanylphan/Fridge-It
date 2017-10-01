@@ -47,10 +47,10 @@
     "semantic-ui-react": "^0.74.2",
     "sequelize": "^4.10.0",
     "unirest": "^0.5.1",
-    "webpack": "^3.6.0"
-  },
-  "devDependencies": {
+    "webpack": "^3.6.0",
     "css-loader": "^0.28.7",
     "style-loader": "^0.18.2"
+  },
+  "devDependencies": {
   }
 }
