@@ -28,40 +28,40 @@ class itemAddition extends Component {
       item.user = username;
       console.log('item being created', item);
       itemActions.addItem(item, fridge.id);
-      name = '';
-      qty = '';
+      name.value = '';
+      qty.value = '';
       type = '';
     }
     const options = [
       {
         key: 1, 
         text: "produce",
-        value: "produce"
+        value: "Produce"
       },
       {
         key: 2, 
         text: "dairy",
-        value: "dairy"
+        value: "Dairy"
       },
       {
         key: 3, 
         text: "protein",
-        value: "protein"
+        value: "Protein"
       },
       {
         key: 4, 
         text: "grains and starches",
-        value: "grains"
+        value: "Grains and starches"
       },
       {
         key: 5, 
         text: "frozen",
-        value: "frozen"
+        value: "Frozen"
       },
       {
         key: 6, 
         text: "miscellaneous",
-        value: "misc"
+        value: "Misc"
       }
     ]; 
 
@@ -93,6 +93,7 @@ class itemAddition extends Component {
               type = value;
             }}
           />
+
           <Form.Button 
            //width={1} 
             content='Go'/>

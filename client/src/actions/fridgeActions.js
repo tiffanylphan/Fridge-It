@@ -23,7 +23,7 @@ export function addFridge(fridge) {
         dispatch({type: 'POST_FRIDGE_FULFILLED', payload: data})
       })
       .catch(err => {
-        dispatch({type: 'POST_FRIDGE_REJECTED', payload: data})
+        dispatch({type: 'POST_FRIDGE_REJECTED', payload: err})
       })
   }
 }

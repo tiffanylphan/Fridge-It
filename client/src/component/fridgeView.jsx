@@ -39,32 +39,38 @@ class Fridge extends Component {
       {
         name: "produce", 
         position: "top center",
-        img: ''
+        img: '',
+        display: 'Produce'
       }, 
       {
         name: "dairy", 
         position: "top left",
-        img: ''
+        img: '',
+        display: 'Dairy'
       },
       {
         name: "protein",
         position: "left center",
-        img: ''
+        img: '',
+        display: 'Protein'
       },
       {
         name: "grains",
         position: "top right",
-        img: ''
+        img: '',
+        display: 'Grains'
       }, 
       {
         name: "frozen",
         position: "right center",
-        img: ''
+        img: '',
+        display: 'Frozen'
       }, 
       {
         name: "misc",
         position: "top left",
-        img: ''
+        img: '',
+        display: 'Misc'
       }
     ]; 
     return (
@@ -72,28 +78,34 @@ class Fridge extends Component {
         <h2 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h2>
         <div>
           <ItemAddition />
-          <Form.Group inline>
-            <Form.Input 
-              id="inputFid"
-              placeholder='Fridge ID'
-            />
-            <Form.Button content={'Switch Fridge'} color={'blue'}
-              onClick={(e) => {
-                e.preventDefault();
-                fridgeActions.getFridge(document.getElementById('inputFid').value);
-                localStorage.setItem('visitorId', document.getElementById('inputFid').value);
-                location.reload();
-                document.getElementById('inputFid').value = '';
-              }}
-            />
-          </Form.Group>
+          <Form>
+            <Form.Group inline>
+              <Form.Input 
+                id="inputFid"
+                placeholder='Fridge ID'
+              />
+              <Form.Button content={'Switch fridge'}
+                onClick={(e) => {
+                  e.preventDefault();
+                  fridgeActions.getFridge(document.getElementById('inputFid').value);
+                  localStorage.setItem('visitorId', document.getElementById('inputFid').value);
+                  location.reload();
+                  document.getElementById('inputFid').value = '';
+                }}
+              />
+            </Form.Group>
+          </Form>
         </div>
         <div className={styles.container}>
           {types.map(type => {
               let filteredItems = this.filterItems(type.name);
                 return (
                     <Popup
-                      trigger={<div className={styles[type.name]}></div>}
+                      trigger={<div className={styles[type.name]}>
+                          <div className='text'>
+                            {type.display}
+                          </div> 
+                        </div>}
                       flowing
                       hoverable
                       position={type.position}

@@ -36,7 +36,7 @@ class Login extends Component {
           
           <Grid.Column style={{ maxWidth: 500 }}>
             <Header as='h2' color='teal' textAlign='center'>
-              {' '}Log-in to your account
+              {' '}Log into your account
             </Header>
             <Form size='large'>
               <Segment stacked>
