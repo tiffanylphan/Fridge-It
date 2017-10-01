@@ -5,12 +5,14 @@ const SearchListEntry = ({ recipe }) => {
   let url = (recipe.title).split(' ').join('-');
 
   return (
-    <Card centered raised color={'blue'}
+    <Card centered raised
           fluid={true}
           href={"https://spoonacular.com/" + url + '-' + recipe.id} 
           target="_blank"
     >
-      <Card.Header content={recipe.title} />
+      <Card.Header textAlign={'center'}>
+        <h4 style={{color: 'black'}}>{recipe.title}</h4>
+      </Card.Header>
       <Image src={recipe.image} height={200} />
     </Card>
   );
