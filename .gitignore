@@ -3,7 +3,7 @@ node_modules
 semantic
 
 semantic.json
-.env
 firebase.json
+.env
 
 client/public/bundle.js
