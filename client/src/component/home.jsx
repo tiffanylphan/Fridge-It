@@ -14,10 +14,6 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    let items = document.getElementsByClassName("item nav-item");
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].text === "Home") items[i].className = "item nav-item active";
-    };
 
     this.props.actions.getFridge(localStorage.getItem('name'));
   }
