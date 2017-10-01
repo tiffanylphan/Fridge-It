@@ -9,6 +9,8 @@ import ItemAddition from './itemAddition.jsx';
 import * as fridgeActions from '../actions/fridgeActions.js';
 import * as itemActions from '../actions/itemActions.js';
 
+import styles from '../../public/fridge.css'
+
 class Fridge extends Component {
   constructor(props) {
     super(props);
@@ -32,9 +34,38 @@ class Fridge extends Component {
   }
 
   render() {
-    const types = ["produce", "dairy", "protein", "grains", "frozen", "misc"];
-    const { fridge, fridgeActions, itemActions, fetched, posted } = this.props;
-
+    const types = [
+      {
+        name: "produce", 
+        position: "top center",
+        img: ''
+      }, 
+      {
+        name: "dairy", 
+        position: "top left",
+        img: ''
+      },
+      {
+        name: "protein",
+        position: "left center",
+        img: ''
+      },
+      {
+        name: "grains",
+        position: "top right",
+        img: ''
+      }, 
+      {
+        name: "frozen",
+        position: "right center",
+        img: ''
+      }, 
+      {
+        name: "misc",
+        position: "top left",
+        img: ''
+      }
+    ]; 
     return (
       <div>
         <h3 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h3>
@@ -56,20 +87,18 @@ class Fridge extends Component {
             />
           </Form.Group>
         </div>
-        <br/>
-        <div className='wrapper'>
+        <div className={styles.container}>
           {types.map(type => {
-              let filteredItems = this.filterItems(type);
+              let filteredItems = this.filterItems(type.name);
                 return (
-                  <div className={type}>
                     <Popup
-                      trigger={<Card>{type}</Card>}
+                      trigger={<div className={styles[type.name]}></div>}
                       flowing
                       hoverable
+                      position={type.position}
                     >
                       <ItemListView actions={itemActions} type={type} items={filteredItems}/> 
                     </Popup>
-                  </div>
                 )
           })}
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon } from 'semantic-ui-react';
+import { Table, Icon, Card } from 'semantic-ui-react';
 
 const Item = (props) => {
   return (
