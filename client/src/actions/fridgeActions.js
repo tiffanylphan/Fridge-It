@@ -3,11 +3,11 @@ import axios from 'axios';
 export function getFridge(name) {
   return function(dispatch) {
     axios.get('/api/fridge/' + name)
-      .then(({ data }) => {
-        localStorage.setItem('fId', data[0].id);
-        dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data[0]});
+      .then((data) => {
+        localStorage.setItem('fId', data.data[0].id);
+        dispatch({type: 'FETCH_FRIDGE_FULFILLED', payload: data.data[0]});
       })
-      .catch(err => { 
+      .catch(err => {
         dispatch({type: 'FETCH_FRIDGE_REJECTED', payload: err});
       })
   }
