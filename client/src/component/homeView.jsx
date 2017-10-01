@@ -3,7 +3,7 @@ import { Router, Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
-import {Button, Menu, Container } from 'semantic-ui-react';
+import {Button, Menu, Container, Image } from 'semantic-ui-react';
 
 import Search from './searchView.jsx';
 import Home from './home.jsx';
@@ -19,6 +19,9 @@ class HomeView extends Component {
       return (
         <div>
         <style>{`
+          #bar {
+            background-color: #2185d0;
+          }
           body > div,
           body > div > div,
           body > div > div > div.home-form {
@@ -29,20 +32,23 @@ class HomeView extends Component {
         `}</style>
         <Router history={this.props.history}>
           <div>
-            <Menu fixed='top' size='large'>
+            <Menu fixed='top' size='large' id='bar'>
               <Container>
                 <Menu.Item>
+                  <img src="https://cdn0.iconfinder.com/data/icons/household-appliances-icons-set-cartoon-style/512/a672-512.png"/>
+                </Menu.Item>
+                <Menu.Item>
                   <Link to="/home">
-                    <Button color={'blue'} content={'Home'} />
+                    <Button color={'blue'} content={'Home'} size={'huge'}/>
                   </Link>
                 </Menu.Item>
                 <Menu.Item>
                   <Link to="/search">
-                    <Button color={'blue'} content={'Recipe'} />
+                    <Button color={'blue'} content={'Recipe'} size={'huge'}/>
                   </Link>
                 </Menu.Item>
                 <Menu.Item position={'right'} >
-                  <Button as='a' color={'blue'} content={'Logout'}
+                  <Button as='a' color={'blue'} content={'Logout'} size={'large'}
                   onClick={(e) => {
                     e.preventDefault();
                     this.props.actions.logoutUser();

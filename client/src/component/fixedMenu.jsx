@@ -26,8 +26,11 @@ const FixedMenu = ({ history }) => (
             }
           `}</style>
             <Menu.Item>
+              <img src="https://cdn0.iconfinder.com/data/icons/household-appliances-icons-set-cartoon-style/512/a672-512.png"/>
+            </Menu.Item>
+            <Menu.Item>
               <Link to="/">
-                <Button content={'Fridge-It'} color={'blue'} size={'huge'}/>
+                <Button content={'Fridge-It'} color={'blue'} size={'massive'}/>
               </Link>
             </Menu.Item>
             <Menu.Menu position='right'>
