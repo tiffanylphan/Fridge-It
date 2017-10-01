@@ -48,7 +48,8 @@ class HomeView extends Component {
                   </Link>
                 </Menu.Item>
                 <Menu.Item position={'right'} >
-                  <Button as='a' color={'blue'} content={'Logout'} size={'large'}
+                  <Button content={localStorage.getItem('name')} color={'blue'} size={'huge'} />
+                  <Button as='a' color={'blue'} content={'Logout'} size={'huge'}
                   onClick={(e) => {
                     e.preventDefault();
                     this.props.actions.logoutUser();
