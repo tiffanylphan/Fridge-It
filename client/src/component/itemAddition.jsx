@@ -28,8 +28,8 @@ class itemAddition extends Component {
       item.user = username;
       console.log('item being created', item);
       itemActions.addItem(item, fridge.id);
-      name = '';
-      qty = '';
+      name.value = '';
+      qty.value = '';
       type = '';
     }
     const options = [
@@ -93,6 +93,7 @@ class itemAddition extends Component {
               type = value;
             }}
           />
+
           <Form.Button 
            //width={1} 
             content='Go'/>
