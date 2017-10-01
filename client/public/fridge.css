@@ -1,6 +1,5 @@
 .container {
   position: relative;
-  top: 30px;
   height: 700px;
   width: 450px;
   border: none;
@@ -16,6 +15,9 @@
   width: 450px;
   border: none;
   bottom: 500px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .protein {
@@ -26,7 +28,10 @@
   width: 220px;
   border: none;
   bottom: 345px;
-  left: 0px
+  left: 0px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .grains {
@@ -37,7 +42,10 @@
   width: 220px;
   border: none;
   bottom: 345px;
-  right: 0px
+  right: 0px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .dairy {
@@ -47,7 +55,10 @@
   height: 125px;
   width: 450px;
   border: none;
-  bottom: 210px
+  bottom: 210px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .produce {
@@ -58,17 +69,28 @@
   width: 290px;
   border: none;
   bottom: 0px;
-  left: 0px 
+  left: 0px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
 .misc {
   position: absolute;
+  text-align:center;
   border-radius: .28571429rem;
   background-color: #e5a5c2;
   height: 200px;
   width: 150px;
   border: none;
   bottom: 0px;
-  right: 0px
+  right: 0px;
+  display:table;
+  vertical-align:middle;
+  text-align:center;
 }
 
+.text {
+  display:table-cell;
+  vertical-align:middle;
+}
