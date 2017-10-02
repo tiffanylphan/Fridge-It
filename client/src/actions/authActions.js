@@ -1,6 +1,7 @@
 import firebase, { auth, googleProvider } from '../firebase/config.js';
 import { push } from 'react-router-redux';
 
+// Google log in and sign up function from firebase docs. Stores relevant info onto the localStorage object.
 export const googleLogin = () => {
   return function(dispatch) {
     auth.signInWithPopup(googleProvider) 
@@ -10,6 +11,7 @@ export const googleLogin = () => {
         let name = user.displayName === null ? user.email : user.displayName;
         localStorage.setItem('name', name);
         localStorage.setItem('userid', user.uid);
+        // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: name});
         dispatch(push('/home'));
       })
@@ -20,12 +22,14 @@ export const googleLogin = () => {
   };
 };
 
+// Email log in function. Stores relevant info onto the localStorage object.
 export const emailLogin = (email, pw) => {
   return function(dispatch) {
     firebase.auth().signInWithEmailAndPassword(email, pw)
       .then(result => {
         localStorage.setItem('name', result.email)
         localStorage.setItem('userid', result.uid)
+        // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
         dispatch(push('/home'));
       })
@@ -36,6 +40,7 @@ export const emailLogin = (email, pw) => {
   };
 };
 
+// Firebase log out function.  Removes all stored info from localStorage object.
 export const logoutUser = () => {
   return function(dispatch) {
     auth.signOut()
@@ -44,6 +49,7 @@ export const logoutUser = () => {
         localStorage.removeItem('name');
         localStorage.removeItem('fId');
         localStorage.removeItem('visitorId');
+        // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGOUT_FULFILLED'});
         dispatch(push('/'));
         location.reload();
@@ -55,12 +61,14 @@ export const logoutUser = () => {
   };
 };
 
+// Email sign up function. Stores relevant info onto the localStorage object.
 export const emailSignUp = (email, pw) => {
   return function(dispatch) {    
     firebase.auth().createUserWithEmailAndPassword(email, pw)
       .then(result => {
         localStorage.setItem('name', result.email);
         localStorage.setItem('userid', result.uid);
+        // Calls on authReducers.js to create the new state.
         dispatch({type: 'USER_LOGIN_FULFILLED', payload: result.email});
         dispatch(push('/home'));
       })
@@ -77,6 +85,7 @@ export const checkItOut = () => {
   };
 };
 
+// Custom error messages.
 const errorMsgs = {
 "The password is invalid or the user does not have a password.": 'Password and/or email address is incorrect.',
 "The email address is badly formatted.": "Invalid email address.",

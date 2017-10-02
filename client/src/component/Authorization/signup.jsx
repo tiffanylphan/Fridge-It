@@ -10,6 +10,7 @@ class Signup extends Component {
     super(props); 
   }
 
+  // Takes the email and password from the input fields for firebase's sign up function.
   emailSignUp() {
     let email = document.getElementById('inputSignupEmail');
     let pw = document.getElementById('inputSignupPw');
@@ -75,10 +76,12 @@ class Signup extends Component {
   }
 };
 
+// Brings in functions from authActions nad binds them to this.props.
 const signupDispatch = (dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
 };
 
+// Connects state and dispatch to this component.
 export default connect(null, signupDispatch)(Signup);

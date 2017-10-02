@@ -6,6 +6,7 @@ const initialState = {
   error: null
 };
 
+// Reducers create a new state on Redux before returning to relevant action function.
 const authReducer = (state=initialState, action) => {
   switch(action.type) {
 
