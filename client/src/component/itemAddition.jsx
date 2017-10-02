@@ -26,7 +26,6 @@ class itemAddition extends Component {
       item.quantity = qty.value;
       item.type = type;
       item.user = username;
-
       itemActions.addItem(item, fridge.id);
       name.value = '';
       qty.value = '';

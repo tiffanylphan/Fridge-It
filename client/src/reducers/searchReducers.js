@@ -15,7 +15,6 @@ const searchReducer = (state=initialState, action) => {
       return Object.assign({}, state, {fetching: false, error: action.payload});
     }
     case "FETCH_RECIPES_FULFILLED": {
-      console.log('this is action.payload: ', action.payload);
       return Object.assign({}, state, {
         fetching: false,
         fetched: true,
