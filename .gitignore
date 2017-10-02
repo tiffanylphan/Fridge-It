@@ -2,11 +2,7 @@
 node_modules
 semantic
 
-<<<<<<< HEAD
 firebase.json
-=======
-semantic.json
->>>>>>> [update] update ignore
 .env
 
 client/public/bundle.js
