@@ -9,11 +9,11 @@ class MessageListEntry extends Component {
   render() {
     const { message, deleteMessages, updateMessages } = this.props
     const style = {
-      textAlign: "right",
+      textAlign: "center",
     }
 
     const LikeView = (
-      <Button icon='thumbs outline up'
+      <Button basic color={'black'} icon='thumbs outline up'
       onClick={
         () => {
           if (!message.like.includes(localStorage.getItem('name'))) {
@@ -28,7 +28,7 @@ class MessageListEntry extends Component {
     )
 
     const deleteButton = (
-      <Button onClick={() => {
+      <Button basic color={'black'} onClick={() => {
           deleteMessages(message.id)
       }}>              
         <Icon name="remove" />
@@ -37,11 +37,12 @@ class MessageListEntry extends Component {
     
     return (
       <Card.Group>
-        <Card>
+        <Card style={{backgroundColor: "#FFFBBB"}}>
           <Card.Content>
             <div style={style}>
-              <Icon name="pin" />
+              <Icon name="pin" size="large" color="teal" />
             </div>
+            <br/>
             <Card.Header> {message.user.split('@')[0]} </Card.Header>
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
