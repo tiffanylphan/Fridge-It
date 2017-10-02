@@ -26,7 +26,7 @@ class itemAddition extends Component {
       item.quantity = qty.value;
       item.type = type;
       item.user = username;
-      console.log('item being created', item);
+
       itemActions.addItem(item, fridge.id);
       name.value = '';
       qty.value = '';
@@ -36,32 +36,32 @@ class itemAddition extends Component {
       {
         key: 1, 
         text: "produce",
-        value: "Produce"
+        value: "produce"
       },
       {
         key: 2, 
         text: "dairy",
-        value: "Dairy"
+        value: "dairy"
       },
       {
         key: 3, 
         text: "protein",
-        value: "Protein"
+        value: "protein"
       },
       {
         key: 4, 
         text: "grains and starches",
-        value: "Grains and starches"
+        value: "grains and starches"
       },
       {
         key: 5, 
         text: "frozen",
-        value: "Frozen"
+        value: "frozen"
       },
       {
         key: 6, 
         text: "miscellaneous",
-        value: "Misc"
+        value: "misc"
       }
     ]; 
 
@@ -75,7 +75,6 @@ class itemAddition extends Component {
       >
         <Form.Group inline>
           <Form.Input 
-            //width={4} 
             placeholder='Type name here'
             id="inputItm"
           />
@@ -85,7 +84,6 @@ class itemAddition extends Component {
             id="inputQty"
           />
           <Form.Select 
-            //width={2}
             placeholder='Browse categories' 
             options={options} 
             id="inputType"
@@ -95,7 +93,6 @@ class itemAddition extends Component {
           />
 
           <Form.Button 
-           //width={1} 
             content='Go'/>
         </Form.Group>
       </Form>
