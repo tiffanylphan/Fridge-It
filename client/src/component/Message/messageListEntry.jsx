@@ -9,7 +9,7 @@ class MessageListEntry extends Component {
   render() {
     const { message, deleteMessages, updateMessages } = this.props
     const style = {
-      textAlign: "right",
+      textAlign: "center",
     }
 
     const LikeView = (
@@ -40,8 +40,9 @@ class MessageListEntry extends Component {
         <Card style={{backgroundColor: "#FFFBBB"}}>
           <Card.Content>
             <div style={style}>
-              <Icon name="pin" />
+              <Icon name="pin" size="large" color="teal" />
             </div>
+            <br/>
             <Card.Header> {message.user.split('@')[0]} </Card.Header>
             <Card.Meta>
               Date: {message.createdAt.split('T')[0]}
