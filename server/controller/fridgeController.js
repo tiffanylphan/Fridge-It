@@ -13,6 +13,7 @@ module.exports = {
       res.status(500).send(err);
     })
   },
+
   getFridge: (req, res) => {
     Fridge.findAll({
       where: {name: req.params.name}
@@ -24,6 +25,7 @@ module.exports = {
       res.status(500).send(err);
     })
   },
+  
   deleteFridge: (req, res) => {
     Fridge.destroy({
       where: {id: req.params.fridgeId}
