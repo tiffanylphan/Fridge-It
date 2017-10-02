@@ -32,7 +32,7 @@ export const emailLogin = (email, pw) => {
       .catch((error) => {
         alert(errorMsgs[error.message]);        
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
-    })
+    });
   };
 };
 
@@ -68,7 +68,7 @@ export const emailSignUp = (email, pw) => {
         alert(error.message);        
         dispatch({type: 'USER_LOGIN_REJECTED', payload: error.message});
       });
-  }
+  };
 };
 
 export const checkItOut = () => {
@@ -82,4 +82,4 @@ const errorMsgs = {
 "The email address is badly formatted.": "Invalid email address.",
 "There is no user record corresponding to this identifier. The user may have been deleted.": 'Password and/or email address is incorrect or incorrect log in method.',
 "The email address is already in use by another account.": "The email address is already registered."
-}
+};

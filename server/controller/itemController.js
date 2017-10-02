@@ -1,4 +1,4 @@
-const Item = require('../../db/index').fridgeItems
+const Item = require('../../db/index').fridgeItems;
 
 module.exports = {
   getAllItems: (req, res) => {
@@ -57,4 +57,4 @@ module.exports = {
       res.status(500).send(err);
     })
   }
-}
+};

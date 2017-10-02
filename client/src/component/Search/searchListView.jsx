@@ -34,7 +34,6 @@ class SearchListView extends Component {
       )
     } else {
       let top3 = [];
-  
       for(let i = 0; i < 3; i++) {
         top3.push(recipeList[i]);
       };

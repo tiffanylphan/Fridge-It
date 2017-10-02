@@ -1,4 +1,4 @@
-const Fridge = require('../../db/index').fridge
+const Fridge = require('../../db/index').fridge;
 
 module.exports = {
   addFridge: (req, res) => {
@@ -37,4 +37,4 @@ module.exports = {
       res.status(500).send(err);
     })
   }
-}
+};

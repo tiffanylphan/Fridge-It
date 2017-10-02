@@ -10,7 +10,7 @@ const Fridge = sequelize.define('fridge', {
   name: {
     type: Sequelize.STRING
   }
-})
+});
 
 const FridgeItems = sequelize.define('fridgeItem', {
   name: {
@@ -29,7 +29,7 @@ const FridgeItems = sequelize.define('fridgeItem', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-})
+});
 
 const MessageInfo = sequelize.define('messageInfo', {
   messageText: {
@@ -42,7 +42,7 @@ const MessageInfo = sequelize.define('messageInfo', {
     type: Sequelize.STRING,
     allowNull: false,
   }
-})
+});
 
 FridgeItems.belongsTo(Fridge, {foreignKey: 'fridgeId', allowNull: true, onDelete: 'CASCADE'});
 Fridge.hasMany(FridgeItems, {foreignKey: 'fridgeId', allowNull: true, onDelete: 'CASCADE'});

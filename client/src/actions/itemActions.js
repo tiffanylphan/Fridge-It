@@ -8,9 +8,9 @@ export function getItems(fridgeId) {
       })
       .catch(err => { 
         dispatch({type: 'FETCH_ITEMS_REJECTED', payload: err})
-      })
-  }
-}
+      });
+  };
+};
 
 export function addItem(item, id) {
   return function(dispatch) {
@@ -26,9 +26,9 @@ export function addItem(item, id) {
       })
       .catch(err => { 
         dispatch({type: 'POST_ITEM_REJECTED', payload: err})
-      })
-  }
-}
+      });
+  };
+};
 
 export function updateItem(item, id) {
   return function(dispatch) {
@@ -39,14 +39,14 @@ export function updateItem(item, id) {
       user: item.user,
       fridgeId: id
     }) 
-    .then((response) => {
-      dispatch({type: 'UPDATE_ITEM_FULFILLED', payload: response.data[1]})
-    })
-    .catch(err => {
-      dispatch({type: 'UPDATE_ITEM_REJECTED', payload: err})
-    })
-  }
-}
+      .then((response) => {
+        dispatch({type: 'UPDATE_ITEM_FULFILLED', payload: response.data[1]})
+      })
+      .catch(err => {
+        dispatch({type: 'UPDATE_ITEM_REJECTED', payload: err})
+      });
+  };
+};
 
 export function deleteItem(id) {
   return function(dispatch) {
@@ -56,6 +56,6 @@ export function deleteItem(id) {
       })
       .catch(err => {
         dispatch({type: 'DELETE_ITEM_REJECTED', payload: err})
-      })
-  }
-}
+      });
+  };
+};
