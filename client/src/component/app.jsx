@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import { Router, Route, Link, Redirect } from 'react-router-dom';
 import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
 
-import HomeView from './homeView.jsx';
-import Login from './login.jsx';
-import LandingPage from './landingPage.jsx';
-import SignUp from './signup.jsx';
-import FixedMenu from './fixedMenu.jsx';
+import HomeView from './Home/homeView.jsx';
+import Login from './Authorization/login.jsx';
+import LandingPage from './Landing_Page/landingPage.jsx';
+import SignUp from './Authorization/signup.jsx';
+import FixedMenu from './Landing_Page/fixedMenu.jsx';
 import * as authActions from '../actions/authActions.js';
 
 class App extends Component {

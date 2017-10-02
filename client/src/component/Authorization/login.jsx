@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-import * as authActions from '../actions/authActions.js';
+import * as authActions from '../../actions/authActions.js'
 
 class Login extends Component {
   constructor (props) {

@@ -15,7 +15,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import FixedMenu from './fixedMenu.jsx';
-import * as authActions from '../actions/authActions.js';
+import * as authActions from '../../actions/authActions.js';
 
 class LandingPage extends Component {
   constructor(props) {

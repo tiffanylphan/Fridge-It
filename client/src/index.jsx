@@ -11,8 +11,8 @@ import promise from 'redux-promise-middleware';
 
 import FridgeApp from './reducers';
 import App from './component/app.jsx';
-import HomeView from './component/homeView.jsx';
-import LandingPage from './component/landingPage.jsx';
+import HomeView from './component/Home/homeView.jsx';
+import LandingPage from './component/Landing_Page/landingPage.jsx';
 
 const history = createHistory();
 const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddleware(history));
