@@ -10,6 +10,7 @@ class Login extends Component {
     super(props);
   }
   
+  // Takes the email and password from the input fields for firebase's log in function.
   emailSignin() {
     let user = document.getElementById('inputNM');
     let pw = document.getElementById('inputPW');
@@ -75,10 +76,12 @@ class Login extends Component {
   }
 };
 
+// Brings in functions from authActions nad binds them to this.props.
 const loginDispatch = (dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
 };
 
+// Connects state and dispatch to this component.
 export default connect(null, loginDispatch)(Login);

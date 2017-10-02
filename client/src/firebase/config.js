@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import FB from '../../../firebase.json';
 
+// Config file from Firebase project console. Hidden values found in firebase.json.
 var config = {
     apiKey: FB.FIREBASE_API_KEY,
     authDomain: FB.FIREBASE_AUTH_DOMAIN,
