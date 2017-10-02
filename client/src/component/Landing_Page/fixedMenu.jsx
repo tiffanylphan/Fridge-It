@@ -8,11 +8,11 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Router, Route, Link, Redirect } from 'react-router-dom';
 
-import HomeView from './homeView.jsx';
-import Login from './login.jsx';
+import HomeView from '../Home/homeView.jsx';
+import Login from '../Authorization/login.jsx';
 import LandingPage from './landingPage.jsx';
-import SignUp from './signup.jsx';
-import * as authActions from '../actions/authActions.js';
+import SignUp from '../Authorization/signup.jsx';
+import * as authActions from '../../actions/authActions.js';
 
 const FixedMenu = ({ history }) => (
   <Router history={history}>

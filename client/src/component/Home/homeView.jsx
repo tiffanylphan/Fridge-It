@@ -5,9 +5,9 @@ import { ConnectedRouter } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import {Button, Menu, Container, Image } from 'semantic-ui-react';
 
-import Search from './searchView.jsx';
-import Home from './home.jsx';
-import * as authActions from '../actions/authActions.js';
+import Search from '../Search/searchView.jsx';
+import Home from '../Home/home.jsx';
+import * as authActions from '../../actions/authActions.js';
 
 class HomeView extends Component {
   constructor(props) {

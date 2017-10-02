@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { Form, Submit, Button } from 'semantic-ui-react'
 
 import MessageListEntry from './messageListEntry.jsx';
-import * as messageActions from '../actions/messageActions.js';
+import * as messageActions from '../../actions/messageActions.js';
 
 class MessageListView extends Component {
   constructor(props) {

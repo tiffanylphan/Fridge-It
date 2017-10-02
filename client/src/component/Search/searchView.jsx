@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Card } from 'semantic-ui-react';
 
-import * as searchActions from '../actions/searchActions.js';
+import * as searchActions from '../../actions/searchActions.js';
 import SearchListEntry from './searchListEntry.jsx';
 
 class SearchView extends Component {

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Card, Message } from 'semantic-ui-react';
 
 import SearchListEntry from './searchListEntry.jsx';
-import * as searchActions from '../actions/searchActions.js';
+import * as searchActions from '../../actions/searchActions.js';
 
 class SearchListView extends Component {
   constructor(props) {

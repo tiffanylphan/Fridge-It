@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { Form, Button, Input, Select } from 'semantic-ui-react'
 
-import * as itemActions from '../actions/itemActions.js'
+import * as itemActions from '../../actions/itemActions.js'
 
 
 class itemAddition extends Component {

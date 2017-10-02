@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form, Grid, Button } from 'semantic-ui-react';
 
-import Messages from './messagesListView.jsx';
-import Search from './searchListView.jsx';
-import Fridge from './fridgeView.jsx';
-import * as fridgeActions from '../actions/fridgeActions.js';
+import Messages from '../Message/messagesListView.jsx';
+import Search from '../Search/searchListView.jsx';
+import Fridge from '../Fridge/fridgeView.jsx';
+import * as fridgeActions from '../../actions/fridgeActions.js';
 
 class Home extends Component {
   constructor (props) {
