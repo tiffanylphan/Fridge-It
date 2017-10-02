@@ -7,6 +7,8 @@ const initialState = {
   error: null
 }
 
+//reducer to change state for each action
+
 const fridgeReducer = (state=initialState, action) => {
   switch(action.type) {
 

@@ -1,5 +1,7 @@
 const Fridge = require('../../db/index').fridge;
 
+//functions to add fridges, get fridges, and delete fridges from the database using promises
+
 module.exports = {
   addFridge: (req, res) => {
     Fridge.create({

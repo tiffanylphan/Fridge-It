@@ -2,6 +2,8 @@ import React from 'react';
 import Item from './itemListEntry.jsx';
 import { Table } from 'semantic-ui-react';
 
+
+//render item list as popup table
 const ItemList = (props) => {
   if (props.items.length) {
     return (

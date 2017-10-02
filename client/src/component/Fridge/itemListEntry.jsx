@@ -1,6 +1,8 @@
 import React from 'react';
 import { Table, Icon, Card } from 'semantic-ui-react';
 
+
+//fill rows with items and buttons to edit
 const Item = (props) => {
   return (
     <Table.Row>

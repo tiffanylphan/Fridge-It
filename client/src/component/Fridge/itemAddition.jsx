@@ -11,6 +11,7 @@ class itemAddition extends Component {
     super(props);
   }
   
+  //form to input fridge items
   render() {
     const { itemActions, fridge } = this.props;
     let type = '';
