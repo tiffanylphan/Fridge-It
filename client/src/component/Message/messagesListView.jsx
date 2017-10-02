@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import { Form, Submit, Button } from 'semantic-ui-react'
+import { Form, Submit, Button } from 'semantic-ui-react';
 
 import MessageListEntry from './messageListEntry.jsx';
 import * as messageActions from '../../actions/messageActions.js';
@@ -17,9 +16,8 @@ class MessageListView extends Component {
     setTimeout(() => {
       state.props.actions.fetchMessages(localStorage.getItem('fId'));
     }, 500);
-  }
+  };
 
-  
   render() {
     const { messageList, messageFetched, messageFetching, fridge, actions } = this.props;
     let username = localStorage.getItem('name');
@@ -30,7 +28,7 @@ class MessageListView extends Component {
         this.props.actions.postMessages(fridge.id, username, inputMsg.value);
         inputMsg.value = '';
       }
-    }
+    };
 
       return (
         <div>

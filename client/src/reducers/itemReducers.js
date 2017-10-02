@@ -13,12 +13,15 @@ const initialState = {
 
 const itemReducer = (state=initialState, action) => {
   switch(action.type) {
+
     case 'FETCH_ITEMS_PENDING': {
       return Object.assign({}, state, {fetching: true});
     }
+
     case 'FETCH_ITEMS_REJECTED': {
       return Object.assign({}, state, {fetching: false, error: action.payload});
     }
+
     case 'FETCH_ITEMS_FULFILLED': {
       return Object.assign({}, state, {
         fetching: false,
@@ -26,12 +29,15 @@ const itemReducer = (state=initialState, action) => {
         items: action.payload
       }) 
     }
+
     case 'POST_ITEM_PENDING': {
       return Object.assign({}, state, {posting: true}); 
     }
+
     case 'POST_ITEM_REJECTED': {
       return Object.assign({}, state, {posting: false, error: action.payload});
     }
+
     case 'POST_ITEM_FULFILLED': {
       return Object.assign({}, state, {
         posting: false,
@@ -39,12 +45,15 @@ const itemReducer = (state=initialState, action) => {
         items: state.items.concat(action.payload)
       })
     }
+
     case 'UPDATE_ITEM_PENDING': {
       return Object.assign({}, state, {updating: true});
     }
+
     case 'UPDATE_ITEM_REJECTED': {
       return Object.assign({}, state, {updating: false, error: action.payload});
     }
+
     case 'UPDATE_ITEM_FULFILLED': {
       return Object.assign({}, state, {
         updating: false,
@@ -54,12 +63,15 @@ const itemReducer = (state=initialState, action) => {
         })
       });
     }
+
     case 'DELETE_ITEM_PENDING': {
       return Object.assign({}, state, {deleting: true});
     }
+
     case 'DELETE_ITEM_REJECTED': {
       return Object.assign({}, state, {deleting: false, error: action.payload});
     }
+
     case 'DELETE_ITEM_FULFILLED': {
       return Object.assign({}, state, {
         deleting: false,
@@ -70,6 +82,7 @@ const itemReducer = (state=initialState, action) => {
       })
     }
   }
+  
   return state;
 }
 

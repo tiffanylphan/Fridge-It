@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
 import { Form, Button, Input, Select } from 'semantic-ui-react'
 
 import * as itemActions from '../../actions/itemActions.js'
@@ -90,26 +89,25 @@ class itemAddition extends Component {
               type = value;
             }}
           />
-
           <Form.Button 
             content='Go'/>
         </Form.Group>
       </Form>
     )
   }
-}
+};
 
 const fridgeState = (store) => {
   return {
     fridge: store.fridge.fridge,
     items: store.items.items
   }
-}
+};
 
 const fridgeDispatch = (dispatch) => {
   return {
     itemActions: bindActionCreators(itemActions, dispatch)
   }
-}
+};
 
 export default connect(fridgeState, fridgeDispatch)(itemAddition);

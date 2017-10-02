@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Popup, Card, Button, Input, Form } from 'semantic-ui-react';
+import styles from '../../../public/fridge.css';
 
 import ItemListView from './itemListView.jsx';
 import ItemAddition from './itemAddition.jsx';
-
 import * as fridgeActions from '../../actions/fridgeActions.js';
 import * as itemActions from '../../actions/itemActions.js';
 
-import styles from '../../../public/fridge.css'
 
 class Fridge extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ class Fridge extends Component {
     setTimeout(() => {
       state.props.itemActions.getItems(localStorage.getItem('fId'));
     }, 500);
-  }
+  };
 
   filterItems(type) {
     return this.props.items.filter(item => {
@@ -31,7 +30,7 @@ class Fridge extends Component {
         return item; 
       }
     })
-  }
+  };
 
   render() {
     let { fridge, fridgeActions, itemActions } = this.props;
@@ -120,7 +119,7 @@ const fridgeState = (store) => {
     posted: store.fridge.posted,
     fetched: store.fridge.fetched
   }
-}
+};
 
 const fridgeDispatch = (dispatch) => {
   return {

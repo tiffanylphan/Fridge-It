@@ -11,7 +11,6 @@ class SearchView extends Component {
     super(props);
   };
 
-
   render() {
     let { actions, ingredients, recipeList } = this.props;
 

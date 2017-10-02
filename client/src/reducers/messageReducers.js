@@ -16,12 +16,14 @@ const initialState = {
 
 const messageReducer = (state=initialState, action) => {
   switch(action.type) {
+
     case "FETCH_MESSAGES_REJECTED": {
       return Object.assign({}, state, { 
         fetching: false, 
         error: action.payload
       })
     }
+
     case "FETCH_MESSAGES_FULFILLED": {
       return Object.assign({}, state, { 
         fetching: false,
@@ -29,12 +31,14 @@ const messageReducer = (state=initialState, action) => {
         messages: action.payload,
       })
     }
+
     case "POST_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
         posting: false, 
         error: action.payload
       })
     }
+
     case "POST_MESSAGES_FULFILLED": {
       return Object.assign({}, state, {
         posting: false,
@@ -42,12 +46,14 @@ const messageReducer = (state=initialState, action) => {
         messages: state.messages.concat(action.payload),
       })
     }
+
     case "DELETE_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
         deleting: false, 
         error: action.payload
       })
     }
+
     case "DELETE_MESSAGES_FULFILLED": {
       console.log('before filter', state.messages);
       return Object.assign({}, state, {
@@ -58,12 +64,14 @@ const messageReducer = (state=initialState, action) => {
         }), //make sure this works
       })
     }
+
     case "UPDATE_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
         updating: false,
         error: action.payload
       })
     }
+
     case "UPDATE_MESSAGES_FULFILLED": {
       return Object.assign({}, state, {
         updating: false,
@@ -77,6 +85,5 @@ const messageReducer = (state=initialState, action) => {
   
   return state;
 }
-
 
 export default messageReducer;

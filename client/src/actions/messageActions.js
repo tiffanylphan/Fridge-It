@@ -3,12 +3,12 @@ import axios from 'axios';
 export const fetchMessages = (fridgeId) => {
   return function(dispatch) {
     axios.get('/api/allMessages/' + fridgeId)
-    .then((response) => {
-      dispatch({type: 'FETCH_MESSAGES_FULFILLED', payload: response.data});
-    })
-    .catch((err) => {
-      dispatch({type: 'FETCH_MESSAGES_REJECTED', payload: err});
-    });
+      .then((response) => {
+        dispatch({type: 'FETCH_MESSAGES_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        dispatch({type: 'FETCH_MESSAGES_REJECTED', payload: err});
+      });
   };
 };
  
@@ -22,24 +22,24 @@ export const postMessages = (fridgeId, username, messages) => {
         user: username,
       }
     })
-    .then((response) => {
-      dispatch({type: 'POST_MESSAGES_FULFILLED', payload: response.data});
-    })
-    .catch((err) => {
-      dispatch({type: 'POST_MESSAGES_REJECTED', payload: err});
-    });
+      .then((response) => {
+        dispatch({type: 'POST_MESSAGES_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        dispatch({type: 'POST_MESSAGES_REJECTED', payload: err});
+      });
   };
 };
 
 export const deleteMessages = (messageId) => {
   return function(dispatch) {
     axios.delete('/api/allMessages/' + messageId)
-    .then((response) => {
-      dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
-    })
-    .catch((err) => {
-      dispatch({type: 'DELETE_MESSAGES_REJECTED', payload: err});
-    });
+      .then((response) => {
+        dispatch({type: 'DELETE_MESSAGES_FULFILLED', payload: response.data});
+      })
+      .catch((err) => {
+        dispatch({type: 'DELETE_MESSAGES_REJECTED', payload: err});
+      });
   };
 };
 
@@ -51,11 +51,11 @@ export const updateMessages = (msg) => {
       user: msg.user,
       messageText: msg.messageText
     })
-    .then((response) => {
-      dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data[1]});
-    })
-    .catch((err) => {
-      dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
-    });
+      .then((response) => {
+        dispatch({type: 'UPDATE_MESSAGES_FULFILLED', payload: response.data[1]});
+      })
+      .catch((err) => {
+        dispatch({type: 'UPDATE_MESSAGES_REJECTED', payload: err});
+      });
   };
 };

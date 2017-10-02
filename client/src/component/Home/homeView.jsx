@@ -85,7 +85,7 @@ const homeState = (store) => {
   return {
     username: store.auth.username,
   }
-}
+};
 
 const homeDispatch = (dispatch) => {
   return {

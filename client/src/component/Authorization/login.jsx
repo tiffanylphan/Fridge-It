@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 import * as authActions from '../../actions/authActions.js'
 
@@ -15,7 +15,7 @@ class Login extends Component {
     let pw = document.getElementById('inputPW');
     
     this.props.actions.emailLogin(user.value, pw.value);
-  }
+  };
     
   render() {
     return (
@@ -55,14 +55,13 @@ class Login extends Component {
                   placeholder='Password'
                   type='password'
                 />
-
                 <Button color='teal' fluid size='large'
                   onClick={(e) => {
                     e.preventDefault();
                     this.emailSignin();
                   }}>Login</Button>
-
               </Segment>
+              
                 <Button color='facebook' fluid size='large'
                 onClick={() => this.props.actions.googleLogin()}>Log In with Google</Button>
             </Form>
@@ -80,6 +79,6 @@ const loginDispatch = (dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
-}
+};
 
 export default connect(null, loginDispatch)(Login);

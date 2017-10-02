@@ -16,7 +16,7 @@ class Home extends Component {
   componentWillMount() {
 
     this.props.actions.getFridge(localStorage.getItem('name'));
-  }
+  };
 
   render() {
     let { actions, fetched, posted } = this.props;
@@ -49,15 +49,14 @@ class Home extends Component {
             <Button content={'Create a Fridge'} color={'blue'}
               onClick={(e) => {
                 e.preventDefault();
-
+                
                 const userArray = [];
                 userArray.push(username);
-
+                
                 const fridgeObj = {
                   users: userArray,
                   name: username,
                 }
-
                 actions.addFridge(fridgeObj);
               }}
             />
@@ -69,7 +68,6 @@ class Home extends Component {
                 <Form.Button content={'Join a Fridge'} color={'blue'}
                   onClick={(e) => {
                     e.preventDefault();
-
                     actions.getFridge(document.getElementById('joinFridgeInput').value);
                   }}
                 />
@@ -80,19 +78,19 @@ class Home extends Component {
       )
     }
   }
-}
+};
 
 const homeState = (store) => {
   return {
     fetched: store.fridge.fetched,
     posted: store.fridge.posted,
   }
-}
+};
 
 const homeDispatch = (dispatch) => {
   return {
     actions: bindActionCreators(fridgeActions, dispatch),
   }
-}
+};
 
 export default connect(homeState, homeDispatch)(Home);

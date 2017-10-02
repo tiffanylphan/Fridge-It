@@ -35,11 +35,12 @@ const appState = (store) => {
   return {
     username: store.auth.username,
   }
-}
+};
 
 const appDispatch =(dispatch) => {
   return {
     actions: bindActionCreators(authActions, dispatch)
   }
-}
+};
+
 export default connect(appState, appDispatch)(App);

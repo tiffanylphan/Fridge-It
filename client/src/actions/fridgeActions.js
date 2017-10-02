@@ -9,9 +9,9 @@ export function getFridge(name) {
       })
       .catch(err => {
         dispatch({type: 'FETCH_FRIDGE_REJECTED', payload: err});
-      })
-  }
-}
+      });
+  };
+};
 
 export function addFridge(fridge) {
   return function(dispatch) {
@@ -24,7 +24,7 @@ export function addFridge(fridge) {
       })
       .catch(err => {
         dispatch({type: 'POST_FRIDGE_REJECTED', payload: err})
-      })
-  }
-}
+      });
+  };
+};
 

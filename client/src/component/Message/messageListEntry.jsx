@@ -7,7 +7,7 @@ class MessageListEntry extends Component {
   }
   
   render() {
-    const { message, deleteMessages, updateMessages } = this.props
+    const { message, deleteMessages, updateMessages } = this.props;
     const style = {
       textAlign: "center",
     }

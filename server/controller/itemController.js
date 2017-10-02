@@ -1,4 +1,4 @@
-const Item = require('../../db/index').fridgeItems
+const Item = require('../../db/index').fridgeItems;
 
 module.exports = {
   getAllItems: (req, res) => {
@@ -12,6 +12,7 @@ module.exports = {
       res.status(500).send(err); 
     });
   },
+
   addItem: (req, res) => {
     Item.create({
       name: req.body.name,
@@ -27,6 +28,7 @@ module.exports = {
       res.status(500).send(err)
     }); 
   },
+
   updateItem: (req, res) => {
     Item.update({
       name: req.body.name,
@@ -43,6 +45,7 @@ module.exports = {
       res.status(500).send(err);
     })
   },
+  
   deleteItem: (req, res) => {
     Item.destroy({
       where: {id: req.params.id}
@@ -54,4 +57,4 @@ module.exports = {
       res.status(500).send(err);
     })
   }
-}
+};
