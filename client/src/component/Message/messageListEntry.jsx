@@ -13,7 +13,7 @@ class MessageListEntry extends Component {
     }
 
     const LikeView = (
-      <Button icon='thumbs outline up'
+      <Button basic color={'black'} icon='thumbs outline up'
       onClick={
         () => {
           if (!message.like.includes(localStorage.getItem('name'))) {
@@ -28,7 +28,7 @@ class MessageListEntry extends Component {
     )
 
     const deleteButton = (
-      <Button onClick={() => {
+      <Button basic color={'black'} onClick={() => {
           deleteMessages(message.id)
       }}>              
         <Icon name="remove" />
@@ -37,7 +37,7 @@ class MessageListEntry extends Component {
     
     return (
       <Card.Group>
-        <Card>
+        <Card style={{backgroundColor: "#FFFBBB"}}>
           <Card.Content>
             <div style={style}>
               <Icon name="pin" />
