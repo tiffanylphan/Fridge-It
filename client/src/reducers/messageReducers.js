@@ -16,11 +16,6 @@ const initialState = {
 
 const messageReducer = (state=initialState, action) => {
   switch(action.type) {
-    case "FETCH_MESSAGES_PENDING": {
-      return Object.assign({}, state, { 
-        fetching: true
-      })
-    }
     case "FETCH_MESSAGES_REJECTED": {
       return Object.assign({}, state, { 
         fetching: false, 
@@ -34,11 +29,6 @@ const messageReducer = (state=initialState, action) => {
         messages: action.payload,
       })
     }
-    case "POST_MESSAGES_PENDING": {
-      return Object.assign({}, state, { 
-        posting: true
-      })
-    }
     case "POST_MESSAGES_REJECTED": {
       return Object.assign({}, state, {
         posting: false, 
@@ -50,11 +40,6 @@ const messageReducer = (state=initialState, action) => {
         posting: false,
         posted: true,
         messages: state.messages.concat(action.payload),
-      })
-    }
-    case "DELETE_MESSAGES_PENDING": {
-      return Object.assign({}, state, {
-        deleting: true
       })
     }
     case "DELETE_MESSAGES_REJECTED": {
@@ -71,11 +56,6 @@ const messageReducer = (state=initialState, action) => {
         messages: state.messages.filter(message => {
           return message.id !== Number(action.payload.id) ? message : null;
         }), //make sure this works
-      })
-    }
-    case "UPDATE_MESSAGES_PENDING": {
-      return Object.assign({}, state, {
-        updating: true
       })
     }
     case "UPDATE_MESSAGES_REJECTED": {
