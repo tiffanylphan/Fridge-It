@@ -11,6 +11,8 @@ const initialState = {
   error: null
 }
 
+//reducer to change state for each action
+
 const itemReducer = (state=initialState, action) => {
   switch(action.type) {
 

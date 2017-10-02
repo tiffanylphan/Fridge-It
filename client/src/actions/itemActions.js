@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+//functions to get items and add items on front end 
+//uses reducers as part of promises to change state
+
 export function getItems(fridgeId) {
   return function(dispatch) {
     axios.get('/api/items/' + fridgeId)

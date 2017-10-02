@@ -1,5 +1,7 @@
 const Item = require('../../db/index').fridgeItems;
 
+//functions to add items, get items, and delete items from the database using promises
+
 module.exports = {
   getAllItems: (req, res) => {
     Item.findAll({
