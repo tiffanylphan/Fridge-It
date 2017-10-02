@@ -36,32 +36,32 @@ class itemAddition extends Component {
       {
         key: 1, 
         text: "produce",
-        value: "Produce"
+        value: "produce"
       },
       {
         key: 2, 
         text: "dairy",
-        value: "Dairy"
+        value: "dairy"
       },
       {
         key: 3, 
         text: "protein",
-        value: "Protein"
+        value: "protein"
       },
       {
         key: 4, 
         text: "grains and starches",
-        value: "Grains and starches"
+        value: "grains and starches"
       },
       {
         key: 5, 
         text: "frozen",
-        value: "Frozen"
+        value: "frozen"
       },
       {
         key: 6, 
         text: "miscellaneous",
-        value: "Misc"
+        value: "misc"
       }
     ]; 
 

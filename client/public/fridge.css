@@ -4,7 +4,8 @@
   width: 450px;
   border: none;
   margin: 0 auto;
-  border-radius: .285716rem
+  border-radius: .285716rem;
+  text-align: center
 }
 
 .frozen {
@@ -15,9 +16,9 @@
   width: 450px;
   border: none;
   bottom: 500px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
 .protein {
@@ -29,9 +30,9 @@
   border: none;
   bottom: 345px;
   left: 0px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
 .grains {
@@ -43,9 +44,9 @@
   border: none;
   bottom: 345px;
   right: 0px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
 .dairy {
@@ -56,9 +57,9 @@
   width: 450px;
   border: none;
   bottom: 210px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
 .produce {
@@ -70,9 +71,9 @@
   border: none;
   bottom: 0px;
   left: 0px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
 .misc {
@@ -85,12 +86,12 @@
   border: none;
   bottom: 0px;
   right: 0px;
-  display:table;
+  /* display:table;
   vertical-align:middle;
-  text-align:center;
+  text-align:center; */
 }
 
-.text {
+/* .text {
   display:table-cell;
   vertical-align:middle;
-}
+} */
