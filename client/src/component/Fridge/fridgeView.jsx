@@ -39,37 +39,31 @@ class Fridge extends Component {
       {
         name: "produce", 
         position: "top center",
-        img: '',
         display: 'Produce'
       }, 
       {
         name: "dairy", 
         position: "top left",
-        img: '',
         display: 'Dairy'
       },
       {
         name: "protein",
         position: "left center",
-        img: '',
         display: 'Protein'
       },
       {
         name: "grains",
         position: "top right",
-        img: '',
         display: 'Grains'
       }, 
       {
         name: "frozen",
         position: "right center",
-        img: '',
         display: 'Frozen'
       }, 
       {
         name: "misc",
         position: "top left",
-        img: '',
         display: 'Misc'
       }
     ]; 
@@ -101,7 +95,9 @@ class Fridge extends Component {
               let filteredItems = this.filterItems(type.name);
                 return (
                     <Popup
-                      trigger={<div className={styles[type.name]}></div>}
+                      trigger={<div className={styles[type.name]}>
+                        <div className={styles.text}>{type.display}</div>
+                        </div>}
                       flowing
                       hoverable
                       position={type.position}
