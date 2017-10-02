@@ -77,7 +77,6 @@ class Fridge extends Component {
       <div>
         <h2 className='ui dividing header'>{fridge.name && fridge.name.split('@')[0]}'s Fridge</h2>
         <div>
-          <ItemAddition />
           <Form>
             <Form.Group inline>
               <Form.Input 
@@ -95,6 +94,7 @@ class Fridge extends Component {
               />
             </Form.Group>
           </Form>
+          <ItemAddition />
         </div>
         <div className={styles.container}>
           {types.map(type => {
